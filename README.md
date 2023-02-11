@@ -2,7 +2,7 @@
 
 Front-End: React.js
 
-Back-End: Node.js, Express.js, MongoDB
+Back-End: Node.js (v.18.13.0), Express.js, MongoDB
 
 ## How to Run Locally:
 #### 1. Clone the repository
@@ -24,7 +24,7 @@ cd Application-Tracker
 cd backend
 ```
 
-#### 2. In the backend directory, insert the .env file containing the database URI to get access to the database.
+#### 2. In the backend directory, create a .env file and paste the info to get access to the database (Ask me for the info).
 
 #### 3. Install necessary dependencies.
 
@@ -43,7 +43,13 @@ npm start
 cd frontend
 ```
 
-#### 2. Run the app in development mode.
+#### 2. Install necessary dependencies.
+
+```
+npm i
+```
+
+#### 3. Run the app in development mode.
 ```
 npm start
 ```
