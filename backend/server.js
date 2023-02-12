@@ -1,14 +1,15 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 const dotenv = require("dotenv").config();
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-
-const express = require("express");
-const mongoose = require("mongoose");
 
 const app = express();
 
 // middleware
 app.use(express.json()); // Allows our API to parse json
+app.use(cors()) // allow cross-origin resource sharing
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
