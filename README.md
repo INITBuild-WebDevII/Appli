@@ -5,51 +5,56 @@ Front-End: React.js
 Back-End: Node.js (v.18.13.0), Express.js, MongoDB
 
 ## How to Run Locally:
-#### 1. Clone the repository
+#### 1. Open a new terminal and select where you want to download/save the project at (ex: Desktop)
+```
+cd Desktop
+```
+
+#### 2. Clone the repository
 ```
 git clone https://github.com/INITBuild-WebDevII/Application-Tracker.git
 ```
 
-#### 2. Navigate to the project's root directory (i.e. should see the backend and frontend folders)
+#### 3. Navigate to the project's root directory (i.e. should see the backend and frontend folders)
 ```
 cd Application-Tracker
 ```
 
-## Open two terminal windows (one for running backend and the other for frontend)
+### Open two terminal windows (one for running backend and the other for frontend)
 
 ### Starting up the server:
 
-#### 1. Navigate to backend folder.
+#### 1. Navigate to backend folder
 ```
 cd backend
 ```
 
-#### 2. In the backend directory, create a .env file and paste the info to get access to the database (Ask me for the info).
+#### 2. In the backend directory, create a .env file and paste the info to get access to the database (Ask me for the info)
 
-#### 3. Install necessary dependencies.
+#### 3. Install necessary dependencies
 
 ```
 npm i
 ```
 
-#### 4. Run the server.
+#### 4. Run the server
 ```
 npm start
 ```
 
 ### Starting up the frontend:
-#### 1. Navigate to backend folder.
+#### 1. Navigate to backend folder
 ```
 cd frontend
 ```
 
-#### 2. Install necessary dependencies.
+#### 2. Install necessary dependencies
 
 ```
 npm i
 ```
 
-#### 3. Run the app in development mode.
+#### 3. Run the app in development mode
 ```
 npm start
 ```
