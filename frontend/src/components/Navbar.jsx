@@ -6,6 +6,9 @@ function Navbar() {
     <nav>
       <h1>Appli</h1>
       <ul>
+        <Link to="/Dashboard" className="link">
+          Dashboard
+        </Link>
         <Link to="/Resources" className="link">
           Resources
         </Link>
