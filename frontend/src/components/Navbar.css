@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  align-items: center;
+  height: 12vh;
+  width: 100%;
+  position: absolute;
+  font-size: 22px;
+  justify-content: space-between;
+  padding: 1.5rem 3.5rem;
+  color: white;
+  z-index: 1;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  width: 28rem;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: white;
+}
