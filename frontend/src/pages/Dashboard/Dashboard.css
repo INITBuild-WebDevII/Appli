@@ -8,22 +8,6 @@ button{
 .logo-img{
     margin: 20px 0px;
 }
-.dash-nav-bar{
-    background-color: black;
-    display: inline;
-    width: 20%;
-    height: 100%;
-    position:fixed;
-    top: 0%;
-    left: 0%;
-    /* text-align: center; */
-}
-.dash-nav-bar-item{
-    font-size: 20px;
-    padding: 10px;
-    list-style-type: none;
-    text-decoration: none;
-}
 .main-contain{
     background-color: rgba(24, 24, 24, 0.722);
     width: 80%;
