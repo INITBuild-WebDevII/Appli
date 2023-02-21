@@ -3,22 +3,30 @@ import "./Dashboard.css";
 
 function Dashboard() {
   return (
-    <div>
+    <div className="dashboard">
       <div className="dash-nav-bar">
         <ul>
           <li className="dash-nav-bar-item">Dashboar</li>
-          <li className="dash-nav-bar-item">Find Jobs</li>
+          <Link to="/" className="link dash-nav-bar-item">
+          Find Jobs 
+          </Link>
           <li className="dash-nav-bar-item">Resume</li>
-          <li className="dash-nav-bar-item">Resource</li>
+          <Link to="/Resources" className="link dash-nav-bar-item">
+          Resources
+        </Link>
           <li className="dash-nav-bar-item">Profile</li>
           <li className="dash-nav-bar-item">Setting</li>
         </ul>
       </div>
 
-      <div>
-        <h1>My Applications</h1>
+      <div className="container">
+        <div className="heading">
+          <p className="heading left">hello</p>
+          <h1 className="heading middle">My Applications</h1>
+          <p className="heading right">User</p>
+        </div>
+        <h2>Hello, Danny</h2>
       </div>
-      <h2>Hello, Danny</h2>
       <Link to="/" className="link">
         To Home
       </Link>

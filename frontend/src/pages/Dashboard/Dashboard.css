@@ -1,13 +1,38 @@
-html{
-    background-color: rgba(0, 0, 0, 0.707);
-    color: white;
-}
 .dash-nav-bar{
     background-color: black;
-    display: block;
+    display: inline;
     width: 15%;
+    position:fixed;
+    top: 0%;
+    left: 0%;
+    
 }
 .dash-nav-bar-item{
     font-size: 20px;
     padding: 10px;
+    list-style-type: none;
+    text-decoration: none;
+}
+.container{
+    background-color: rgba(33, 31, 31, 0.884);
+    width:85%;
+    height: 100%;
+    float: right;
+}
+.heading{
+    text-align: center;
+    vertical-align:middle;
+}
+.middle{
+    display: inline-block;
+}
+.left{
+    float: left;
+
+}
+.right{
+    float: right;
+}
+h2{
+    display: block;
 }
