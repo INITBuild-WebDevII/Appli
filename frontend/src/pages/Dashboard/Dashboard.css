@@ -1,11 +1,22 @@
+button{
+    color: whitesmoke;
+    background-color: black;
+    border-style: none;
+    font-size: 25px;
+    padding-left: 3%;
+}
+.logo-img{
+    margin: 20px 0px;
+}
 .dash-nav-bar{
     background-color: black;
     display: inline;
-    width: 15%;
+    width: 20%;
+    height: 100%;
     position:fixed;
     top: 0%;
     left: 0%;
-    
+    /* text-align: center; */
 }
 .dash-nav-bar-item{
     font-size: 20px;
@@ -13,11 +24,12 @@
     list-style-type: none;
     text-decoration: none;
 }
-.container{
-    background-color: rgba(33, 31, 31, 0.884);
-    width:85%;
+.main-contain{
+    background-color: rgba(24, 24, 24, 0.722);
+    width: 80%;
     height: 100%;
     float: right;
+    padding: 2%;
 }
 .heading{
     text-align: center;
@@ -33,6 +45,36 @@
 .right{
     float: right;
 }
+.profile-img{
+    background-color:#85CDFD;
+    height: 20px;
+    color: #85CDFD;
+}
 h2{
     display: block;
+}
+.process-categories{
+    height: 90px;
+    width: 23%;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 10px 21px 10px 0px;
+    display: inline-block;
+}
+.process-categories p{
+    padding-left: 5%;
+    padding-top: 6%;
+    font-size: 1.1rem;
+}
+.toApply{
+    background-color: #85CDFD;
+}
+.applied{
+    background-color: #37c247;
+}
+.inProgress{
+    background-color: #f8c577;
+}
+.accepted{
+    background-color: #f4729f;
 }
