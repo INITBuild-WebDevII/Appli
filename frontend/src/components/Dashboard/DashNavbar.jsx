@@ -3,69 +3,69 @@ import "./DashNavbar.css";
 
 function DashNavbar(){
     return(
-        <nav className="dash-nav-bar">
-          <img src="" alt="logo" className="logo-img" />
-          <table>
-            <tr>
-              <td>
-                <img src="" alt="Icon"/>
-              </td>
-              <td>
-                <li className="dash-nav-bar-item">Dashboar</li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="" alt="Icon" />
-              </td>
-              <td>
-              <Link to="/" className="link dash-nav-bar-item">
-                  Find Jobs 
+        <nav className="dashboard-navbar">
+        <img src="" alt="logo" className="logo-img" />
+        <table>
+          <tr>
+            <td>
+              <img className="navbar-item" src="" alt="Icon"/>
+            </td>
+            <td>
+              <li className="navbar-item">Dashboar</li>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img className="navbar-item" src="" alt="Icon"/>
+            </td>
+            <td>
+            <Link to="/" className="link navbar-item">
+                Find Jobs 
+            </Link>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img className="navbar-item" src="" alt="Icon"/>
+            </td>
+            <td>
+              <li className="navbar-item">Resume</li>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img className="navbar-item" src="" alt="Icon"/>
+            </td>
+            <td>
+              <Link to="/Resources" className="link navbar-item">
+                Resources
               </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="" alt="Icon" />
-              </td>
-              <td>
-                <li className="dash-nav-bar-item">Resume</li>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="" alt="Icon" />
-              </td>
-              <td>
-                <Link to="/Resources" className="link dash-nav-bar-item">
-                  Resources
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="" alt="Icon" />
-              </td>
-              <td>
-                <Link to="/Profile" className="link dash-nav-bar-item">
-                  Profile
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="" alt="Icon" />
-              </td>
-              <td>
-                <li className="dash-nav-bar-item">Setting</li>
-              </td>
-            </tr>
-          </table>
-          <button> + </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img className="navbar-item" src="" alt="Icon"/>
+            </td>
+            <td>
+              <Link to="/Profile" className="link navbar-item">
+                Profile
+              </Link>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img className="navbar-item" src="" alt="Icon"/>
+            </td>
+            <td>
+              <li className="navbar-item">Setting</li>
+            </td>
+          </tr>
+        </table>
+        <button> + </button>
 
-          <div className="calendar">
-            <p>Calendar</p>
-          </div>
+        <div className="calendar">
+          <p>Calendar</p>
+        </div>
       </nav>
     );
 }

@@ -4,12 +4,16 @@ button{
     border-style: none;
     font-size: 25px;
     padding-left: 3%;
+    border-radius: 50%;
+}
+hr{
+    color: rgba(191, 188, 188, 0.818);
 }
 .logo-img{
     margin: 20px 0px;
 }
 .main-contain{
-    background-color: rgba(24, 24, 24, 0.722);
+    background-color: rgba(24, 24, 24, 0.764);
     width: 80%;
     height: 100%;
     float: right;
@@ -22,8 +26,13 @@ button{
 .middle{
     display: inline-block;
 }
-.left{
+.search{
     float: left;
+    background-color: rgba(179, 185, 182, 0.335);
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    text-align: center;
 
 }
 .right{
@@ -37,18 +46,53 @@ button{
 h2{
     display: block;
 }
-.process-categories{
-    height: 90px;
+.greeting{
+    margin: 3% 0%;
+}
+.category-phase{
     width: 23%;
+    display: inline-block;
+    margin: 10px 21px 10px 0px;
+    font-weight: bold;
+}
+.category-heading{
+    height: 90px;
     border-radius: 10px;
     font-weight: bold;
-    margin: 10px 21px 10px 0px;
-    display: inline-block;
 }
-.process-categories p{
+.category-contain{
+    border-style: solid ;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 5%;
+    height: 500px;
+}
+
+.category-phase p{
     padding-left: 5%;
     padding-top: 6%;
     font-size: 1.1rem;
+}
+.category-contain p{
+    padding: 3% 0% 3% 5%;
+    font-size: 15px;
+    display: inline-block;
+}
+.category-btn{
+    background-color: rgba(24, 24, 24, 0.722);
+    height: 10px;
+    float: right;
+    padding-right: 7%;
+    font-weight: bold;
+    
+}
+.item{
+    height: 60px;
+    width: 95%;
+    border: solid;
+    border-radius: 10px;
+    margin: 3% auto auto auto;
+
 }
 .toApply{
     background-color: #85CDFD;
@@ -61,4 +105,8 @@ h2{
 }
 .accepted{
     background-color: #f4729f;
+}
+
+.home{
+    display: block;
 }

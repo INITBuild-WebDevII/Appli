@@ -8,7 +8,9 @@ function Dashboard() {
       <DashNavbar />
       <div className="main-contain">
         <div className="heading">
-          <p className="heading left">Search</p>
+          <form action="/" method="get">
+            <input className="search" type="search" value="Search" name="lookUp" />
+          </form>
           <h2 className="heading middle">My Applications</h2>
           <a className="heading right" href="/Profile">
             <img className="profile-img" src="" alt=""/>
@@ -16,21 +18,66 @@ function Dashboard() {
           </a>
         </div>
 
-        <h1>Hello, Danny</h1>
+        <h1 className="greeting">Hello, User</h1>
 
-        <div className="process-categories toApply" >
-          <p>To Apply</p>
+        <div className="category-phase">
+          <div className="category-heading toApply" >
+            <p>To Apply</p>
+          </div>
+          <div className="category-contain toApply-contain">
+            <p>To Apply</p>
+            <button className="category-btn"> + </button>
+            <hr />
+            <div className="toApply-item item"></div>
+            <div className="toApply-item item"></div>
+            <div className="toApply-item item"></div>
+            <div className="toApply-item item"></div>
+          </div>
         </div>
-        <div className="process-categories applied" >
-          <p>Applied</p>
+
+        <div className="category-phase">
+          <div className="category-heading applied" >
+            <p>Applied</p>
+          </div>
+          <div className="category-contain applied-contain">
+            <p>Applied</p>
+            <button className="category-btn"> + </button>
+            <hr />
+            <div className="applied-item item"></div>
+            <div className="applied-item item"></div>
+            
+          </div>
         </div>
-        <div className="process-categories inProgress" >
-          <p>In Progress</p>
+
+        <div className="category-phase">
+          <div className="category-heading inProgress" >
+            <p>In Progress</p>
+          </div>
+
+          <div className="category-contain inProgress-contain">
+            <p>In Progress</p>
+            <button className="category-btn"> + </button>
+            <hr />
+            <div className="inProgress-item item"></div>
+            <div className="inProgress-item item"></div>
+            <div className="inProgress-item item"></div>
+          </div>
         </div>
-        <div className="process-categories accepted" >
-          <p>Accepted</p>
+        
+        <div className="category-phase">
+          <div className="category-heading accepted" >
+            <p>Accepted</p>
+          </div>
+
+          <div className="category-contain accepted-contain">
+            <p>Accepted</p>
+            <button className="category-btn"> + </button>
+            <hr />
+            <div className="accepted-item item"></div>
+          </div>
         </div>
-        <Link to="/" className="link">
+
+        <Link to="/" className="link home">
         To Home
         </Link>
       </div>

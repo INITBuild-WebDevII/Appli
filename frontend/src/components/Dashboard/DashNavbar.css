@@ -1,4 +1,4 @@
-.dash-nav-bar{
+.dashboard-navbar{
     background-color: black;
     display: inline;
     width: 20%;
@@ -8,11 +8,14 @@
     left: 0%;
     padding: 1%;
 }
-.dash-nav-bar-item{
+.navbar-item{
     font-size: 20px;
     padding: 10px;
     list-style-type: none;
     text-decoration: none;
+}
+.navbar-item:hover{
+    opacity: .5;
 }
 .calendar{
     border: dashed 1px #fff;
@@ -20,7 +23,7 @@
     width: 98%;
     height: 30%;
     position: relative;
-    top: 25%
+    top: 20%
 }
 .calendar p{
     padding-left: 7%;
