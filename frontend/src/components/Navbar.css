@@ -1,14 +1,29 @@
 nav {
   display: flex;
   align-items: center;
-  height: 12vh;
+  height: 15vh;
   width: 100%;
   position: absolute;
   font-size: 22px;
   justify-content: space-between;
   padding: 1.5rem 3.5rem;
-  color: white;
   z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  width: 95px;
+  height: 95px;
+}
+
+#letters {
+  width: 140px;
+  height: 60px;
 }
 
 nav li {
@@ -24,4 +39,8 @@ nav ul {
 nav ul a {
   text-decoration: none;
   color: white;
+}
+
+nav ul a:hover {
+  opacity: 0.5;
 }
