@@ -9,7 +9,7 @@ function Dashboard() {
       <div className="main-contain">
         <div className="heading">
           <form action="/" method="get">
-            <input className="search" type="search" value="Search" name="lookUp" />
+            <input className="search" type="search" placeholder="Search" name="lookUp" />
           </form>
           <h2 className="heading middle">My Applications</h2>
           <a className="heading right" href="/Profile">

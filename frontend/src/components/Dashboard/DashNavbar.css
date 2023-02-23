@@ -8,13 +8,13 @@
     left: 0%;
     padding: 1%;
 }
-.navbar-item{
+.click{
     font-size: 20px;
     padding: 10px;
     list-style-type: none;
     text-decoration: none;
 }
-.navbar-item:hover{
+.click:hover{
     opacity: .5;
 }
 .calendar{

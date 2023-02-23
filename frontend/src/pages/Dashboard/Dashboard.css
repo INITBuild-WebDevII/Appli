@@ -81,10 +81,15 @@ h2{
 .category-btn{
     background-color: rgba(24, 24, 24, 0.722);
     height: 10px;
+    width: 10px;
+    border-radius: 50%;
     float: right;
-    padding-right: 7%;
+    padding-right: 10%;
     font-weight: bold;
-    
+  
+}
+.category-btn:hover{
+    opacity: .5;
 }
 .item{
     height: 60px;
