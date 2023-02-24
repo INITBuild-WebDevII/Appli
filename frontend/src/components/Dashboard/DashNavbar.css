@@ -1,0 +1,35 @@
+.dashboard-navbar{
+    background-color: black;
+    color: white;
+    display: inline;
+    width: 20%;
+    height: 100%;
+    position:fixed;
+    top: 0%;
+    left: 0%;
+    padding: 1%;
+}
+.click{
+    font-size: 20px;
+    padding: 10px;
+    list-style-type: none;
+    text-decoration: none;
+    color : white;
+}
+.click:hover{
+    opacity: .5;
+}
+.calendar{
+    border: dashed 1px #fff;
+    border-radius: 15px;
+    width: 98%;
+    height: 30%;
+    position: relative;
+    top: 20%
+}
+.calendar p{
+    padding-left: 7%;
+    padding-top: 6%;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
