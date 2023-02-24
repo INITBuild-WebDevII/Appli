@@ -13,7 +13,8 @@ hr{
     margin: 20px 0px;
 }
 .main-contain{
-    background-color: rgba(24, 24, 24, 0.764);
+    background-color: #242424;
+    color: white;
     width: 80%;
     height: 100%;
     float: right;

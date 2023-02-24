@@ -1,5 +1,6 @@
 .dashboard-navbar{
     background-color: black;
+    color: white;
     display: inline;
     width: 20%;
     height: 100%;
@@ -13,6 +14,7 @@
     padding: 10px;
     list-style-type: none;
     text-decoration: none;
+    color : white;
 }
 .click:hover{
     opacity: .5;

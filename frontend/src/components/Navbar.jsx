@@ -1,26 +1,39 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import logo from "../assets/logo-letter.png";
+import letters from "../assets/appli-letters.png";
 
 function Navbar() {
   return (
     <nav>
-      <h1>Appli</h1>
+      <div className="logo">
+        <a href="#">
+          <img src={logo} alt="logo" id="logo" />
+        </a>
+        <img id="letters" src={letters} />
+      </div>
+
       <ul>
-        <Link to="/Dashboard" className="link">
-          Dashboard
-        </Link>
-        <Link to="/Resources" className="link">
-          Resources
-        </Link>
-        <Link to="/" className="link">
-          Jobs
-        </Link>
-        <Link to="/About" className="link">
-          About
-        </Link>
-        <Link to="/Login" className="link">
-          Sign In
-        </Link>
+        <li>
+          <Link to="/Resources" className="link">
+            Resources
+          </Link>
+        </li>
+        <li>
+          <Link to="/Jobs" className="link">
+            Jobs
+          </Link>
+        </li>
+        <li>
+          <Link to="/About" className="link">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="/Login" className="link">
+            Sign In
+          </Link>
+        </li>
       </ul>
     </nav>
   );
