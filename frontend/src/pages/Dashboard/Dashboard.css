@@ -9,9 +9,6 @@ button{
 hr{
     color: rgba(191, 188, 188, 0.818);
 }
-.logo-img{
-    margin: 20px 0px;
-}
 .main-contain{
     background-color: #242424;
     color: white;
@@ -80,26 +77,19 @@ h2{
     display: inline-block;
 }
 .category-btn{
-    background-color: rgba(24, 24, 24, 0.722);
-    height: 10px;
-    width: 10px;
+    background-color: #242424;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
     float: right;
-    padding-right: 10%;
+    padding-right: 13%;
     font-weight: bold;
   
 }
 .category-btn:hover{
     opacity: .5;
 }
-.item{
-    height: 60px;
-    width: 95%;
-    border: solid;
-    border-radius: 10px;
-    margin: 3% auto auto auto;
 
-}
 .toApply{
     background-color: #85CDFD;
 }

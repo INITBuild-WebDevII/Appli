@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "./DashNavbar.css";
+import logo from "../../assets/logo-letter.png";
 
 function DashNavbar(){
     return(
         <nav className="dashboard-navbar">
-        <img src="" alt="logo" className="logo-img" />
+        <img src={logo} alt="logo" className="logo-img" />
         <table>
           <tr>
             <td>
@@ -61,7 +62,6 @@ function DashNavbar(){
             </td>
           </tr>
         </table>
-        <button className="click"> + </button>
 
         <div className="calendar">
           <p>Calendar</p>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import DashNavbar from "../../components/Dashboard/DashNavbar";
+import Items from "../../components/Dashboard/Items";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -8,9 +9,6 @@ function Dashboard() {
       <DashNavbar />
       <div className="main-contain">
         <div className="heading">
-          <form action="/" method="get">
-            <input className="search" type="search" placeholder="Search" name="lookUp" />
-          </form>
           <h2 className="heading middle">My Applications</h2>
           <a className="heading right" href="/Profile">
             <img className="profile-img" src="" alt=""/>
@@ -25,13 +23,12 @@ function Dashboard() {
             <p>To Apply</p>
           </div>
           <div className="category-contain toApply-contain">
-            <p>To Apply</p>
-            <button className="category-btn"> + </button>
-            <hr />
-            <div className="toApply-item item"></div>
-            <div className="toApply-item item"></div>
-            <div className="toApply-item item"></div>
-            <div className="toApply-item item"></div>
+            <form action="/Dashboard" method="post">
+              <p>To Apply</p>
+              <button className="category-btn" type="submit"> + </button>
+              <hr />
+              <Items name="toApply"/>
+            </form>
           </div>
         </div>
 
@@ -40,12 +37,12 @@ function Dashboard() {
             <p>Applied</p>
           </div>
           <div className="category-contain applied-contain">
-            <p>Applied</p>
-            <button className="category-btn"> + </button>
-            <hr />
-            <div className="applied-item item"></div>
-            <div className="applied-item item"></div>
-            
+            <form action="/Dashboard" method="post">
+              <p>Applied</p>
+              <button className="category-btn" type="submit"> + </button>
+              <hr />
+              <Items name="Applied"/>
+            </form>
           </div>
         </div>
 
@@ -55,14 +52,14 @@ function Dashboard() {
           </div>
 
           <div className="category-contain inProgress-contain">
-            <p>In Progress</p>
-            <button className="category-btn"> + </button>
-            <hr />
-            <div className="inProgress-item item"></div>
-            <div className="inProgress-item item"></div>
-            <div className="inProgress-item item"></div>
+            <form action="/Dashboard" method="post">
+              <p>In Progress</p>
+              <button className="category-btn" type="submit"> + </button>
+              <hr />
+              <Items name="inProgress"/>
+            </form>
           </div>
-        </div>
+        </div>  
         
         <div className="category-phase">
           <div className="category-heading accepted" >
@@ -70,10 +67,12 @@ function Dashboard() {
           </div>
 
           <div className="category-contain accepted-contain">
-            <p>Accepted</p>
-            <button className="category-btn"> + </button>
-            <hr />
-            <div className="accepted-item item"></div>
+            <form action="/Dashboard" method="post">
+              <p>Accepted</p>
+              <button className="category-btn" type="submit"> + </button>
+              <hr />
+              <Items name="accepted"/>
+            </form>
           </div>
         </div>
 
