@@ -1,0 +1,59 @@
+.form{
+    background-color: #f7f0ff;
+    border-radius: 3%;
+    margin: 50px auto;
+    width: 60%;
+    line-height: 90px;
+    text-align: center;
+}
+
+h1{
+    color: black;
+    font-weight: bolder;
+    font-size: 5 0px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+p{
+    text-align: center;
+    color:black;
+    font-weight: bolder;
+}
+
+.button{
+    width: 95px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+    color:black; 
+
+}
+
+.button:hover{
+   cursor: pointer;
+   color:#8341ed; 
+
+}
+
+.link{
+    color:black;
+    text-align: center;
+    justify-self: center;
+    font-weight: normal;
+}
+
+.instruction{
+    margin-left: -30%;
+    color:#1976d2;
+    font-weight: bold;
+}
+
+.input{
+    width: 300px;
+    border: none;
+    background:transparent;
+    border-bottom: 2px solid #1976d2;
+}
