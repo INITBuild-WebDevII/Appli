@@ -1,0 +1,50 @@
+form{
+    height: 490px;
+    line-height: 50px;
+}
+.buttonSU{
+    width: 95px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+    color:black; 
+}
+
+.buttonSU:hover{
+   cursor: pointer;
+   color:#1976d2; 
+   font-weight: bolder;
+
+}
+
+.link{
+    color:black;
+    text-align: center;
+    justify-self: center;
+    font-weight: normal;
+}
+
+.instructionSU{
+    margin-left: -50%;
+    color:#1976d2;
+    font-weight: bold;
+    width: 65%;
+}
+
+.NFormat, .LNFormat{
+    display: inline-table;
+    padding: 30px;
+} 
+
+.instructionSU.lastname , .instructionSU.name{
+    margin-left: -85%;
+}
+.inputSU{
+    width: 476px;
+    align-items: flex-start;
+    border: none;
+    background:transparent;
+    border-bottom: 2px solid #1976d2;
+    text-align:start;
+}
