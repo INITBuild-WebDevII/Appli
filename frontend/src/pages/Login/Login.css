@@ -1,4 +1,4 @@
-.form{
+.form_Login{
     background-color: #f7f0ff;
     border-radius: 3%;
     margin: 50px auto;
@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-h1{
+.h1_Login{
     color: black;
     font-weight: bolder;
     font-size: 5 0px;
@@ -16,13 +16,13 @@ h1{
 }
 
 
-p{
+.p_Login{
     text-align: center;
     color:black;
     font-weight: bolder;
 }
 
-.button{
+.Login_button{
     width: 95px;
     height: 20px;
     background-color: transparent;
@@ -32,13 +32,13 @@ p{
 
 }
 
-.button:hover{
+.Login_button:hover{
    cursor: pointer;
    color:#8341ed; 
 
 }
 
-.link{
+.link_SU{
     color:black;
     text-align: center;
     justify-self: center;

@@ -3,13 +3,13 @@ import './Signup.css';
 
 function Signup() {
     return (
-      <div className="form">
-        <h1>Logo</h1>
-  
-        <form className="Signup-form">
+      <div className="Signup-form">
+      
+        <form >
+          <h1>Logo</h1> 
           <span className="NFormat">
-            <label className="instructionSU name"> Name </label> <br/>
-            <input className="inputSU name"  style={{width:200}} placeholder="Name" type="text"></input>  
+            <label className="instructionSU name"> &ensp;Name </label> <br/>
+            <input className="inputSU name"  style={{width:205}} placeholder="Name" type="text"></input>  
           </span>
 
           <span className="LNFormat">
@@ -20,14 +20,14 @@ function Signup() {
           <label className="instructionSU">Email </label> <br/> 
           <input className="inputSU" placeholder="Ex: myemail@gmail.com" type="email" ></input> <br/>
 
-          <label className="instructionSU"> &nbsp;&nbsp;&nbsp;Password </label> <br/>      
+          <label className="instructionSU"> &emsp;&ensp;&nbsp;Password </label> <br/>      
           <input className="inputSU" placeholder="mysupersecretpassword123" type="password"></input> <br/>
 
           <input className="buttonSU" type="submit" value="Sign Up"/>
 
         </form>
   
-        <p>Already have an account? <Link to="/Login" className="link">Log in here.</Link></p>
+        <p>Already have an account? <Link to="/Login" className="link_SU">Log in here.</Link></p>
   
   
         <Link to="/" className="link">

@@ -1,6 +1,17 @@
-form{
-    height: 490px;
-    line-height: 50px;
+.Signup-form{
+
+    background-color: #f7f0ff;
+    border-radius: 3%;
+    margin: 50px auto;
+    width: 60%;
+    text-align: center;
+    height: auto;
+    line-height: 70px;
+    font-size:15px;
+}
+::placeholder{
+    color:black;
+    font-size: 17px;
 }
 .buttonSU{
     width: 95px;
@@ -18,7 +29,7 @@ form{
 
 }
 
-.link{
+.link_SU{
     color:black;
     text-align: center;
     justify-self: center;
@@ -42,6 +53,7 @@ form{
 }
 .inputSU{
     width: 476px;
+    height: auto;
     align-items: flex-start;
     border: none;
     background:transparent;

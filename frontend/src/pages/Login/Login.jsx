@@ -4,8 +4,8 @@ import './Login.css';
 
 function LogIn() {
   return (
-    <div className="form">
-      <h1 >Welcome Back</h1>
+    <div className="form_Login">
+      <h1 className="h1_Login" >Welcome Back</h1>
       <form>
             <div className="Login-form">
             <div className="email">
@@ -19,10 +19,10 @@ function LogIn() {
                 <input className="input" type="password" placeholder="Ex: mysupersecretpassword123" style={{ color: 'black'}}/>
             </div>
 
-            <input className="button" type="submit" value="Log In"/>
+            <input className="Login_button" type="submit" value="Log In"/>
             </div>
             <div>
-            <p>Don't have an account? &nbsp; <Link to="/Signup" className="link"> Sign Up.</Link></p>
+            <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_SU"> Sign Up.</Link></p>
 
             </div>
     
