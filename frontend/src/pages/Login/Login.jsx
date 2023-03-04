@@ -10,18 +10,18 @@ function LogIn() {
   
           <div className="Login-email">
 
-                <input required className="email" type="email"/>  
-                <label for="email" className="label-email">
-                  <span class="content-email">Email</span>
+                <input required className="L-email" type="email"/>  
+                <label for="L-email" className="L-label-email">
+                  <span class="L-content-email">Email</span>
                 </label>
             
           </div>
 
           <div className="Login-password">
 
-                <input required className="password" type="password"/>  
-                <label for="password" className="label-password">
-                  <span class="content-password">Password</span>
+                <input required className="L-password" type="password"/>  
+                <label for="L-password" className="L-label-password">
+                  <span class="L-content-password">Password</span>
                 </label>
 
           </div>

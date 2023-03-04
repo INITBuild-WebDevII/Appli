@@ -3,29 +3,50 @@ import './Signup.css';
 
 function Signup() {
     return (
-      <div className="Signup-form">
+      <div className="Signup-page">
       
-        <form >
           <h1>Logo</h1> 
-          <span className="NFormat">
-            <label className="instructionSU name"> &ensp;Name </label> <br/>
-            <input className="inputSU name"  style={{width:205}} placeholder="Name" type="text"></input>  
-          </span>
 
-          <span className="LNFormat">
-            <label className="instructionSU Lastname"> Last Name </label> <br/>
-            <input className="inputSU Lastname" style={{width:200}} placeholder="Last name" type="text"></input>
-          </span>
-          <br/>
-          <label className="instructionSU">Email </label> <br/> 
-          <input className="inputSU" placeholder="Ex: myemail@gmail.com" type="email" ></input> <br/>
+          <div className="Signup-name">
 
-          <label className="instructionSU"> &emsp;&ensp;&nbsp;Password </label> <br/>      
-          <input className="inputSU" placeholder="mysupersecretpassword123" type="password"></input> <br/>
+                  <input required className="S-name" type="text"/>  
+                  <label for="S-name" className="S-label-name">
+                    <span class="S-content-name">Name</span>
+                  </label>
+              
+          </div>
+
+          <div className="Signup-last">
+
+                  <input required className="S-last" type="text"/>  
+                  <label for="S-last" className="S-label-last">
+                    <span class="S-content-last">Last Name</span>
+                  </label>
+
+          </div>
+
+          <div className="Signup-email">
+
+                  <input required className="S-email" type="email"/>  
+                  <label for="S-email" className="S-label-email">
+                    <span class="S-content-email">Email</span>
+                  </label>
+
+          </div>
+
+          <div className="Signup-password">
+
+                  <input required className="S-password" type="password"/>  
+                  <label for="S-password" className="S-label-password">
+                    <span class="S-content-password">Password</span>
+                  </label>
+
+          </div>
+
 
           <input className="buttonSU" type="submit" value="Sign Up"/>
 
-        </form>
+       
   
         <p>Already have an account? <Link to="/Login" className="link_SU">Log in here.</Link></p>
   

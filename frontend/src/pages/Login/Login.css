@@ -53,7 +53,7 @@
     transition: transform 0.3s ease;
 }
 
-.content-email{
+.L-content-email{
     position:absolute;
     bottom: 5px;
     left: 0px;
@@ -61,15 +61,15 @@
 }
 
 /* works when input is an email, c=modify to when input is text and then verify email if email */
-.Login-email input:focus+ .label-email .content-email, 
-.Login-email input:valid+ .label-email .content-email{
+.Login-email input:focus+ .L-label-email .L-content-email, 
+.Login-email input:valid+ .L-label-email .L-content-email{
     transform: translateY(-150%);
     font-size: 15px;
     color: #1976d2;
 }
 
-.Login-email input:focus + .label-email::after,
-.Login-email input:valid + .label-email::after{
+.Login-email input:focus + .L-label-email::after,
+.Login-email input:valid + .L-label-email::after{
     transform: translateX(0%);
 }
 
@@ -116,7 +116,7 @@
     transition: transform 0.3s ease;
 }
 
-.content-password{
+.L-content-password{
     position:absolute;
     bottom: 5px;
     left: 0px;
@@ -124,15 +124,15 @@
 }
 
 /* works when input is an email, c=modify to when input is text and then verify email if email */
-.Login-password input:focus+ .label-password .content-password, 
-.Login-password input:valid+ .label-password .content-password{
+.Login-password input:focus+ .L-label-password .L-content-password, 
+.Login-password input:valid+ .L-label-password .L-content-password{
     transform: translateY(-150%);
     font-size: 15px;
     color: #1976d2;
 }
 
-.Login-password input:focus + .label-password::after,
-.Login-password input:valid + .label-password::after{
+.Login-password input:focus + .L-label-password::after,
+.Login-password input:valid + .L-label-password::after{
     transform: translateX(0%);
 }
 
