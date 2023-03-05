@@ -4,32 +4,33 @@ import './Login.css';
 
 function LogIn() {
   return (
-    <div className="form">
-      <h1 >Welcome Back</h1>
-      <form>
-            <div className="Login-form">
-            <div className="email">
-                <label className="instruction">Email</label><br/>
-                <input className="input" type="email" placeholder="Ex: myemail@gmail.com"  style={{ color: 'black'}}/>  
-                
-            </div>
+    <div className="Login-page">
 
-            <div className="password">
-                <label className="instruction">Password</label><br/>
-                <input className="input" type="password" placeholder="Ex: mysupersecretpassword123" style={{ color: 'black'}}/>
-            </div>
+      <h1 className="h1_Login" >Welcome Back</h1>
+  
+          <div className="Login-email">
 
-            <input className="button" type="submit" value="Log In"/>
-            </div>
-            <div>
-            <p>Don't have an account? &nbsp; <Link to="/Signup" className="link"> Sign Up.</Link></p>
+                <input required className="L-email" type="email"/>  
+                <label for="L-email" className="L-label-email">
+                  <span class="L-content-email">Email</span>
+                </label>
+            
+          </div>
 
-            </div>
-    
-        </form>
-      <Link to="/" className="link">
-          To Home
-      </Link>
+          <div className="Login-password">
+
+                <input required className="L-password" type="password"/>  
+                <label for="L-password" className="L-label-password">
+                  <span class="L-content-password">Password</span>
+                </label>
+
+          </div>
+
+          <input className="Login_button" type="submit" value="Log In"/>
+          <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>
+
+          <Link to="/" className="linkLI"> To Home </Link>
+            
     </div>
   );
 }

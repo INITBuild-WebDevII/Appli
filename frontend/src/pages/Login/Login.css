@@ -1,13 +1,142 @@
-.form{
+.Login-page{
+
     background-color: #f7f0ff;
     border-radius: 3%;
     margin: 50px auto;
+    height: 60vh;
     width: 60%;
-    line-height: 90px;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
 }
 
-h1{
+.Login-email{
+    width: 50%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.Login-email input{
+    width: 100%;
+    height: 100%;
+    color: black;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.Login-email label{
+    position: absolute;
+    bottom:0px;
+    left:0%;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+
+}
+
+.Login-email label::after{
+    content: "";
+    position:absolute;
+    height:100%;
+    width: 100%;
+    left:0px;
+    bottom: -1px;
+    border-bottom: 3px solid #1976d2;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.L-content-email{
+    position:absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+/* works when input is an email, c=modify to when input is text and then verify email if email */
+.Login-email input:focus+ .L-label-email .L-content-email, 
+.Login-email input:valid+ .L-label-email .L-content-email{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #1976d2;
+}
+
+.Login-email input:focus + .L-label-email::after,
+.Login-email input:valid + .L-label-email::after{
+    transform: translateX(0%);
+}
+
+
+
+.Login-password{
+    width: 50%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.Login-password input{
+    width: 100%;
+    height: 100%;
+    color: black;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.Login-password label{
+    position: absolute;
+    bottom:0px;
+    left:0%;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+
+}
+
+.Login-password label::after{
+    content: "";
+    position:absolute;
+    height:100%;
+    width: 100%;
+    left:0px;
+    bottom: -1px;
+    border-bottom: 3px solid #1976d2;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.L-content-password{
+    position:absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+/* works when input is an email, c=modify to when input is text and then verify email if email */
+.Login-password input:focus+ .L-label-password .L-content-password, 
+.Login-password input:valid+ .L-label-password .L-content-password{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #1976d2;
+}
+
+.Login-password input:focus + .L-label-password::after,
+.Login-password input:valid + .L-label-password::after{
+    transform: translateX(0%);
+}
+
+.h1_Login{
     color: black;
     font-weight: bolder;
     font-size: 5 0px;
@@ -16,13 +145,13 @@ h1{
 }
 
 
-p{
+.p_Login{
     text-align: center;
     color:black;
     font-weight: bolder;
 }
 
-.button{
+.Login_button{
     width: 95px;
     height: 20px;
     background-color: transparent;
@@ -32,28 +161,15 @@ p{
 
 }
 
-.button:hover{
+.Login_button:hover{
    cursor: pointer;
    color:#8341ed; 
 
 }
 
-.link{
+.link_LI{
     color:black;
     text-align: center;
     justify-self: center;
     font-weight: normal;
-}
-
-.instruction{
-    margin-left: -30%;
-    color:#1976d2;
-    font-weight: bold;
-}
-
-.input{
-    width: 300px;
-    border: none;
-    background:transparent;
-    border-bottom: 2px solid #1976d2;
 }

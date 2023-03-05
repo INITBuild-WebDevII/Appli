@@ -1,7 +1,117 @@
-form{
-    height: 490px;
-    line-height: 50px;
+.Signup-page{
+
+    background-color: #f7f0ff;
+    border-radius: 3%;
+    margin: 50px auto;
+    height: 60vh;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
 }
+
+.Signup-name, .Signup-last, .Signup-email, .Signup-password{
+    width: 50%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.Signup-name input, .Signup-last input, .Signup-email input, .Signup-password input{
+    width: 100%;
+    height: 100%;
+    color: black;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.Signup-name label, .Signup-last label, .Signup-email label, .Signup-password label{
+    position: absolute;
+    bottom:0px;
+    left:0%;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+
+}
+
+.Signup-name label::after, .Signup-last label::after, .Signup-email label::after, .Signup-password label::after{
+    content: "";
+    position:absolute;
+    height:100%;
+    width: 100%;
+    left:0px;
+    bottom: -1px;
+    border-bottom: 3px solid #1976d2;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.S-content-name, .S-content-last, .S-content-email, .S-content-password {
+    position:absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+/* Animation of Name*/
+.Signup-name input:focus+ .S-label-name .S-content-name, 
+.Signup-name input:valid+ .S-label-name .S-content-name{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #1976d2;
+}
+
+.Signup-name input:focus + .S-label-name::after,
+.Signup-name input:valid + .S-label-name::after{
+    transform: translateX(0%);
+}
+
+/* Animation of Last Name*/
+.Signup-last input:focus+ .S-label-last .S-content-last, 
+.Signup-last input:valid+ .S-label-last .S-content-last{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #1976d2;
+}
+.Signup-name input:focus + .S-label-name::after,
+.Signup-name input:valid + .S-label-name::after{
+    transform: translateX(0%);
+}
+
+/* Animation of Email */
+
+.Signup-email input:focus+ .S-label-email .S-content-email, 
+.Signup-email input:valid+ .S-label-email .S-content-email{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #1976d2;
+}
+.Signup-email input:focus + .S-label-email::after,
+.Signup-email input:valid + .S-label-email::after{
+    transform: translateX(0%);
+}
+
+/* Animation of Password*/
+
+.Signup-password input:focus+ .S-label-password .S-content-password, 
+.Signup-password input:valid+ .S-label-password .S-content-password{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #1976d2;
+}
+.Signup-password input:focus + .S-label-password::after,
+.Signup-password input:valid + .S-label-password::after{
+    transform: translateX(0%);
+}
+
+
 .buttonSU{
     width: 95px;
     height: 20px;
@@ -18,33 +128,9 @@ form{
 
 }
 
-.link{
+.link_SU{
     color:black;
     text-align: center;
     justify-self: center;
     font-weight: normal;
-}
-
-.instructionSU{
-    margin-left: -50%;
-    color:#1976d2;
-    font-weight: bold;
-    width: 65%;
-}
-
-.NFormat, .LNFormat{
-    display: inline-table;
-    padding: 30px;
-} 
-
-.instructionSU.lastname , .instructionSU.name{
-    margin-left: -85%;
-}
-.inputSU{
-    width: 476px;
-    align-items: flex-start;
-    border: none;
-    background:transparent;
-    border-bottom: 2px solid #1976d2;
-    text-align:start;
 }
