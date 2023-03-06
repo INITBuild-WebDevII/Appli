@@ -2,14 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
+const helmet = require('helmet')
+const morgan = require('morgan')
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-
+const User = require('../backend/Schema/Users')
+const userRoute = require('../backend/Routes/user')
 const app = express();
 
 // middleware
 app.use(express.json()); // Allows our API to parse json
 app.use(cors()) // allow cross-origin resource sharing
+app.use(helmet()) //Security (Adds HTTP Headers)
+app.use(morgan('combined')) //Logger HTTP Request
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -30,6 +35,9 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+app.use('/', require("./Routes/user"));
+
 
 // test connection
 app.get("/", (req, res) => {
