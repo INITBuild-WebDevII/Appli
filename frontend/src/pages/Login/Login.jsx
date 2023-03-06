@@ -10,7 +10,7 @@ function LogIn() {
   
           <div className="Login-email">
 
-                <input required className="L-email" type="email"/>  
+                <input required className="L-email" type="text"/>  
                 <label for="L-email" className="L-label-email">
                   <span class="L-content-email">Email</span>
                 </label>
