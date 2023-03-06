@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import './Signup.css';
 
+
+
+  let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+
+  
 function Signup() {
     return (
       <div className="Signup-page">
@@ -27,7 +32,7 @@ function Signup() {
 
           <div className="Signup-email">
 
-                  <input required className="S-email" type="email"/>  
+                  <input required className="S-email" type="text" />  
                   <label for="S-email" className="S-label-email">
                     <span class="S-content-email">Email</span>
                   </label>
