@@ -12,7 +12,7 @@ function DashNavbar(){
               <img className="navbar-item click" src="" alt="Icon"/>
             </td>
             <td>
-              <li className="navbar-item click">Dashboar</li>
+              <li className="navbar-item click">Dashboard</li>
             </td>
           </tr>
           <tr>
@@ -58,7 +58,7 @@ function DashNavbar(){
               <img className="navbar-item click" src="" alt="Icon"/>
             </td>
             <td>
-              <li className="navbar-item click">Setting</li>
+              <li className="navbar-item click">Settings</li>
             </td>
           </tr>
         </table>
