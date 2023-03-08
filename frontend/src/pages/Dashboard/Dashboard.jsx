@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
 import DashNavbar from "../../components/Dashboard/DashNavbar";
-import Items from "../../components/Dashboard/Items";
+import Column from "../../components/Dashboard/Column";
 import "./Dashboard.css";
 
 function Dashboard() {
+  // dummy data
+  let toApply = ["Intel", "Apple", "Tesla"];
+  let applied = ["Amazon", "Google", "Microsoft", "UKG", "Kaseya", "Twitter", "Oracle", "Cisco", "Capital One"];
+  let inProgress = ["IBM", "Meta"];
+  let accepted = ["Twitch"];
+
   return (
     <div className="dashboard">
       <DashNavbar />
@@ -19,71 +24,10 @@ function Dashboard() {
         {/*<h1 className="greeting">Hello, User</h1>*/}
 
         <div className="board-columns">
-          <div className="category-column">
-            <div className="category-heading toApply">
-              <p>To Apply</p>
-            </div>
-            <div className="category-contain toApply-contain">
-              <p>To Apply</p>
-              <button className="category-btn" type="submit">
-                +
-              </button>
-              <hr />
-              <div className="items-container">
-                <Items name="toApply" />
-              </div>
-            </div>
-          </div>
-
-          <div className="category-column">
-            <div className="category-heading applied">
-              <p>Applied</p>
-            </div>
-            <div className="category-contain applied-contain">
-              <p>Applied</p>
-              <button className="category-btn" type="submit">
-                +
-              </button>
-              <hr />
-              <div className="items-container">
-                <Items name="Applied" />
-              </div>
-            </div>
-          </div>
-
-          <div className="category-column">
-            <div className="category-heading inProgress">
-              <p>In Progress</p>
-            </div>
-
-            <div className="category-contain inProgress-contain">
-              <p>In Progress</p>
-              <button className="category-btn" type="submit">
-                +
-              </button>
-              <hr />
-              <div className="items-container">
-                <Items name="inProgress" />
-              </div>
-            </div>
-          </div>
-
-          <div className="category-column">
-            <div className="category-heading accepted">
-              <p>Accepted</p>
-            </div>
-
-            <div className="category-contain accepted-contain">
-              <p>Accepted</p>
-              <button className="category-btn" type="submit">
-                +
-              </button>
-              <hr />
-              <div className="items-container">
-                <Items name="accepted" />
-              </div>
-            </div>
-          </div>
+          <Column title="To Apply" color="#66b6ff" list={toApply} />
+          <Column title="Applied" color="#54bb5a" list={applied} />
+          <Column title="In Progress" color="#f4b870" list={inProgress} />
+          <Column title="Accepted" color="#ff6798" list={accepted} />
         </div>
       </div>
     </div>
