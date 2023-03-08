@@ -9,78 +9,83 @@ function Dashboard() {
       <DashNavbar />
       <div className="main-contain">
         <div className="heading">
-          <h2 className="heading middle">My Applications</h2>
+          <h1 className="heading middle">My Applications</h1>
           <a className="heading right" href="/Profile">
-            <img className="profile-img" src="" alt=""/>
+            <img className="profile-img" src="" alt="" />
             Username
           </a>
         </div>
 
-        <h1 className="greeting">Hello, User</h1>
+        {/*<h1 className="greeting">Hello, User</h1>*/}
 
-        <div className="category-phase">
-          <div className="category-heading toApply" >
-            <p>To Apply</p>
-          </div>
-          <div className="category-contain toApply-contain">
-            <form action="/Dashboard" method="post">
+        <div className="board-columns">
+          <div className="category-column">
+            <div className="category-heading toApply">
               <p>To Apply</p>
-              <button className="category-btn" type="submit"> + </button>
+            </div>
+            <div className="category-contain toApply-contain">
+              <p>To Apply</p>
+              <button className="category-btn" type="submit">
+                +
+              </button>
               <hr />
-              <Items name="toApply"/>
-            </form>
+              <div className="items-container">
+                <Items name="toApply" />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="category-phase">
-          <div className="category-heading applied" >
-            <p>Applied</p>
-          </div>
-          <div className="category-contain applied-contain">
-            <form action="/Dashboard" method="post">
+          <div className="category-column">
+            <div className="category-heading applied">
               <p>Applied</p>
-              <button className="category-btn" type="submit"> + </button>
+            </div>
+            <div className="category-contain applied-contain">
+              <p>Applied</p>
+              <button className="category-btn" type="submit">
+                +
+              </button>
               <hr />
-              <Items name="Applied"/>
-            </form>
-          </div>
-        </div>
-
-        <div className="category-phase">
-          <div className="category-heading inProgress" >
-            <p>In Progress</p>
+              <div className="items-container">
+                <Items name="Applied" />
+              </div>
+            </div>
           </div>
 
-          <div className="category-contain inProgress-contain">
-            <form action="/Dashboard" method="post">
+          <div className="category-column">
+            <div className="category-heading inProgress">
               <p>In Progress</p>
-              <button className="category-btn" type="submit"> + </button>
+            </div>
+
+            <div className="category-contain inProgress-contain">
+              <p>In Progress</p>
+              <button className="category-btn" type="submit">
+                +
+              </button>
               <hr />
-              <Items name="inProgress"/>
-            </form>
-          </div>
-        </div>  
-        
-        <div className="category-phase">
-          <div className="category-heading accepted" >
-            <p>Accepted</p>
+              <div className="items-container">
+                <Items name="inProgress" />
+              </div>
+            </div>
           </div>
 
-          <div className="category-contain accepted-contain">
-            <form action="/Dashboard" method="post">
+          <div className="category-column">
+            <div className="category-heading accepted">
               <p>Accepted</p>
-              <button className="category-btn" type="submit"> + </button>
+            </div>
+
+            <div className="category-contain accepted-contain">
+              <p>Accepted</p>
+              <button className="category-btn" type="submit">
+                +
+              </button>
               <hr />
-              <Items name="accepted"/>
-            </form>
+              <div className="items-container">
+                <Items name="accepted" />
+              </div>
+            </div>
           </div>
         </div>
-
-        <Link to="/" className="link home">
-        To Home
-        </Link>
       </div>
-      
     </div>
   );
 }
