@@ -1,7 +1,7 @@
 nav {
   display: flex;
   align-items: center;
-  height: 15vh;
+  height: 13vh;
   width: 100%;
   position: absolute;
   font-size: 22px;
@@ -33,7 +33,7 @@ nav li {
 nav ul {
   display: flex;
   justify-content: space-around;
-  width: 28rem;
+  width: 32rem;
 }
 
 nav ul a {
