@@ -14,6 +14,11 @@ function Navbar() {
       </div>
 
       <ul>
+      <li>
+          <Link to="/Dashboard" className="link">
+            Dashboard
+          </Link>
+        </li>
         <li>
           <Link to="/Resources" className="link">
             Resources

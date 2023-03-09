@@ -2,9 +2,9 @@ import "./Card.css";
 
 function Card(props) {
   return (
-    <div className="item">
+    <li className="item">
       <p>{props.name}</p>
-    </div>
+    </li>
   );
 }
 export default Card;

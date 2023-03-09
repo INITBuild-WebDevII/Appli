@@ -5,6 +5,10 @@ function createCard(data) {
   return <Card name={data} />;
 }
 
+function openForm() {
+  alert("Open Form");
+}
+
 function Column(props) {
   const companyList = props.list;
   const title = props.title;
@@ -17,14 +21,14 @@ function Column(props) {
       </div>
       <div className="category-contain">
         <p>{title}</p>
-        <button className="category-btn" type="submit">
+        <button className="category-btn" type="submit" onClick={openForm}>
           +
         </button>
         <hr />
-        <div className="items-container">
+        <ul className="items-container">
           {/*Create List of Cards here */}
           {companyList.map(createCard)}
-        </div>
+        </ul>
       </div>
     </div>
   );
