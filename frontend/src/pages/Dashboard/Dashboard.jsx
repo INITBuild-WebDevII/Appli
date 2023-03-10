@@ -82,6 +82,10 @@ const onDragEnd = (result, columns, setColumns) => {
   }
 };
 
+function handleClick(name) {
+  alert(name);
+}
+
 function Dashboard() {
   const [columns, setColumns] = useState(columnsFromBackend);
 
@@ -122,7 +126,7 @@ function Dashboard() {
                   </div>
                   <div className="category-contain">
                     <p>{column.name}</p>
-                    <button className="category-btn" type="submit">
+                    <button className="category-btn" type="submit" onClick={() => handleClick(column.name)}>
                       +
                     </button>
                     <hr />
