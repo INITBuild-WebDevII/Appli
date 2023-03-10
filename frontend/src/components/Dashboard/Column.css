@@ -1,6 +1,4 @@
 .category-column {
-  flex: 0 0 auto;
-  width: 23%;
   display: inline-block;
   margin: 10px 21px 10px 6px;
   font-weight: bold;
@@ -41,7 +39,7 @@
 }
 
 .items-container {
-  max-height: 59.4vh;
+  max-height: 64vh;
   overflow-y: auto;
 }
 
@@ -62,7 +60,7 @@
   width: 20px;
   border-radius: 50%;
   float: right;
-  padding-right: 13%;
+  padding-right: 8%;
   font-weight: bold;
   color: whitesmoke;
   border-style: none;
