@@ -41,11 +41,12 @@
 .items-container {
   max-height: 64vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .items-container::-webkit-scrollbar {
   background: #242424;
-  width: 8px;
+  width: 4px;
 }
 
 .items-container::-webkit-scrollbar-thumb {

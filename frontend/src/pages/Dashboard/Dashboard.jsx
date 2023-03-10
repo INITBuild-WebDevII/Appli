@@ -121,6 +121,11 @@ function Dashboard() {
                     <h1>{column.items.length}</h1>
                   </div>
                   <div className="category-contain">
+                    <p>{column.name}</p>
+                    <button className="category-btn" type="submit">
+                      +
+                    </button>
+                    <hr />
                     <Droppable droppableId={id} key={id}>
                       {(provided, snapshot) => {
                         return (
@@ -128,20 +133,12 @@ function Dashboard() {
                             {...provided.droppableProps}
                             ref={provided.innerRef}
                             style={{
-                              background: snapshot.isDraggingOver
-                                ? "lightgrey"
-                                : "",
                               padding: 4,
                               width: 250,
                               borderRadius: 9,
                             }}
                             className="items-container"
                           >
-                            <p>{column.name}</p>
-                            <button className="category-btn" type="submit">
-                              +
-                            </button>
-                            <hr />
                             {column.items.map((item, index) => {
                               return (
                                 <Draggable
