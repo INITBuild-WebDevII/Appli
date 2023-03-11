@@ -1,14 +1,25 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import './Signup.css';
-
-
+import axios from "axios";
+import { useSignup } from "../../hooks/useSignup";
 
   let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
 
   
 function Signup() {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const {signup, error, isLoading} = useSignup()
+
+    const Handlechange = async (event) => {
+      event.preventDefault();
+      await signup(email,password)
+    }
+
     return (
-      <div className="Signup-page">
+      <form className="Signup-page" onSubmit={Handlechange}>
       
           <h1>Logo</h1> 
 
@@ -32,7 +43,7 @@ function Signup() {
 
           <div className="Signup-email">
 
-                  <input required className="S-email" type="text" />  
+                  <input name="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off"  required className="S-email" type="text" />  
                   <label for="S-email" className="S-label-email">
                     <span class="S-content-email">Email</span>
                   </label>
@@ -41,16 +52,15 @@ function Signup() {
 
           <div className="Signup-password">
 
-                  <input required className="S-password" type="password"/>  
+                  <input name="password" value={password} onChange={(e) => setPassword(e.target.value)} required className="S-password" type="password"/>  
                   <label for="S-password" className="S-label-password">
                     <span class="S-content-password">Password</span>
                   </label>
 
           </div>
-
-
-          <input className="buttonSU" type="submit" value="Sign Up"/>
-
+          
+          <input disable={isLoading} className="buttonSU" type="submit" value="Sign Up"/>
+          {error && <div className="error"> {error}</div>}
        
   
         <p>Already have an account? <Link to="/Login" className="link_SU">Log in here.</Link></p>
@@ -59,7 +69,7 @@ function Signup() {
         <Link to="/" className="link">
           To Home
         </Link>
-      </div>
+      </form>
     );
   }
 

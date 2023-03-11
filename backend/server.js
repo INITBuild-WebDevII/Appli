@@ -6,7 +6,7 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-const User = require('../backend/Schema/Users')
+const User = require('./Models/Users')
 const userRoute = require('../backend/Routes/user')
 const app = express();
 
@@ -36,7 +36,7 @@ mongoose
     console.log(error);
   });
 
-app.use('/', require("./Routes/user"));
+app.use('/api/user', require("./Routes/user"));
 
 
 // test connection

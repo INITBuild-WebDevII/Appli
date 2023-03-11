@@ -1,4 +1,4 @@
-const Users = require("../Schema/Users")
+const Users = require("../Models/Users")
 const bycrypt = require('bcrypt')
 const validator  = require('validator')
 const { use } = require("../Routes/user")
