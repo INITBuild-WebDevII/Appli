@@ -4,6 +4,9 @@ import "./Dashboard.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import {IconContext} from "react-icons"
+import {AiOutlineStar, AiOutlineCheck} from "react-icons/ai"
+import {RiStackLine} from "react-icons/ri" 
 
 const itemsFromBackend = [
   { id: uuidv4(), name: "Intel" },
@@ -14,11 +17,13 @@ const itemsFromBackend = [
 const columnsFromBackend = {
   [uuidv4()]: {
     name: "To Apply",
+    icon: <AiOutlineStar color="white" size={"0.75em"}/>,
     items: itemsFromBackend,
     color: "#66b6ff",
   },
   [uuidv4()]: {
     name: "Applied",
+    icon : <AiOutlineCheck color="white" size={"0.75em"}/>,
     items: [
       { id: uuidv4(), name: "Amazon" },
       { id: uuidv4(), name: "Google" },
@@ -34,6 +39,7 @@ const columnsFromBackend = {
   },
   [uuidv4()]: {
     name: "In Progress",
+    icon: <RiStackLine color="white" size={"0.75em"}/>,
     items: [{ id: uuidv4(), name: "Meta" }],
     color: "#f4b870",
   },
@@ -119,15 +125,17 @@ function Dashboard() {
                   {/**className="category-column" */}
                   <div
                     style={{ backgroundColor: column.color }}
-                    className="category-heading"
+                    className="category-heading" 
                   >
                     <p>{column.name}</p>
-                    <h1>{column.items.length}</h1>
+                    <h1> {column.items.length}</h1>
+                    <h1 className="icons-columns">{column.icon}</h1>
+
                   </div>
                   <div className="category-contain">
                     <p>{column.name}</p>
                     <button className="category-btn" type="submit" onClick={() => handleClick(column.name)}>
-                      +
+                      
                     </button>
                     <hr />
                     <Droppable droppableId={id} key={id}>
