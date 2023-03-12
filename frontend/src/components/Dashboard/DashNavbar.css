@@ -39,3 +39,19 @@
     font-size: 1.1rem;
     font-weight: bolder;
 }
+.icon{
+    position: relative;
+    top: 2px;
+}
+
+.settings-icon {
+    top:5px;
+}
+
+.find-icon{
+    top:4px;
+}
+
+.resources-icon{
+    top: 4px;
+}
