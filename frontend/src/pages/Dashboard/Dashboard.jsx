@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import {IconContext} from "react-icons"
 import {AiOutlineStar, AiOutlineCheck} from "react-icons/ai"
 import {RiStackLine} from "react-icons/ri" 
+import {BsTrophy} from "react-icons/bs"
 
 const itemsFromBackend = [
   { id: uuidv4(), name: "Intel" },
@@ -45,6 +46,7 @@ const columnsFromBackend = {
   },
   [uuidv4()]: {
     name: "Accepted",
+    icon: <BsTrophy color="white" size={"0.75em"}/>,
     items: [],
     color: "#ff6798",
   },
