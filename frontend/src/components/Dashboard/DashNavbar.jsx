@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import "./DashNavbar.css";
 import logo from "../../assets/logo-letter.png";
+import {SlHome} from "react-icons/sl"
+import {HiOutlineSquares2X2} from "react-icons/hi2";
+import {AiOutlineFileText} from "react-icons/ai";
+import {BsChatLeft, BsPerson} from "react-icons/bs";
+import {CiSettings} from "react-icons/ci";
+
 
 function DashNavbar(){
     return(
@@ -9,7 +15,7 @@ function DashNavbar(){
         <table>
           <tr>
             <td>
-              <img className="navbar-item click" src="" alt="Icon"/>
+              <SlHome color="white" size={"2em"} className="navbar-item click icon" src="" alt="Icon"/>
             </td>
             <td>
               <li className="navbar-item click">Dashboard</li>
@@ -17,7 +23,7 @@ function DashNavbar(){
           </tr>
           <tr>
             <td>
-              <img className="navbar-item click" src="" alt="Icon"/>
+              <HiOutlineSquares2X2 stroke="white"  size={"2em"} className="navbar-item click icon find-icon" src="" alt="Icon"/>
             </td>
             <td>
             <Link to="/" className="link navbar-item click">
@@ -27,7 +33,7 @@ function DashNavbar(){
           </tr>
           <tr>
             <td>
-              <img className="navbar-item click" src="" alt="Icon"/>
+              <AiOutlineFileText stroke="white" fill="white" size={"2em"} className="navbar-item click icon" src="" alt="Icon"/>
             </td>
             <td>
               <li className="navbar-item click">Resume</li>
@@ -35,7 +41,7 @@ function DashNavbar(){
           </tr>
           <tr>
             <td>
-              <img className="navbar-item click" src="" alt="Icon"/>
+              <BsChatLeft stroke="white" fill="white" size={"2em"} className="navbar-item click icon resources-icon" src="" alt="Icon"/>
             </td>
             <td>
               <Link to="/Resources" className="link navbar-item click">
@@ -45,7 +51,7 @@ function DashNavbar(){
           </tr>
           <tr>
             <td>
-              <img className="navbar-item click" src="" alt="Icon"/>
+              <BsPerson stroke="white" fill="white" size={"2em"} className="navbar-item click icon" src="" alt="Icon"/>
             </td>
             <td>
               <Link to="/Profile" className="link navbar-item click">
@@ -55,7 +61,7 @@ function DashNavbar(){
           </tr>
           <tr>
             <td>
-              <img className="navbar-item click" src="" alt="Icon"/>
+              <CiSettings stroke="white" fill="white" size={"2em"} className="navbar-item click icon settings-icon" src="" alt="Icon"/>
             </td>
             <td>
               <li className="navbar-item click">Settings</li>
