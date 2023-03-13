@@ -46,7 +46,7 @@ const columnsFromBackend = {
   },
   [uuidv4()]: {
     name: "Accepted",
-    icon: <BsTrophy color="white" size={"0.75em"}/>,
+    icon: <BsTrophy color="white" size={"0.7em"}/>,
     items: [],
     color: "#ff6798",
   },
