@@ -1,4 +1,4 @@
-const Users = require('../Schema/Users');
+const Users = require('../Models/Users');
 const {signup, login} = require("../Auth/auth")
 const bycrypt = require('bcrypt')
 const validator  = require('validator')
@@ -27,8 +27,9 @@ const loginUser  = async (req, res) => {
             throw Error('Incorrect Password')
         }
     
-        
-        res.status(200).json("User Login")
+        const token = createToken(Loguser._id)
+        res.status(200).json({email, token})
+
     } catch(error) {
         res.status(400).json({error: error.message})
     }
@@ -71,8 +72,8 @@ const signUp = async (req, res) => {
     
         const Signuser = await Users.create({email, password: hash})
     
-        
-        res.status(200).json("User Login")
+        const token = createToken(Signuser._id)
+        res.status(200).json({email, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
