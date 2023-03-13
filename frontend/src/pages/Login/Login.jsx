@@ -2,44 +2,33 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import './Login.css';
 import axios from "axios";
+import { useLogin } from "../../hooks/useLogin";
+import { useLogout } from "../../hooks/useLogout";
 
 function LogIn() {
+  const {logout} = useLogout()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
-  const [input, setInput] = useState ({
-    email: '',
-    password: ''
-  })
+  const {login, error, isLoading} = useLogin()
 
-  function Handlechange(event) {
-    const {name, value} = event.target
+    const Handlechange = async (event) => {
+      event.preventDefault();
+      await login(email,password)
 
-    setInput(prevInput => {
-        return {
-          ...prevInput,
-          [name]: value
-        }
-    })
-  }
-
-  function Handleclicker (event) {
-    event.preventDefault();
-    const newUser = {
-      email: input.email,
-      password: input.password
     }
-  
-    console.log(input)
-    axios.post("/api/user/Login", newUser)
-    
-  }
+    const handleClick = () => {
+      logout()
+    }
   return (
+    <form className="Login-page" onSubmit={Handlechange}>
     <div className="Login-page">
 
       <h1 className="h1_Login" >Welcome Back</h1>
   
           <div className="Login-email">
 
-                <input name="email" value={input.email} onChange={Handlechange} required className="L-email" type="text"/>  
+                <input name="email" onChange={(e) => setEmail(e.target.value)} required className="L-email" type="text"/>  
                 <label for="L-email" className="L-label-email">
                   <span class="L-content-email">Email</span>
                 </label>
@@ -48,19 +37,24 @@ function LogIn() {
 
           <div className="Login-password">
 
-                <input name="password" value={input.password} onChange={Handlechange} required className="L-password" type="password"/>  
+                <input name="password" onChange={(e) => setPassword(e.target.value)} required className="L-password" type="password"/>  
                 <label for="L-password" className="L-label-password">
                   <span class="L-content-password">Password</span>
                 </label>
 
           </div>
 
-          <input onClick={Handleclicker} className="Login_button" type="submit" value="Log In"/>
+          <input disable={isLoading} className="Login_button" type="submit" value="Log In"/>
+          {error && <div className="error"> {error}</div>}
           <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>
 
           <Link to="/" className="linkLI"> To Home </Link>
+          <div>
+          <button onClick={handleClick}>Log out</button>
+          </div>
             
     </div>
+    </form>
   );
 }
 
