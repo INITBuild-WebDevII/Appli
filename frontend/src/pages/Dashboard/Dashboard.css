@@ -1,108 +1,54 @@
-button{
-    color: whitesmoke;
-    background-color: black;
-    border-style: none;
-    font-size: 25px;
-    padding-left: 3%;
-    border-radius: 50%;
-}
-hr{
-    color: rgba(191, 188, 188, 0.818);
-}
-.main-contain{
-    background-color: #242424;
-    color: white;
-    width: 80%;
-    height: 100%;
-    float: right;
-    padding: 2%;
-}
-.heading{
-    text-align: center;
-    vertical-align:middle;
-}
-.middle{
-    display: inline-block;
-}
-.search{
-    float: left;
-    background-color: rgba(179, 185, 182, 0.335);
-    border-radius: 20px;
-    border: none;
-    padding: 10px;
-    text-align: center;
-
-}
-.right{
-    float: right;
-}
-.profile-img{
-    background-color:#85CDFD;
-    height: 20px;
-    color: #85CDFD;
-}
-h2{
-    display: block;
-}
-.greeting{
-    margin: 3% 0%;
-}
-.category-phase{
-    width: 23%;
-    display: inline-block;
-    margin: 10px 21px 10px 0px;
-    font-weight: bold;
-}
-.category-heading{
-    height: 90px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-.category-contain{
-    border-style: solid ;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 5%;
-    height: 500px;
+.main-contain {
+  background-color: #242424;
+  color: white;
+  width: 80%;
+  min-height: 100vh;
+  height: 100vh;
+  float: right;
+  padding: 2%;
 }
 
-.category-phase p{
-    padding-left: 5%;
-    padding-top: 6%;
-    font-size: 1.1rem;
-}
-.category-contain p{
-    padding: 3% 0% 3% 5%;
-    font-size: 15px;
-    display: inline-block;
-}
-.category-btn{
-    background-color: #242424;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    float: right;
-    padding-right: 13%;
-    font-weight: bold;
-  
-}
-.category-btn:hover{
-    opacity: .5;
+.heading {
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 5px;
 }
 
-.toApply{
-    background-color: #85CDFD;
-}
-.applied{
-    background-color: #37c247;
-}
-.inProgress{
-    background-color: #f8c577;
-}
-.accepted{
-    background-color: #f4729f;
+.middle {
+  display: inline-block;
 }
 
-.home{
-    display: block;
+.right {
+  float: right;
+}
+
+.profile-img {
+  background-color: #85cdfd;
+  height: 20px;
+  color: #85cdfd;
+}
+
+.greeting {
+  margin: 3% 0%;
+}
+
+.board-columns {
+  display: flex;
+  /*overflow-x: auto;*/
+}
+
+.board-columns::-webkit-scrollbar {
+  background: #242424;
+  height: 5px;
+  display: none;
+}
+
+.board-columns::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+.icons-columns{
+  margin-top: 10px;
+  margin-right: 125px;
 }

@@ -1,17 +1,19 @@
 .dashboard-navbar{
-    background-color: black;
+    background-color: #161717;
     color: white;
     display: inline;
     width: 20%;
     height: 100%;
-    position:fixed;
+    position:absolute;
     top: 0%;
     left: 0%;
     padding: 1%;
 }
+
 .logo-img{
-    height: 70px;
+    height: 60px;
 }
+
 .click{
     font-size: 20px;
     padding: 10px;
@@ -19,6 +21,7 @@
     text-decoration: none;
     color : white;
 }
+
 .click:hover{
     opacity: .5;
 }
@@ -35,4 +38,20 @@
     padding-top: 6%;
     font-size: 1.1rem;
     font-weight: bolder;
+}
+.icon{
+    position: relative;
+    top: 2px;
+}
+
+.settings-icon {
+    top:5px;
+}
+
+.find-icon{
+    top:4px;
+}
+
+.resources-icon{
+    top: 4px;
 }

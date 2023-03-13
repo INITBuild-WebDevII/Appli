@@ -36,7 +36,7 @@ mongoose
     console.log(error);
   });
 
-app.use('/api/user', require("./Routes/user"));
+app.use('/api/user', userRoute);
 
 
 // test connection

@@ -5,8 +5,8 @@ import LandingSection from "./LandingSection";
 function Home() {
   return (
     <div className="main">
-      <Navbar />
       <div className="landing-section">
+        <Navbar />
         <LandingSection />
       </div>
       <div className="first-section">
