@@ -50,5 +50,7 @@
 }
 .icons-columns{
   margin-top: 10px;
-  margin-right: 125px;
+  margin-left: 15px;
+  margin-right: 115px;
+  position: fixed;
 }
