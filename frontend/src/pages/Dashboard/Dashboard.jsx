@@ -90,27 +90,8 @@ const onDragEnd = (result, columns, setColumns) => {
   }
 };
 
-function createNewCard(column, columns, setColumns) {
-  //alert(column.name);
-
-  console.log(JSON.stringify(column));
-
-  column.items.push({ id: uuidv4(), name: "New" });
-
-  setColumns({
-    ...columns,})
-}
-
-function deleteCard(column, index, columns, setColumns) {
-  //alert(column.name)
-  // index position of card in column
-  //alert(index)
-  console.log(JSON.stringify(column));
-
-  column.items.splice(index, 1);
-
-  setColumns({
-    ...columns,})
+function handleClick(name) {
+  alert(name);
 }
 
 function Dashboard() {
@@ -155,12 +136,8 @@ function Dashboard() {
                   </div>
                   <div className="category-contain">
                     <p>{column.name}</p>
-                    <button
-                      className="category-btn"
-                      type="submit"
-                      onClick={() => createNewCard(column, columns, setColumns)}
-                    >
-                      +
+                    <button className="category-btn" type="submit" onClick={() => handleClick(column.name)}>
+                      
                     </button>
                     <hr />
                     <Droppable droppableId={id} key={id}>
@@ -198,19 +175,8 @@ function Dashboard() {
                                           ...provided.draggableProps.style,
                                         }}
                                         className="item"
-                                        onClick={() =>
-                                          console(index + "," + item.name)
-                                        }
                                       >
                                         {item.name}
-                                        <button
-                                          onClick={() =>
-                                            deleteCard(column, index, columns, setColumns)
-                                          }
-                                          style={{float: "right"}}
-                                        >
-                                          Delete
-                                        </button>
                                       </div>
                                     );
                                   }}
