@@ -9,11 +9,12 @@ import { AiOutlineStar, AiOutlineCheck } from "react-icons/ai";
 import { RiStackLine } from "react-icons/ri";
 import { BsTrophy } from "react-icons/bs";
 import BeatLoader from "react-spinners/BeatLoader";
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 const itemsFromBackend = [
-  { id: uuidv4(), name: "Intel" },
-  { id: uuidv4(), name: "Apple" },
-  { id: uuidv4(), name: "Tesla" },
+  { id: uuidv4(), name: "Intel", role: "Technology Analyist Intern" },
+  { id: uuidv4(), name: "Apple", role: "PM Intern" },
+  { id: uuidv4(), name: "Tesla", role: "SWE New Grad" },
 ];
 
 const columnsFromBackend = {
@@ -27,22 +28,22 @@ const columnsFromBackend = {
     name: "Applied",
     icon: <AiOutlineCheck color="white" size={"0.75em"} />,
     items: [
-      { id: uuidv4(), name: "Amazon" },
-      { id: uuidv4(), name: "Google" },
-      { id: uuidv4(), name: "Microsoft" },
-      { id: uuidv4(), name: "UKG" },
-      { id: uuidv4(), name: "Kaseya" },
-      { id: uuidv4(), name: "Twitter" },
-      { id: uuidv4(), name: "Oracle" },
-      { id: uuidv4(), name: "Cisco" },
-      { id: uuidv4(), name: "Capital One" },
+      { id: uuidv4(), name: "Amazon", role: "SWE Intern Summer 2022" },
+      { id: uuidv4(), name: "Google", role: "SWE Intern" },
+      { id: uuidv4(), name: "Microsoft", role: "SWE Intern" },
+      { id: uuidv4(), name: "UKG", role: "SWE Intern" },
+      { id: uuidv4(), name: "Kaseya", role: "Data Scientist" },
+      { id: uuidv4(), name: "Twitter", role: "Product Manager" },
+      { id: uuidv4(), name: "Oracle", role: "Data Engineer" },
+      { id: uuidv4(), name: "Cisco", role: "Backend Engineer" },
+      { id: uuidv4(), name: "Capital One", role: "Full Stack Engineer" },
     ],
     color: "#54bb5a",
   },
   [uuidv4()]: {
     name: "In Progress",
     icon: <RiStackLine color="white" size={"0.75em"} />,
-    items: [{ id: uuidv4(), name: "Meta" }],
+    items: [{ id: uuidv4(), name: "Meta", role: "SWE Intern" }],
     color: "#f4b870",
   },
   [uuidv4()]: {
@@ -119,6 +120,7 @@ function deleteCard(column, index, columns, setColumns) {
 function Dashboard() {
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
+  const { user} = useAuthContext()
 
   useEffect(() => {
     setLoading(true);
@@ -175,7 +177,7 @@ function Dashboard() {
                       <h1 className="icons-columns">{column.icon}</h1>
                     </div>
                     <div className="category-contain">
-                      <p>{column.name}</p>
+                      <p className="column-name">{column.name}</p>
                       <button
                         className="category-btn"
                         type="submit"
@@ -222,10 +224,14 @@ function Dashboard() {
                                           }}
                                           className="item"
                                           onClick={() =>
-                                            console(index + "," + item.name)
+                                            console.log(index + "," + item.name)
                                           }
                                         >
-                                          {item.name}
+                                          <p>{item.name}</p>
+                                          <p style={{ fontSize: "13px" }}>
+                                            {item.role}
+                                          </p>
+                                          {/* 
                                           <button
                                             onClick={() =>
                                               deleteCard(
@@ -238,7 +244,7 @@ function Dashboard() {
                                             style={{ float: "right" }}
                                           >
                                             Delete
-                                          </button>
+                                          </button>*/}
                                         </div>
                                       );
                                     }}
