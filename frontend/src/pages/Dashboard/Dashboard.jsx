@@ -2,57 +2,54 @@ import DashNavbar from "../../components/Dashboard/DashNavbar";
 import Column from "../../components/Dashboard/Column";
 import "./Dashboard.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import {IconContext} from "react-icons"
-import {AiOutlineStar, AiOutlineCheck} from "react-icons/ai"
-import {RiStackLine} from "react-icons/ri" 
-import {BsTrophy} from "react-icons/bs"
-import axios from "axios";
-import { useLogout } from "../../hooks/useLogout";
-import { Navigate } from "react-router-dom";
-import companyDetails from "../../hooks/CompanyDetails";
-
+import { IconContext } from "react-icons";
+import { AiOutlineStar, AiOutlineCheck } from "react-icons/ai";
+import { RiStackLine } from "react-icons/ri";
+import { BsTrophy } from "react-icons/bs";
+import BeatLoader from "react-spinners/BeatLoader";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import AddCardModal from "../../components/Modals/AddCardModal";
 
 const itemsFromBackend = [
-  
-  { id: uuidv4(), name: "Intel2" },
-  { id: uuidv4(), name: "Apple" },
-  { id: uuidv4(), name: "Tesla" },
+  { id: uuidv4(), name: "Intel", role: "Technology Analyist Intern" },
+  { id: uuidv4(), name: "Apple", role: "PM Intern" },
+  { id: uuidv4(), name: "Tesla", role: "SWE New Grad" },
 ];
 
 const columnsFromBackend = {
   [uuidv4()]: {
     name: "To Apply",
-    icon: <AiOutlineStar color="white" size={"0.75em"}/>,
+    icon: <AiOutlineStar color="white" size={"0.75em"} />,
     items: itemsFromBackend,
     color: "#66b6ff",
   },
   [uuidv4()]: {
     name: "Applied",
-    icon : <AiOutlineCheck color="white" size={"0.75em"}/>,
+    icon: <AiOutlineCheck color="white" size={"0.75em"} />,
     items: [
-      { id: uuidv4(), name: "Amazon" },
-      { id: uuidv4(), name: "Google" },
-      { id: uuidv4(), name: "Microsoft" },
-      { id: uuidv4(), name: "UKG" },
-      { id: uuidv4(), name: "Kaseya" },
-      { id: uuidv4(), name: "Twitter" },
-      { id: uuidv4(), name: "Oracle" },
-      { id: uuidv4(), name: "Cisco" },
-      { id: uuidv4(), name: "Capital One" },
+      { id: uuidv4(), name: "Amazon", role: "SWE Intern Summer 2022" },
+      { id: uuidv4(), name: "Google", role: "SWE Intern" },
+      { id: uuidv4(), name: "Microsoft", role: "SWE Intern" },
+      { id: uuidv4(), name: "UKG", role: "SWE Intern" },
+      { id: uuidv4(), name: "Kaseya", role: "Data Scientist" },
+      { id: uuidv4(), name: "Twitter", role: "Product Manager" },
+      { id: uuidv4(), name: "Oracle", role: "Data Engineer" },
+      { id: uuidv4(), name: "Cisco", role: "Backend Engineer" },
+      { id: uuidv4(), name: "Capital One", role: "Full Stack Engineer" },
     ],
     color: "#54bb5a",
   },
   [uuidv4()]: {
     name: "In Progress",
-    icon: <RiStackLine color="white" size={"0.75em"}/>,
-    items: [{ id: uuidv4(), name: "Meta" }],
+    icon: <RiStackLine color="white" size={"0.75em"} />,
+    items: [{ id: uuidv4(), name: "Meta", role: "SWE Intern" }],
     color: "#f4b870",
   },
   [uuidv4()]: {
     name: "Accepted",
-    icon: <BsTrophy color="white" size={"0.7em"}/>,
+    icon: <BsTrophy color="white" size={"0.7em"} />,
     items: [],
     color: "#ff6798",
   },
@@ -103,7 +100,8 @@ function createNewCard(column, columns, setColumns) {
   column.items.push({ id: uuidv4(), name: "New" });
 
   setColumns({
-    ...columns,})
+    ...columns,
+  });
 }
 
 function deleteCard(column, index, columns, setColumns) {
@@ -115,158 +113,183 @@ function deleteCard(column, index, columns, setColumns) {
   column.items.splice(index, 1);
 
   setColumns({
-    ...columns,})
+    ...columns,
+  });
 }
 
 function Dashboard() {
   const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [activeColumn, setActiveColumn] = useState(); // the column the user selected to add
 
-  // const {fetchCompany, company} = useDashs()
-    const [company, setCompany] = useState(null)
-    useEffect(() => {
-        const fetchCompany = async () => {
-            await axios.get('/api/cards')
-            .then(function (response) {
-                const json = response.json
-                if (response) {
-                  console.log(response.data)
-                  console.log(JSON.stringify(response))
-                  console.log(json)
-                    setCompany(response)
-                }
-            })
-        }
-        fetchCompany()
-    }, [])
-    
-  const Handlechange = async (event) => {
-  event.preventDefault();
-  //await fetchCompany();
-}
-  const handleClick = () => {
-    logout()
-  }
+  // handles displaying Modal
+  const handleShowModal = (column) => {
+    // track which column was selected
+    setActiveColumn(column);
+
+    // make modal appear
+    setShowModal(true);
+  };
+
+  // handle closing the Modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const { user } = useAuthContext();
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <div className="dashboard">
-  
-      <DashNavbar />
-      <div className="main-contain">
-        <div className="heading">
-          <h1 className="heading middle">My Applications</h1>
-          <a className="heading right" href="/Profile">
-            <img className="profile-img" src="" alt="" />
-            Username
-          </a>
-          
-          <button onClick={handleClick}>Log out</button>
-      
+      {loading ? (
+        <div className="loader-container">
+          <BeatLoader
+            color={"#b156f2"}
+            loading={loading}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </div>
+      ) : (
+        <div className="main-contain">
+          <DashNavbar />
+          {showModal && (
+            <AddCardModal
+              closeModal={handleCloseModal}
+              column={activeColumn}
+              columns={columns}
+              setColumns={setColumns}
+            />
+          )}
+          <div className="heading">
+            <h1 className="heading middle">My Applications</h1>
+            <a className="heading right" href="/Profile">
+              <img className="profile-img" src="" alt="" />
+              Username
+            </a>
+          </div>
 
-        {/*<h1 className="greeting">Hello, User</h1>*/}
+          {/*<h1 className="greeting">Hello, User</h1>*/}
 
-        <div className="board-columns">
-
-          <DragDropContext
-            onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
-          >
-            {Object.entries(columns).map(([id, column]) => {
-              return (
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    margin: 10,
-                  }}
-                >
-                  {/**className="category-column" */}
+          <div className="board-columns">
+            <DragDropContext
+              onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+            >
+              {Object.entries(columns).map(([id, column]) => {
+                return (
                   <div
-                    style={{ backgroundColor: column.color }}
-                    className="category-heading" 
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      margin: 10,
+                    }}
                   >
-                    <p>{column.name}</p>
-                    <h1> {column.items.length}</h1>
-                    <h1 className="icons-columns">{column.icon}</h1>
-
-                  </div>
-                  <div className="category-contain">
-                    <p>{column.name}</p>
-                    <button
-                      className="category-btn"
-                      type="submit"
-                      onClick={() => createNewCard(column, columns, setColumns)}
+                    {/**className="category-column" */}
+                    <div
+                      style={{ backgroundColor: column.color }}
+                      className="category-heading"
                     >
-                      +
-                    </button>
-                  
-                    <hr />
-                    <Droppable droppableId={id} key={id}>
-                      {(provided, snapshot) => {
-                        return (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            style={{
-                              padding: 4,
-                              width: 250,
-                              borderRadius: 9,
-                            }}
-                            className="items-container"
-                          >
-                            {column.items.map((item, index) => {
-                              return (
-                                <Draggable
-                                  key={item.id}
-                                  draggableId={item.id}
-                                  index={index}
-                                >
-                                  {(provided, snapshot) => {
-                                    return (
-                                      <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        style={{
-                                          userSelect: "none",
-                                          padding: 8,
-                                          backgroundColor: snapshot.isDragging
-                                            ? "#263B4A"
-                                            : "",
-                                          ...provided.draggableProps.style,
-                                        }}
-                                        className="item"
-                                        onClick={() =>
-                                          console(index + "," + item.name)
-                                        }
-                                      >
-                                        {item.name}
-                                        <button
+                      <p>{column.name}</p>
+                      <h1> {column.items.length}</h1>
+                      <h1 className="icons-columns">{column.icon}</h1>
+                    </div>
+                    <div className="category-contain">
+                      <p className="column-name">{column.name}</p>
+                      <button
+                        className="category-btn"
+                        type="submit"
+                        title="Add new card"
+                        onClick={() => handleShowModal(column)}
+                      >
+                        +
+                      </button>
+                      <hr />
+                      <Droppable droppableId={id} key={id}>
+                        {(provided, snapshot) => {
+                          return (
+                            <div
+                              {...provided.droppableProps}
+                              ref={provided.innerRef}
+                              style={{
+                                padding: 4,
+                                width: 250,
+                                borderRadius: 9,
+                              }}
+                              className="items-container"
+                            >
+                              {column.items.map((item, index) => {
+                                return (
+                                  <Draggable
+                                    key={item.id}
+                                    draggableId={item.id}
+                                    index={index}
+                                  >
+                                    {(provided, snapshot) => {
+                                      return (
+                                        <div
+                                          ref={provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                          style={{
+                                            userSelect: "none",
+                                            padding: 8,
+                                            backgroundColor: snapshot.isDragging
+                                              ? "#263B4A"
+                                              : "",
+                                            ...provided.draggableProps.style,
+                                          }}
+                                          className="item"
+                                          title={item.name + " " + item.role}
                                           onClick={() =>
-                                            deleteCard(column, index, columns, setColumns)
+                                            console.log(index + "," + item.name)
                                           }
-                                          style={{float: "right"}}
                                         >
-                                          Delete
-                                        </button>  
-                                      </div>
-                                    );
-                                  }}
-                                </Draggable>
-                              );
-                            })}
-                            {provided.placeholder}
-                          </div>
-                        );
-                      }}
-                    </Droppable>
+                                          <p>{item.name}</p>
+                                          <p style={{ fontSize: "13px" }}>
+                                            {item.role}
+                                          </p>
+
+                                          <button
+                                            onClick={() =>
+                                              deleteCard(
+                                                column,
+                                                index,
+                                                columns,
+                                                setColumns
+                                              )
+                                            }
+                                            style={{ float: "right" }}
+                                          >
+                                            Delete
+                                          </button>
+                                        </div>
+                                      );
+                                    }}
+                                  </Draggable>
+                                );
+                              })}
+                              {provided.placeholder}
+                            </div>
+                          );
+                        }}
+                      </Droppable>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </DragDropContext>
+                );
+              })}
+            </DragDropContext>
+          </div>
         </div>
-      </div>
+      )}
     </div>
 
   );

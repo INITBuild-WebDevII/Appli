@@ -9,15 +9,13 @@ function openForm() {
   alert("Open Form");
 }
 
-function Column(props) {
-  const companyList = props.list;
-  const title = props.title;
+function Column(title, companies, color) {
 
   return (
     <div className="category-column">
-      <div style={{ backgroundColor: props.color }} className="category-heading">
+      <div style={{ backgroundColor: color }} className="category-heading">
         <p>{title}</p>
-        <h1>{companyList.length}</h1>
+        <h1>{companies.length}</h1>
       </div>
       <div className="category-contain">
         <p>{title}</p>
@@ -27,7 +25,7 @@ function Column(props) {
         <hr />
         <ul className="items-container">
           {/*Create List of Cards here */}
-          {companyList.map(createCard)}
+          {companies.map(createCard)}
         </ul>
       </div>
     </div>
