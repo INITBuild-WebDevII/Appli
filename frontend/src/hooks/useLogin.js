@@ -16,10 +16,9 @@ axios.post('/api/user/login', {
 	password: password
 })
 .then(function (response) {
-    //console.log(response.data)
     //save user to local storage
     localStorage.setItem('user', JSON.stringify(response))
-
+    
     //update auth context
     dispatch({type: 'LOGIN', Payload: response})
     

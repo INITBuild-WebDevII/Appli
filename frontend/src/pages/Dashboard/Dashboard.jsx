@@ -2,15 +2,21 @@ import DashNavbar from "../../components/Dashboard/DashNavbar";
 import Column from "../../components/Dashboard/Column";
 import "./Dashboard.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {IconContext} from "react-icons"
 import {AiOutlineStar, AiOutlineCheck} from "react-icons/ai"
 import {RiStackLine} from "react-icons/ri" 
 import {BsTrophy} from "react-icons/bs"
+import axios from "axios";
+import { useLogout } from "../../hooks/useLogout";
+import { Navigate } from "react-router-dom";
+import companyDetails from "../../hooks/CompanyDetails";
+
 
 const itemsFromBackend = [
-  { id: uuidv4(), name: "Intel" },
+  
+  { id: uuidv4(), name: "Intel2" },
   { id: uuidv4(), name: "Apple" },
   { id: uuidv4(), name: "Tesla" },
 ];
@@ -92,7 +98,6 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function createNewCard(column, columns, setColumns) {
   //alert(column.name);
-
   console.log(JSON.stringify(column));
 
   column.items.push({ id: uuidv4(), name: "New" });
@@ -114,10 +119,38 @@ function deleteCard(column, index, columns, setColumns) {
 }
 
 function Dashboard() {
+  const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
+
+  // const {fetchCompany, company} = useDashs()
+    const [company, setCompany] = useState(null)
+    useEffect(() => {
+        const fetchCompany = async () => {
+            await axios.get('/api/cards')
+            .then(function (response) {
+                const json = response.json
+                if (response) {
+                  console.log(response.data)
+                  console.log(JSON.stringify(response))
+                  console.log(json)
+                    setCompany(response)
+                }
+            })
+        }
+        fetchCompany()
+    }, [])
+    
+  const Handlechange = async (event) => {
+  event.preventDefault();
+  //await fetchCompany();
+}
+  const handleClick = () => {
+    logout()
+  }
 
   return (
     <div className="dashboard">
+  
       <DashNavbar />
       <div className="main-contain">
         <div className="heading">
@@ -126,11 +159,15 @@ function Dashboard() {
             <img className="profile-img" src="" alt="" />
             Username
           </a>
+          
+          <button onClick={handleClick}>Log out</button>
+      
         </div>
 
         {/*<h1 className="greeting">Hello, User</h1>*/}
 
         <div className="board-columns">
+
           <DragDropContext
             onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
           >
@@ -162,6 +199,7 @@ function Dashboard() {
                     >
                       +
                     </button>
+                  
                     <hr />
                     <Droppable droppableId={id} key={id}>
                       {(provided, snapshot) => {
@@ -210,7 +248,7 @@ function Dashboard() {
                                           style={{float: "right"}}
                                         >
                                           Delete
-                                        </button>
+                                        </button>  
                                       </div>
                                     );
                                   }}
@@ -230,7 +268,9 @@ function Dashboard() {
         </div>
       </div>
     </div>
+
   );
 }
 
 export default Dashboard;
+

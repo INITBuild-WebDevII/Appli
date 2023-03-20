@@ -8,6 +8,8 @@ import { useSignup } from "../../hooks/useSignup";
 
   
 function Signup() {
+  const [firstName, setFirstName] = useState()
+  const [lastName, setLastName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
@@ -15,7 +17,8 @@ function Signup() {
 
     const Handlechange = async (event) => {
       event.preventDefault();
-      await signup(email,password)
+      await signup(firstName, lastName, email,password)
+
     }
 
     return (
@@ -25,7 +28,7 @@ function Signup() {
 
           <div className="Signup-name">
 
-                  <input required className="S-name" type="text"/>  
+                  <input onChange={(e) => setFirstName(e.target.value)} required className="S-name" type="text"/>  
                   <label for="S-name" className="S-label-name">
                     <span class="S-content-name">Name</span>
                   </label>
@@ -34,7 +37,7 @@ function Signup() {
 
           <div className="Signup-last">
 
-                  <input required className="S-last" type="text"/>  
+                  <input onChange={(e) => setLastName(e.target.value)} required className="S-last" type="text"/>  
                   <label for="S-last" className="S-label-last">
                     <span class="S-content-last">Last Name</span>
                   </label>
