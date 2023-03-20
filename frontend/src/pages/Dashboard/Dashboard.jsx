@@ -9,7 +9,8 @@ import { AiOutlineStar, AiOutlineCheck } from "react-icons/ai";
 import { RiStackLine } from "react-icons/ri";
 import { BsTrophy } from "react-icons/bs";
 import BeatLoader from "react-spinners/BeatLoader";
-import { useAuthContext } from "../../hooks/useAuthContext"
+import { useAuthContext } from "../../hooks/useAuthContext";
+import AddCardModal from "../../components/Modals/AddCardModal";
 
 const itemsFromBackend = [
   { id: uuidv4(), name: "Intel", role: "Technology Analyist Intern" },
@@ -120,7 +121,24 @@ function deleteCard(column, index, columns, setColumns) {
 function Dashboard() {
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
-  const { user} = useAuthContext()
+  const [showModal, setShowModal] = useState(false);
+  const [activeColumn, setActiveColumn] = useState(); // the column the user selected to add
+
+  // handles displaying Modal
+  const handleShowModal = (column) => {
+    // track which column was selected
+    setActiveColumn(column);
+
+    // make modal appear
+    setShowModal(true);
+  };
+
+  // handle closing the Modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const { user } = useAuthContext();
 
   useEffect(() => {
     setLoading(true);
@@ -144,6 +162,14 @@ function Dashboard() {
       ) : (
         <div className="main-contain">
           <DashNavbar />
+          {showModal && (
+            <AddCardModal
+              closeModal={handleCloseModal}
+              column={activeColumn}
+              columns={columns}
+              setColumns={setColumns}
+            />
+          )}
           <div className="heading">
             <h1 className="heading middle">My Applications</h1>
             <a className="heading right" href="/Profile">
@@ -181,9 +207,8 @@ function Dashboard() {
                       <button
                         className="category-btn"
                         type="submit"
-                        onClick={() =>
-                          createNewCard(column, columns, setColumns)
-                        }
+                        title="Add new card"
+                        onClick={() => handleShowModal(column)}
                       >
                         +
                       </button>
@@ -223,6 +248,7 @@ function Dashboard() {
                                             ...provided.draggableProps.style,
                                           }}
                                           className="item"
+                                          title={item.name + " " + item.role}
                                           onClick={() =>
                                             console.log(index + "," + item.name)
                                           }
@@ -231,7 +257,7 @@ function Dashboard() {
                                           <p style={{ fontSize: "13px" }}>
                                             {item.role}
                                           </p>
-                                          {/* 
+
                                           <button
                                             onClick={() =>
                                               deleteCard(
@@ -244,7 +270,7 @@ function Dashboard() {
                                             style={{ float: "right" }}
                                           >
                                             Delete
-                                          </button>*/}
+                                          </button>
                                         </div>
                                       );
                                     }}
