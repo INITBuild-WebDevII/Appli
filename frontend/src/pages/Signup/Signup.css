@@ -74,7 +74,7 @@
 .Signup-name input:valid+ .S-label-name .S-content-name{
     transform: translateY(-150%);
     font-size: 15px;
-    color: #1976d2;
+    color: #c12799;
 }
 
 .Signup-name input:focus + .S-label-name::after,
@@ -144,10 +144,10 @@
 }
 
 .buttonSU:hover{
-   cursor: pointer;
-   color:#1976d2; 
-   font-weight: bolder;
-
+    cursor: pointer;
+    opacity: 90%;
+    font-weight: bolder;
+    font-size: 15px;
 }
 
 .link_SU{
