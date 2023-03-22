@@ -37,7 +37,16 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
     console.log(dueDate);
     console.log(notes);
 
-    column.items.push({ id: uuidv4(), name: company, role: position });
+    column.items.push({
+      id: uuidv4(),
+      name: company,
+      role: position,
+      link: applyLink,
+      applyDate: applyDate,
+      responseDate: responseDate,
+      dueDate: dueDate,
+      notes: notes,
+    });
 
     setColumns({
       ...columns,
