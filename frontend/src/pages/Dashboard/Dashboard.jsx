@@ -14,7 +14,16 @@ import AddCardModal from "../../components/Modals/AddCardModal";
 import EditCardModal from "../../components/Modals/EditCardModal";
 
 const itemsFromBackend = [
-  { id: uuidv4(), name: "Intel", role: "Technology Analyist Intern" },
+  {
+    id: uuidv4(),
+    name: "Intel",
+    role: "Technology Analyist Intern",
+    link: "www.intel.com",
+    applyDate: "2023-03-10",
+    dueDate: "2023-03-10",
+    responseDate: "2023-03-10",
+    notes: "Location: NY"
+  },
   { id: uuidv4(), name: "Apple", role: "PM Intern" },
   { id: uuidv4(), name: "Tesla", role: "SWE New Grad" },
 ];
@@ -30,7 +39,12 @@ const columnsFromBackend = {
     name: "Applied",
     icon: <AiOutlineCheck color="white" size={"0.75em"} />,
     items: [
-      { id: uuidv4(), name: "Amazon", role: "SWE Intern Summer 2022" },
+      {
+        id: uuidv4(),
+        name: "Amazon",
+        role: "SWE Intern Summer 2022",
+        link: "",
+      },
       { id: uuidv4(), name: "Google", role: "SWE Intern" },
       { id: uuidv4(), name: "Microsoft", role: "SWE Intern" },
       { id: uuidv4(), name: "UKG", role: "SWE Intern" },
@@ -280,7 +294,10 @@ function Dashboard() {
                                             console.log(
                                               index + "," + item.name
                                             );
-                                            handleshowEditCardModal(column, item);
+                                            handleshowEditCardModal(
+                                              column,
+                                              item
+                                            );
                                           }}
                                         >
                                           <p>{item.name}</p>

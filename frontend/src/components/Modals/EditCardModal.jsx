@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 const EditCardModal = ({ closeModal, column, card }) => {
   const [company, setCompany] = useState(card.name);
   const [position, setPosition] = useState(card.role);
-  const [applyLink, setApplyLink] = useState("Link");
-  const [applyDate, setApplyDate] = useState();
-  const [responseDate, setResponseDate] = useState();
-  const [dueDate, setDueDate] = useState();
-  const [notes, setNotes] = useState();
+  const [applyLink, setApplyLink] = useState(card.link);
+  const [applyDate, setApplyDate] = useState(card.applyDate);
+  const [responseDate, setResponseDate] = useState(card.responseDate);
+  const [dueDate, setDueDate] = useState(card.dueDate);
+  const [notes, setNotes] = useState(card.notes);
 
   //console.log(columns);
   //console.log(typeof setColumns);
@@ -40,6 +40,11 @@ const EditCardModal = ({ closeModal, column, card }) => {
     // changes card's properties
     card.name = company;
     card.role = position;
+    card.link = applyLink
+    card.applyDate = applyDate
+    card.responseDate = responseDate
+    card.dueDate = dueDate
+    card.notes = notes
 
     e.preventDefault();
 
