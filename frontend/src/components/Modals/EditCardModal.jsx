@@ -1,11 +1,10 @@
-import "./AddCardModal.css";
+import "./EditCardModal.css";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
-const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
-  const [company, setCompany] = useState();
-  const [position, setPosition] = useState();
-  const [applyLink, setApplyLink] = useState();
+const EditCardModal = ({ closeModal, column, card }) => {
+  const [company, setCompany] = useState(card.name);
+  const [position, setPosition] = useState(card.role);
+  const [applyLink, setApplyLink] = useState("Link");
   const [applyDate, setApplyDate] = useState();
   const [responseDate, setResponseDate] = useState();
   const [dueDate, setDueDate] = useState();
@@ -18,11 +17,12 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   let myRef;
 
   useEffect(() => {
-    console.log(JSON.stringify(column.name));
     console.log(JSON.stringify(column));
+    console.log(JSON.stringify(card));
+    console.log(card);
   }, []);
 
-  const closeAddCardModal = (e) => {
+  const closeEditCardModal = (e) => {
     if (myRef && myRef.contains(e.target)) {
       closeModal();
     }
@@ -37,11 +37,9 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
     console.log(dueDate);
     console.log(notes);
 
-    column.items.push({ id: uuidv4(), name: company, role: position });
-
-    setColumns({
-      ...columns,
-    });
+    // changes card's properties
+    card.name = company;
+    card.role = position;
 
     e.preventDefault();
 
@@ -145,7 +143,14 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
           <button className="modal-btn" id="save">
             Save
           </button>
-          <button className="modal-btn" id="cancel" onClick={closeAddCardModal}>
+          <button className="modal-btn" id="delete">
+            Delete
+          </button>
+          <button
+            className="modal-btn"
+            id="cancel"
+            onClick={closeEditCardModal}
+          >
             Cancel
           </button>
         </div>
@@ -154,4 +159,4 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   );
 };
 
-export default AddCardModal;
+export default EditCardModal;

@@ -11,6 +11,7 @@ import { BsTrophy } from "react-icons/bs";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import AddCardModal from "../../components/Modals/AddCardModal";
+import EditCardModal from "../../components/Modals/EditCardModal";
 
 const itemsFromBackend = [
   { id: uuidv4(), name: "Intel", role: "Technology Analyist Intern" },
@@ -121,21 +122,40 @@ function deleteCard(column, index, columns, setColumns) {
 function Dashboard() {
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showAddCardModal, setshowAddCardModal] = useState(false);
+  const [showEditCardModal, setshowEditCardModal] = useState(false);
   const [activeColumn, setActiveColumn] = useState(); // the column the user selected to add
+  const [activeCard, setActiveCard] = useState(); // the card the user selected to edit
 
-  // handles displaying Modal
-  const handleShowModal = (column) => {
-    // track which column was selected
+  // handles displaying the add card Modal
+  const handleshowAddCardModal = (column) => {
+    // tracks which column was selected
     setActiveColumn(column);
 
     // make modal appear
-    setShowModal(true);
+    setshowAddCardModal(true);
   };
 
-  // handle closing the Modal
-  const handleCloseModal = () => {
-    setShowModal(false);
+  // handles displaying edit cardModal
+  const handleshowEditCardModal = (column, card) => {
+    // track which column was selected
+    setActiveColumn(column);
+
+    // tracks which card was selected
+    setActiveCard(card);
+
+    // make modal appear
+    setshowEditCardModal(true);
+  };
+
+  // handle closing the add card Modal
+  const handleCloseAddCardModal = () => {
+    setshowAddCardModal(false);
+  };
+
+  // handle closing the edit card Modal
+  const handleCloseEditCardModal = () => {
+    setshowEditCardModal(false);
   };
 
   const { user } = useAuthContext();
@@ -162,12 +182,19 @@ function Dashboard() {
       ) : (
         <div className="main-contain">
           <DashNavbar />
-          {showModal && (
+          {showAddCardModal && (
             <AddCardModal
-              closeModal={handleCloseModal}
+              closeModal={handleCloseAddCardModal}
               column={activeColumn}
               columns={columns}
               setColumns={setColumns}
+            />
+          )}
+          {showEditCardModal && (
+            <EditCardModal
+              closeModal={handleCloseEditCardModal}
+              column={activeColumn}
+              card={activeCard}
             />
           )}
           <div className="heading">
@@ -208,7 +235,7 @@ function Dashboard() {
                         className="category-btn"
                         type="submit"
                         title="Add new card"
-                        onClick={() => handleShowModal(column)}
+                        onClick={() => handleshowAddCardModal(column)}
                       >
                         +
                       </button>
@@ -249,9 +276,12 @@ function Dashboard() {
                                           }}
                                           className="item"
                                           title={item.name + " " + item.role}
-                                          onClick={() =>
-                                            console.log(index + "," + item.name)
-                                          }
+                                          onClick={() => {
+                                            console.log(
+                                              index + "," + item.name
+                                            );
+                                            handleshowEditCardModal(column, item);
+                                          }}
                                         >
                                           <p>{item.name}</p>
                                           <p style={{ fontSize: "13px" }}>
