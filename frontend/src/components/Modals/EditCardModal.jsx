@@ -1,59 +1,50 @@
-import "./AddCardModal.css";
+import "./EditCardModal.css";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
 
-
-const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
-  const [company, setCompany] = useState();
-  const [position, setPosition] = useState();
-  const [applyLink, setApplyLink] = useState();
-  const [applyDate, setApplyDate] = useState();
-  const [responseDate, setResponseDate] = useState();
-  const [dueDate, setDueDate] = useState();
-  const [notes, setNotes] = useState();
+const EditCardModal = ({ closeModal, column, card }) => {
+  const [company, setCompany] = useState(card.name);
+  const [position, setPosition] = useState(card.role);
+  const [applyLink, setApplyLink] = useState(card.link);
+  const [applyDate, setApplyDate] = useState(card.applyDate);
+  const [responseDate, setResponseDate] = useState(card.responseDate);
+  const [dueDate, setDueDate] = useState(card.dueDate);
+  const [notes, setNotes] = useState(card.notes);
 
   //console.log(columns);
-  //console.log(JSON.stringify(column));
   //console.log(typeof setColumns);
   //console.log(typeof closeModal);
 
   let myRef;
 
   useEffect(() => {
-    console.log(JSON.stringify(column.name));
     console.log(JSON.stringify(column));
+    console.log(JSON.stringify(card));
+    console.log(card);
   }, []);
 
-  const closeAddCardModal = (e) => {
+  const closeEditCardModal = (e) => {
     if (myRef && myRef.contains(e.target)) {
       closeModal();
     }
   };
 
   const handleSubmit = (e) => {
-    const local_user  = JSON.parse(localStorage.getItem('user'))
-    const user_ID = local_user.id
-   
-    const Items_id = uuidv4()
-    column.items.push({ id: Items_id, name: company, role: position });
+    console.log(company);
+    console.log(position);
+    console.log(applyLink);
+    console.log(applyDate);
+    console.log(responseDate);
+    console.log(dueDate);
+    console.log(notes);
 
-const token = local_user.token
-    axios.post("/api/cards", {
-      companyName: company,
-      positionTitle: position,
-      user_ID: user_ID,
-      columnLocation: column.name,
-      cardID: Items_id
-    }, {
-      headers: {
-        Authorization : `Bearer ${token}`
-      }
-    })
-
-    setColumns({
-      ...columns,
-    });
+    // changes card's properties
+    card.name = company;
+    card.role = position;
+    card.link = applyLink
+    card.applyDate = applyDate
+    card.responseDate = responseDate
+    card.dueDate = dueDate
+    card.notes = notes
 
     e.preventDefault();
 
@@ -157,7 +148,14 @@ const token = local_user.token
           <button className="modal-btn" id="save">
             Save
           </button>
-          <button className="modal-btn" id="cancel" onClick={closeAddCardModal}>
+          <button className="modal-btn" id="delete">
+            Delete
+          </button>
+          <button
+            className="modal-btn"
+            id="cancel"
+            onClick={closeEditCardModal}
+          >
             Cancel
           </button>
         </div>
@@ -166,4 +164,4 @@ const token = local_user.token
   );
 };
 
-export default AddCardModal;
+export default EditCardModal;

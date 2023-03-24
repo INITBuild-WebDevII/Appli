@@ -11,11 +11,11 @@ import { BsTrophy } from "react-icons/bs";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import AddCardModal from "../../components/Modals/AddCardModal";
+import EditCardModal from "../../components/Modals/EditCardModal";
 import { useLogout } from "../../hooks/useLogout";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 
 let itemsFromBackend1 =[]
 let itemsFromBackend2 = []
@@ -59,7 +59,6 @@ function Company() {
     
  
 }
-
 
 const columnsFromBackend = {
   [uuidv4()]: {
@@ -184,8 +183,10 @@ function Dashboard() {
   //const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showAddCardModal, setshowAddCardModal] = useState(false);
+  const [showEditCardModal, setshowEditCardModal] = useState(false);
   const [activeColumn, setActiveColumn] = useState(); // the column the user selected to add
+  const [activeCard, setActiveCard] = useState(); // the card the user selected to edit
 
   useEffect(() => {
     let ignore = false;
@@ -195,19 +196,34 @@ function Dashboard() {
     }
     return () => { ignore = true; }
     },[]);
-  
-  // handles displaying Modal
-  const handleShowModal = (column) => {
-    // track which column was selected
+  // handles displaying the add card Modal
+  const handleshowAddCardModal = (column) => {
+    // tracks which column was selected
     setActiveColumn(column);
 
     // make modal appear
-    setShowModal(true);
+    setshowAddCardModal(true);
+  };
+  // handles displaying Modal
+  const handleshowEditCardModal = (column, card) => {
+    // track which column was selected
+    setActiveColumn(column);
+
+    // tracks which card was selected
+    setActiveCard(card);
+
+    // make modal appear
+    setshowEditCardModal(true);
   };
 
-  // handle closing the Modal
-  const handleCloseModal = () => {
-    setShowModal(false);
+  // handle closing the add card Modal
+  const handleCloseAddCardModal = () => {
+    setshowAddCardModal(false);
+  };
+
+  // handle closing the edit card Modal
+  const handleCloseEditCardModal = () => {
+    setshowEditCardModal(false);
   };
 
   const { user } = useAuthContext();
@@ -234,15 +250,21 @@ function Dashboard() {
       ) : (
         <div className="main-contain">
           <DashNavbar />
-          {showModal && (
+          {showAddCardModal && (
             <AddCardModal
-              closeModal={handleCloseModal}
+              closeModal={handleCloseAddCardModal}
               column={activeColumn}
               columns={columns}
               setColumns={setColumns}
             />
           )}
-         
+          {showEditCardModal && (
+            <EditCardModal
+              closeModal={handleCloseEditCardModal}
+              column={activeColumn}
+              card={activeCard}
+            />
+          )}
           <div className="heading">
             <h1 className="heading middle">My Applications</h1>
             <a className="heading right" href="/Profile">
@@ -282,7 +304,7 @@ function Dashboard() {
                         className="category-btn"
                         type="submit"
                         title="Add new card"
-                        onClick={() => handleShowModal(column)}
+                        onClick={() => handleshowAddCardModal(column)}
                       >
                         +
                       </button>
@@ -325,11 +347,15 @@ function Dashboard() {
                                           }}
                                           className="item"
                                           title={item.name + " " + item.role}
-                                        
-                                          onClick={() =>
-                                            console.log(index + "," + item.name + item.id)
-                                          }
-                                          onDragStart={(e)=>{e.preventDefault()}}
+                                          onClick={() => {
+                                            console.log(
+                                              index + "," + item.name
+                                            );
+                                            handleshowEditCardModal(
+                                              column,
+                                              item
+                                            );
+                                          }}
                                         >
                                           <p>{item.name}</p>
                                           <p style={{ fontSize: "13px" }}>
