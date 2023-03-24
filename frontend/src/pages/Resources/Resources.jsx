@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
-
+import Navbar from "../../components/Navbar";
+import "./Resources.css";
+import strong from "../../assets/strong.png"
+import resumeicon from "../../assets/resumeicon.png"
+import technicalicon from "../../assets/technicalicon.png"
+import behavioralicon from "../../assets/behavioralicon.png"
 function Resources() {
   return (
-    <div>
-      <h1>Resources</h1>
-      <Link to="/" className="link">
-        To Home
-      </Link>
+    <div  className="resources">
+        <Navbar />
+      <div className="content">
+        <img className="strong" src={strong} alt="strong"/>
+        <div className="contenttext">
+          <h1 className="contenth1">Resources to Ace that Application!</h1>
+          <p>Appli offers you resources to ace that application such as resume templates, common technical and behavioral questions!</p>
+        </div>
+        <div className="resource-icons">
+          <img className="resume resource-icon" src={resumeicon} alt="resume icon"/>
+          <img className="technical resource-icon" src={technicalicon} alt="technical icon"/>
+          <img className="behavioral resource-icon" src={behavioralicon} alt="behavioral icon"/>
+        </div>
+      </div>
+
+         <Link to="/" className="link">To Home</Link>
     </div>
   );
 }
