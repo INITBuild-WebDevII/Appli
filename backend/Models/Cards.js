@@ -7,14 +7,14 @@ const cardsSchema = new mongoose.Schema({
         required: true,
         max: 50,
     },
-    ID: {
+    positionTitle: String,
+    user_ID: {
         type: String
-    }
-    // positionTitle: {
-    //     type: String,
-    //     required: true,
-    //     max: 40,
-    // },
+    },
+    columnLocation: {
+        type: String
+    },
+    cardID: String
     // applicationLink: {
     //     type: String,
     //     unique: true,

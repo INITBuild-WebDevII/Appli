@@ -6,7 +6,7 @@ const requireAuth = require('../middleware/requireAuth')
 
 router.use(requireAuth)
 
-router.get('/', getAllCards)
+router.post('/GET', getAllCards)
 
 router.get('/:id', getOneCard)
 
@@ -14,6 +14,6 @@ router.post('/', addCard)
 
 router.patch('/', deleteCard)
 
-router.patch('/:id', updateCard)
+router.patch('/Test', updateCard)
 
 module.exports = router

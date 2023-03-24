@@ -11,16 +11,18 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
+
 axios.post('/api/user/login', {
 	email: email,
 	password: password
 })
 .then(function (response) {
     //save user to local storage
-    localStorage.setItem('user', JSON.stringify(response))
+    console.log(response.data)
+    localStorage.setItem('user', JSON.stringify(response.data))
     
     //update auth context
-    dispatch({type: 'LOGIN', Payload: response})
+    dispatch({type: 'LOGIN', Payload: response.data})
     
     setIsLoading(false)
 })

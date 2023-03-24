@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 
 const createToken = (_id) => {
-    return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
+    return jwt.sign({_id}, process.env.SECRET)
 }
 //Login User
 const loginUser  = async (req, res) => {
@@ -30,7 +30,8 @@ const loginUser  = async (req, res) => {
         }
     
         const token = createToken(Loguser._id)
-        res.status(200).json({email, token})
+        const id = Loguser._id
+        res.status(200).json({id, email, token})
 
     } catch(error) {
         res.status(400).json({error: error.message})

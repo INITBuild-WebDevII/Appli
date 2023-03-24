@@ -4,13 +4,11 @@ const Users = require('../Models/Users')
 
 //get All workout
 const getAllCards = async(req, res) => {
-    // const IDS = "6414af0f9b1e2a1d9500e83b";
-    // const allCards = await Users.findById(IDS, 'appliedCards')
+    const {user_ID} = req.body
 
-    // res.status(200).json(allCards)
-    // const cards= await Users.findOne({_id:req.body._id}, 'appliedCards');
+    const getCards = await Cards.find({user_ID: user_ID})
     
-    // res.json(cards.appliedCards)
+    res.status(200).json(getCards)
 }
 //get Single Workout
 //Ignore
@@ -29,19 +27,18 @@ const getOneCard = async (req, res) => {
 
 //Create New Workout
 const addCard = async(req, res) => {
-    const {companyName, ID} = req.body
+    const {companyName, positionTitle, user_ID, columnLocation, cardID} = req.body
 try {
 
-    const Add = await Cards.create({companyName, ID}) 
+    const Add_Card = await Cards.create({companyName, positionTitle, user_ID, columnLocation, cardID}) 
     
-    const addP = await Users.findByIdAndUpdate(ID, {$push: {appliedCards: Add}})
-    console.log(addP)
-    if (addP == null) {
-        const addP = await Users.findByIdAndUpdate(ID, {$set: {appliedCards: Add}})
+    const add_Card_User = await Users.findByIdAndUpdate(user_ID, {$push: {appliedCards: Add_Card}})
+    
+    if (add_Card_User == null) {
+        const add_Card_User = await Users.findByIdAndUpdate(user_ID, {$set: {appliedCards: Add_Card}})
     }
-    
-    
-    res.status(200).json(Add)
+    const id = Add_Card.id
+    res.status(200).json({Add_Card, id})
 }catch (error) {
     res.status(400).json({error: error.message})
 }
@@ -50,35 +47,34 @@ try {
 
 //Delete a Workout
 const deleteCard = async (req, res) => {
-    const id = req.body.userID
-    const companyName = req.body.companyName;
+    const ID = req.body.cardID;
     // if (!mongoose.Types.ObjectId.isValid(cardID)) {
     //     return res.status(404).json({error: "No Card Exists"})
     // }
-
-    const del =  await Users.updateOne({_id:id}, {$pull: {"appliedCards" :{companyName: companyName}}})
     
-    if (!del) {
+    const Delete = await Users.updateMany({"appliedCards.cardID": ID}, {$pull: {appliedCards: {cardID: ID}}})
+    const Delete_Card = await Cards.findOneAndDelete({cardID: ID})
+    if (!Delete) {
         return res.status(404).json({error: "No Card Exists"})
     }
-    res.status(200).json(del)
+    res.status(200).json(Delete)
 }
 
 //Update Workout
 const updateCard = async (req, res) => {
-    const {id} = req.params
+    //const {id} = req.params
+    const {columnLocation, id} = req.body
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //     return res.status(404).json({error: "No Card Exists"})
+    // }
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: "No Card Exists"})
-    }
-
-    const upDate = await Cards.findOneAndUpdate({_id: id}, {
+    const upDate_Cards = await Cards.findOneAndUpdate({cardID: id}, {
         ...req.body
     })
-    if (!upDate) {
-        return res.status(404).json({error: "No Card Exists"})
-    }
-    res.status(200).json(upDate)
+
+    const upDate = await Users.updateOne({"appliedCards.cardID": id}, {$set: {"appliedCards.$.columnLocation": columnLocation}})
+
+    res.status(200).json({upDate})
 }
 
 module.exports = {getAllCards, getOneCard, addCard, deleteCard, updateCard}
