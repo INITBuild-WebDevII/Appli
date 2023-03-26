@@ -25,12 +25,13 @@
 
 .profile-img {
   background-color: #85cdfd;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
+  top: 10px;
   border-radius: 50px;
   color: #85cdfd;
   position: relative;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .greeting {
@@ -74,11 +75,10 @@
 .userInfo{
   width: 200px;
   height: 40px;
-  /* background: #85cdfd; */
   position: relative;
   color: white;
   right: 110px;
-  top: -43px;
+  top: -30px;
   display: flexbox;
 }
 
@@ -93,7 +93,21 @@
 
 .bell-headingright{
   position: relative;
-  top:-40px;
-  right: 105px;
+  top:-29px;
+  right: 95px;
 }
 
+.expand-headingright{
+  position: relative;
+  bottom: 65px;
+  margin-left: 250px;
+}
+
+.heading-right-container{
+  position: fixed;
+  
+  height: auto;
+  width: auto;
+  position: relative;
+  top:-50px;
+}

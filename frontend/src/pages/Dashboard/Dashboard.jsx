@@ -13,6 +13,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import AddCardModal from "../../components/Modals/AddCardModal";
 import EditCardModal from "../../components/Modals/EditCardModal";
 import {AiOutlineBell} from "react-icons/ai"
+import {MdExpandMore} from "react-icons/md"
 
 const itemsFromBackend = [
   {
@@ -214,18 +215,22 @@ function Dashboard() {
           )}
           <div className="heading">
             <h1 className="heading middle">My Applications</h1>
-            <a className="heading right" href="/Profile">
-                <img className="profile-img" src="" alt="" />
-                
-              <div className="userInfo" >
-                <p1 className="userN-headingright"> username </p1>
-                <br />
-                <p1 className="userE-headingright"> useremail@gmail.com </p1>
-                <br/>
-                <p1 className="bell-headingright"><AiOutlineBell size={35}/></p1>
-              </div>
-              <div/>
-            </a>
+
+            <div className="heading-right-container"> 
+              <a className="heading right" href="/Profile">
+                  <img className="profile-img" src="" alt="" />
+                  
+                <div className="userInfo" >
+                  <p1 className="userN-headingright"> userName </p1>
+                  <br />
+                  <p1 className="userE-headingright"> useremail@gmail.com </p1>
+                  <br/>
+                  <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>
+                  <p1 className="expand-headingright"> <MdExpandMore size={35}/></p1>
+                </div>
+                <div/>
+              </a>
+            </div>
           </div>
 
           {/*<h1 className="greeting">Hello, User</h1>*/}
