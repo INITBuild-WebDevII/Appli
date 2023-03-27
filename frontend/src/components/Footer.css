@@ -1,0 +1,32 @@
+.footer{
+    color: white;
+    font-size: 18px;
+}
+.contact-info{
+    margin: 50px auto;
+    padding: auto;
+    width: 70%;
+    display: flex;
+}
+.footer-logo{
+    width: 50%;
+}
+.footer-info{
+    width: 50%;
+}
+.footer-resources{
+    padding: 8px 0px
+}
+.contact{
+    display: inline;
+    margin-right: 70px;
+}
+.footer-div{
+    width: 85%;
+    border: solid 1px rgb(148, 147, 147);
+    margin: 20px auto 10px auto;
+}
+.company-info{
+    margin-left: 8%;
+    margin-top: 2%;
+}

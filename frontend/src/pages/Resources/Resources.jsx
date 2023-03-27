@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import "./Resources.css";
 import strong from "../../assets/strong.png"
 import resumeicon from "../../assets/resumeicon.png"
@@ -10,10 +11,12 @@ function Resources() {
     <div  className="resources">
         <Navbar />
       <div className="content">
-        <img className="strong" src={strong} alt="strong"/>
-        <div className="contenttext">
-          <h1 className="contenth1">Resources to Ace that Application!</h1>
-          <p>Appli offers you resources to ace that application such as resume templates, common technical and behavioral questions!</p>
+        <div>
+          <img className="strong" src={strong} alt="strong"/>
+          <div className="contenttext">
+            <h1 className="contenth1">Resources to Ace that Application!</h1>
+            <p>Appli offers you resources to ace that application such as resume templates, common technical and behavioral questions!</p>
+          </div>
         </div>
         <div className="resource-icons">
           <img className="resume resource-icon" src={resumeicon} alt="resume icon"/>
@@ -21,8 +24,8 @@ function Resources() {
           <img className="behavioral resource-icon" src={behavioralicon} alt="behavioral icon"/>
         </div>
       </div>
-
-         <Link to="/" className="link">To Home</Link>
+        <Footer />
+        <Link to="/" className="link">To Home</Link>
     </div>
   );
 }
