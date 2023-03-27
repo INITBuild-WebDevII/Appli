@@ -205,7 +205,7 @@ function Dashboard() {
     setshowAddCardModal(true);
   };
   // handles displaying Modal
-  const handleshowEditCardModal = (column, card) => {
+  const handleshowEditCardModal = (column, card, columnsFromBackend) => {
     // track which column was selected
     setActiveColumn(column);
 
@@ -362,7 +362,7 @@ function Dashboard() {
                                             {item.role}
                                           </p>
 
-                                          <button
+                                          {/* <button
                                             onClick={() =>
                                               deleteCard(
                                                 column,
@@ -374,7 +374,7 @@ function Dashboard() {
                                             style={{ float: "right" }}
                                           >
                                             Delete
-                                          </button>
+                                          </button> */}
                                         </div>
                                       );
                                     }}

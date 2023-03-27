@@ -1,17 +1,9 @@
 const mongoose = require('mongoose');
 const Card = require('../Models/Cards')
 const userSchema = new mongoose.Schema({
-    firstName: {
+    Username: {
         type: String,
         required: true,
-        min: 2,
-        min: 20,
-    },
-    lastName: {
-        type: String,
-        required: true,
-        min: 2,
-        max: 20,
     },
     email: {
         type: String,

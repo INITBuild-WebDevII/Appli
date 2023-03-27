@@ -51,7 +51,7 @@ const loginUser  = async (req, res) => {
 
 //Sign Up User
 const signUp = async (req, res) => {
-    const {firstName, lastName, email, password} = req.body
+    const {Username, email, password} = req.body
     try {
         if (!email || !password) {
             throw Error('All fields must be filled')
@@ -74,7 +74,7 @@ const signUp = async (req, res) => {
         const salt = await bycrypt.genSalt(10)
         const hash = await bycrypt.hash(password, salt)
     
-        const Signuser = await Users.create({firstName, lastName, email, password: hash})
+        const Signuser = await Users.create({Username, email, password: hash})
     
         const token = createToken(Signuser._id)
         const id = Signuser._id

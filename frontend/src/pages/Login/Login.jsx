@@ -69,7 +69,7 @@ function LogIn() {
               
       </div>
       </form>
-    </bodybody>
+    </body>
   );
 }
 

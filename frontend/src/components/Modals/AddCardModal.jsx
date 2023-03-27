@@ -36,7 +36,7 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
     const user_ID = local_user.id
    
     const Items_id = uuidv4()
-    column.items.push({ id: Items_id, name: company, role: position });
+    column.items.push({ id: Items_id, name: company, role: position, link: applyLink, dateApplied: applyDate, dueDate: dueDate, responseDate: responseDate, Notes: notes });
 
 const token = local_user.token
     axios.post("/api/cards", {
@@ -44,7 +44,12 @@ const token = local_user.token
       positionTitle: position,
       user_ID: user_ID,
       columnLocation: column.name,
-      cardID: Items_id
+      cardID: Items_id,
+      applicationLink: applyLink, 
+      dateApplied: applyDate, 
+      dueDate: dueDate, 
+      responseDate: responseDate, 
+      Notes: notes
     }, {
       headers: {
         Authorization : `Bearer ${token}`

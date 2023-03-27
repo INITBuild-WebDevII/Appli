@@ -27,10 +27,10 @@ const getOneCard = async (req, res) => {
 
 //Create New Workout
 const addCard = async(req, res) => {
-    const {companyName, positionTitle, user_ID, columnLocation, cardID} = req.body
+    const {companyName, positionTitle, user_ID, columnLocation, cardID, applicationLink, dateApplied, dueDate, responseDate, Notes} = req.body
 try {
-
-    const Add_Card = await Cards.create({companyName, positionTitle, user_ID, columnLocation, cardID}) 
+    console.log(Notes)
+    const Add_Card = await Cards.create({companyName, positionTitle, user_ID, columnLocation, cardID, applicationLink, dateApplied, dueDate, responseDate, Notes}) 
     
     const add_Card_User = await Users.findByIdAndUpdate(user_ID, {$push: {appliedCards: Add_Card}})
     
@@ -61,7 +61,7 @@ const deleteCard = async (req, res) => {
 }
 
 //Update Workout
-const updateCard = async (req, res) => {
+const updateCardLoc = async (req, res) => {
     //const {id} = req.params
     const {columnLocation, id} = req.body
     // if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -76,5 +76,20 @@ const updateCard = async (req, res) => {
 
     res.status(200).json({upDate})
 }
+const updateCard = async (req, res) => {
+    const {companyName, positionTitle, applicationLink, dateApplied, responseDate, dueDate, Notes, id} = req.body
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //     return res.status(404).json({error: "No Card Exists"})
+    // }
+    console.log(req.body + "TEST")
+    const upDate_Cards = await Cards.findOneAndUpdate({cardID: id}, {
+        ...req.body
+    })
+    
+    //const upDate = await Users.updateOne({"appliedCards.cardID": id}, {$set: {"appliedCards.$.columnLocation": columnLocation}})
 
-module.exports = {getAllCards, getOneCard, addCard, deleteCard, updateCard}
+    res.status(200).json({upDate_Cards})
+}
+
+
+module.exports = {getAllCards, getOneCard, addCard, deleteCard, updateCardLoc, updateCard}

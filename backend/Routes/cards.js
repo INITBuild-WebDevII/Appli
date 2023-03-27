@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAllCards, getOneCard, addCard, deleteCard, updateCard} = require('../Controllers/cardController')
+const {getAllCards, getOneCard, addCard, deleteCard, updateCardLoc, updateCard} = require('../Controllers/cardController')
 const Application = require('../Models/Cards')
 const router = express.Router()
 const requireAuth = require('../middleware/requireAuth')
@@ -14,6 +14,8 @@ router.post('/', addCard)
 
 router.patch('/', deleteCard)
 
-router.patch('/Test', updateCard)
+router.patch('/Test', updateCardLoc)
+
+router.patch('/UP', updateCard)
 
 module.exports = router

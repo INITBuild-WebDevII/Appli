@@ -14,7 +14,12 @@ const cardsSchema = new mongoose.Schema({
     columnLocation: {
         type: String
     },
-    cardID: String
+    cardID: String,
+    applicationLink: String,
+    dateApplied: Date,
+    dueDate: Date,
+    responseDate: Date,
+    Notes: String
     // applicationLink: {
     //     type: String,
     //     unique: true,
