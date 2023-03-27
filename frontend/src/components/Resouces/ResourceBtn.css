@@ -1,0 +1,13 @@
+.resource-img{
+    height: 90px;
+    width: 90px;
+}
+.btn-icon{
+    background-color: #272727;
+    border: none;
+    margin: 0px 100px;
+    border-radius: 50%;
+}
+.resource-icon{
+    display:inline-block;
+}

@@ -9,14 +9,14 @@
 }
 .strong{
     height:425px;
-    width:425px;
-    margin-left: 100px;
+    width:35%;
+    margin-left: 5%;
 }
 .contenttext{
     width: 50%;
     float:right;
     text-align: center;
-    margin-right: 100px;
+    margin-right: 5%;
     padding-top: 80px;
     font-size: 24px;
 }
@@ -24,13 +24,7 @@
     font-size: 60px;
     margin-bottom: 50px;
 }
-.resource-icon{
-    height: 90px;
-    width: 90px;
-    margin: 0px 100px;
-
-}
 .resource-icons{
-    margin-left: 300px;
-    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 3%;
 }

@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import ResourceBtn from "../../components/Resouces/ResourceBtn";
 import "./Resources.css";
 import strong from "../../assets/strong.png"
 import resumeicon from "../../assets/resumeicon.png"
 import technicalicon from "../../assets/technicalicon.png"
 import behavioralicon from "../../assets/behavioralicon.png"
+
 function Resources() {
   return (
     <div  className="resources">
@@ -19,9 +21,9 @@ function Resources() {
           </div>
         </div>
         <div className="resource-icons">
-          <img className="resume resource-icon" src={resumeicon} alt="resume icon"/>
-          <img className="technical resource-icon" src={technicalicon} alt="technical icon"/>
-          <img className="behavioral resource-icon" src={behavioralicon} alt="behavioral icon"/>
+          <ResourceBtn title="Resume Template"  src={resumeicon}/>
+          <ResourceBtn title="Technical Question"  src={technicalicon}/>
+          <ResourceBtn title="Behavioral Question"  src={behavioralicon}/>
         </div>
       </div>
         <Footer />
