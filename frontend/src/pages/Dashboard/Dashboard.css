@@ -20,12 +20,18 @@
 
 .right {
   float: right;
+  text-decoration: none;
 }
 
 .profile-img {
   background-color: #85cdfd;
-  height: 20px;
+  height: 30px;
+  width: 30px;
+  top: 10px;
+  border-radius: 50px;
   color: #85cdfd;
+  position: relative;
+  margin-left: 20px;
 }
 
 .greeting {
@@ -64,4 +70,44 @@
   position: fixed;
   background: rgba(0, 0, 0, 0.834);
   z-index: 2;
+}
+
+.userInfo{
+  width: 200px;
+  height: 40px;
+  position: relative;
+  color: white;
+  right: 110px;
+  top: -30px;
+  display: flexbox;
+}
+
+.userE-headingright{
+  position: relative;
+  opacity: 60%;
+}
+
+.userInfo,.profile-img{
+  display: flexbox;
+}
+
+.bell-headingright{
+  position: relative;
+  top:-29px;
+  right: 95px;
+}
+
+.expand-headingright{
+  position: relative;
+  bottom: 65px;
+  margin-left: 250px;
+}
+
+.heading-right-container{
+  position: fixed;
+  
+  height: auto;
+  width: auto;
+  position: relative;
+  top:-50px;
 }
