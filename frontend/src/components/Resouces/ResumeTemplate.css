@@ -1,0 +1,41 @@
+.resume-template{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    font-weight: bold;
+}
+.resume-border{
+    border: solid 1px rgb(160, 158, 158);
+    border-radius: 20px;
+}
+.resume-img{
+    width: 90%;
+    margin: 30px;
+    border-radius: 15px;
+}
+.copy-resume{
+    background-color: #2196f3;
+    border: none;
+    height: 40px;
+    width: 120px;
+    color: white;
+    border-radius: 7px;
+    margin: 30px 0px;
+}
+.recreate-resume{
+    background-color: #272727;
+    height: 40px;
+    width: 120px;
+    color: white;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 7px;
+    margin: 30px 0px;
+}
+.pdf-link{
+    text-decoration: none;
+    margin: 30px;
+}
+.docx-link{
+    text-decoration: none;
+    margin: 30px;
+}
