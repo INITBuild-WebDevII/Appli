@@ -1,18 +1,10 @@
 const mongoose = require('mongoose');
-
+const Card = require('../Models/Cards')
 const userSchema = new mongoose.Schema({
-    // firstName: {
-    //     type: String,
-    //     required: true,
-    //     min: 2,
-    //     min: 20,
-    // },
-    // lastName: {
-    //     type: String,
-    //     required: true,
-    //     min: 2,
-    //     max: 20,
-    // },
+    Username: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
@@ -36,10 +28,10 @@ const userSchema = new mongoose.Schema({
     // },
     // loaction: String,
     // Specialization: String,
-    // appliedCards: {
-    //     type: Array,
-    //     default: [ ],
-    //     },
+    appliedCards: [{
+        type:  mongoose.Schema.Types.Object,
+        ref: "Card",
+    }]
     // Resume: String,
     // createdAt: {
     //     type: Date,

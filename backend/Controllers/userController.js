@@ -1,15 +1,17 @@
 const Users = require('../Models/Users');
+const Cards = require('../Models/Cards')
 const {signup, login} = require("../Auth/auth")
 const bycrypt = require('bcrypt')
 const validator  = require('validator')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+
 
 const createToken = (_id) => {
-    return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
+    return jwt.sign({_id}, process.env.SECRET)
 }
 //Login User
 const loginUser  = async (req, res) => {
-    const {email, password} = req.body
+    const {firstName, lastName, email, password} = req.body
     try {
         if (!email || !password) {
             throw Error('All fields must be filled')
@@ -28,7 +30,8 @@ const loginUser  = async (req, res) => {
         }
     
         const token = createToken(Loguser._id)
-        res.status(200).json({email, token})
+        const id = Loguser._id
+        res.status(200).json({id, email, token})
 
     } catch(error) {
         res.status(400).json({error: error.message})
@@ -48,11 +51,12 @@ const loginUser  = async (req, res) => {
 
 //Sign Up User
 const signUp = async (req, res) => {
-    const {email, password} = req.body
+    const {Username, email, password} = req.body
     try {
         if (!email || !password) {
             throw Error('All fields must be filled')
         }
+        console.log(email)
         if (!validator.isEmail(email)) {
             throw Error('Email is not valid')
         }
@@ -70,10 +74,11 @@ const signUp = async (req, res) => {
         const salt = await bycrypt.genSalt(10)
         const hash = await bycrypt.hash(password, salt)
     
-        const Signuser = await Users.create({email, password: hash})
+        const Signuser = await Users.create({Username, email, password: hash})
     
         const token = createToken(Signuser._id)
-        res.status(200).json({email, token})
+        const id = Signuser._id
+        res.status(200).json({id, email, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -88,7 +93,17 @@ const signUp = async (req, res) => {
     //     res.status(400).json({error: error.message})
     // }
     // res.json({mssg: 'User Created'})
-    
+
+//   const addCards = async(req,res) => {
+//     const id = req.body.id
+//     const name = req.body.companyName
+//     Cards.updateOne(id, {$set: {name: companyName}}, (err, doc) => {
+//         if (err) {
+//             return console.log(err)
+//             res.json(doc)
+//         }
+//     })
+//   }  
 }
 
 module.exports = {loginUser, signUp}

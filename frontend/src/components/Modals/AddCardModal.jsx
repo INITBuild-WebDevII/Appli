@@ -1,6 +1,8 @@
 import "./AddCardModal.css";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+
 
 const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   const [company, setCompany] = useState();
@@ -12,6 +14,7 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   const [notes, setNotes] = useState();
 
   //console.log(columns);
+  //console.log(JSON.stringify(column));
   //console.log(typeof setColumns);
   //console.log(typeof closeModal);
 
@@ -29,24 +32,29 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(company);
-    console.log(position);
-    console.log(applyLink);
-    console.log(applyDate);
-    console.log(responseDate);
-    console.log(dueDate);
-    console.log(notes);
+    const local_user  = JSON.parse(localStorage.getItem('user'))
+    const user_ID = local_user.id
+   
+    const Items_id = uuidv4()
+    column.items.push({ id: Items_id, name: company, role: position, link: applyLink, dateApplied: applyDate, dueDate: dueDate, responseDate: responseDate, Notes: notes });
 
-    column.items.push({
-      id: uuidv4(),
-      name: company,
-      role: position,
-      link: applyLink,
-      applyDate: applyDate,
-      responseDate: responseDate,
-      dueDate: dueDate,
-      notes: notes,
-    });
+const token = local_user.token
+    axios.post("/api/cards", {
+      companyName: company,
+      positionTitle: position,
+      user_ID: user_ID,
+      columnLocation: column.name,
+      cardID: Items_id,
+      applicationLink: applyLink, 
+      dateApplied: applyDate, 
+      dueDate: dueDate, 
+      responseDate: responseDate, 
+      Notes: notes
+    }, {
+      headers: {
+        Authorization : `Bearer ${token}`
+      }
+    })
 
     setColumns({
       ...columns,

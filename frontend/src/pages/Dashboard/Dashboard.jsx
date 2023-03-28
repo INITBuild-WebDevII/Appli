@@ -14,65 +14,83 @@ import AddCardModal from "../../components/Modals/AddCardModal";
 import EditCardModal from "../../components/Modals/EditCardModal";
 import {AiOutlineBell} from "react-icons/ai"
 import {MdExpandMore} from "react-icons/md"
+import { useLogout } from "../../hooks/useLogout";
+import axios from "axios";
+import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const itemsFromBackend = [
-  {
-    id: uuidv4(),
-    name: "Intel",
-    role: "Technology Analyist Intern",
-    link: "www.intel.com",
-    applyDate: "2023-03-10",
-    dueDate: "2023-03-10",
-    responseDate: "2023-03-10",
-    notes: "Location: NY"
-  },
-  { id: uuidv4(), name: "Apple", role: "PM Intern" },
-  { id: uuidv4(), name: "Tesla", role: "SWE New Grad" },
-];
+let itemsFromBackend1 =[]
+let itemsFromBackend2 = []
+let itemsFromBackend3 =[]
+let itemsFromBackend4 = []
+
+function Company() {
+  itemsFromBackend1.length = 0
+  itemsFromBackend2.length = 0
+  itemsFromBackend3.length = 0
+  itemsFromBackend4.length = 0
+  const User = JSON.parse(localStorage.getItem('user'))
+  const user_id = User.id
+
+ const token = User.token
+
+  // useEffect(() => {
+      axios.post("/api/cards/GET", {
+        user_ID: user_id
+    }, {
+      headers: {
+        Authorization : `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+        const myArray = response.data
+
+        myArray.forEach(function (arrayItem) {
+          if (arrayItem.columnLocation === "To Apply") {
+            itemsFromBackend1.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+          } else if (arrayItem.columnLocation === "Applied") {
+            itemsFromBackend2.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+          } else if (arrayItem.columnLocation === "In Progress") {
+            itemsFromBackend3.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+          } else if (arrayItem.columnLocation === "Accepted") {
+            itemsFromBackend4.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+          }  
+        })
+             
+    })
+    
+ 
+}
 
 const columnsFromBackend = {
   [uuidv4()]: {
     name: "To Apply",
     icon: <AiOutlineStar color="white" size={"0.75em"} />,
-    items: itemsFromBackend,
+    items: itemsFromBackend1,
     color: "#66b6ff",
   },
   [uuidv4()]: {
     name: "Applied",
     icon: <AiOutlineCheck color="white" size={"0.75em"} />,
-    items: [
-      {
-        id: uuidv4(),
-        name: "Amazon",
-        role: "SWE Intern Summer 2022",
-        link: "",
-      },
-      { id: uuidv4(), name: "Google", role: "SWE Intern" },
-      { id: uuidv4(), name: "Microsoft", role: "SWE Intern" },
-      { id: uuidv4(), name: "UKG", role: "SWE Intern" },
-      { id: uuidv4(), name: "Kaseya", role: "Data Scientist" },
-      { id: uuidv4(), name: "Twitter", role: "Product Manager" },
-      { id: uuidv4(), name: "Oracle", role: "Data Engineer" },
-      { id: uuidv4(), name: "Cisco", role: "Backend Engineer" },
-      { id: uuidv4(), name: "Capital One", role: "Full Stack Engineer" },
-    ],
+    items: itemsFromBackend2,
     color: "#54bb5a",
   },
   [uuidv4()]: {
     name: "In Progress",
     icon: <RiStackLine color="white" size={"0.75em"} />,
-    items: [{ id: uuidv4(), name: "Meta", role: "SWE Intern" }],
+    items: itemsFromBackend3,
     color: "#f4b870",
   },
   [uuidv4()]: {
     name: "Accepted",
     icon: <BsTrophy color="white" size={"0.7em"} />,
-    items: [],
+    items: itemsFromBackend4,
     color: "#ff6798",
   },
+  
 };
 
-const onDragEnd = (result, columns, setColumns) => {
+const onDragEnd = (result, columns, setColumns, item) => {
   // nothing will happen if we drop card outside of column area
   if (!result.destination) return;
   const { source, destination } = result;
@@ -86,15 +104,34 @@ const onDragEnd = (result, columns, setColumns) => {
     destItems.splice(destination.index, 0, removed);
     setColumns({
       ...columns,
+      
       [source.droppableId]: {
         ...sourceColumn,
         items: sourceItems,
       },
       [destination.droppableId]: {
         ...destColumn,
+        
         items: destItems,
       },
     });
+
+    sessionStorage.setItem('card', JSON.stringify(destColumn.name))
+    const local_Card_Name  = JSON.parse(sessionStorage.getItem('card'))
+   // const user_local = JSON.parse(localStorage.getItem('user'))
+    //const user_local_id = user_local.id
+    const User = JSON.parse(localStorage.getItem('user'))
+    const token = User.token
+
+    axios.patch("/api/cards/Test", {
+      columnLocation: local_Card_Name,
+      id: result.draggableId  
+    }, {
+      headers: {
+        Authorization : `Bearer ${token}`
+      }
+    })
+    
   } else {
     const column = columns[source.droppableId];
     const copiedItems = [...column.items];
@@ -112,7 +149,6 @@ const onDragEnd = (result, columns, setColumns) => {
 
 function createNewCard(column, columns, setColumns) {
   //alert(column.name);
-
   console.log(JSON.stringify(column));
 
   column.items.push({ id: uuidv4(), name: "New" });
@@ -126,7 +162,17 @@ function deleteCard(column, index, columns, setColumns) {
   //alert(column.name)
   // index position of card in column
   //alert(index)
-  console.log(JSON.stringify(column));
+
+  const User = JSON.parse(localStorage.getItem('user'))
+  const token = User.token
+  console.log(column.items[index].id)
+  axios.patch("/api/cards/", {
+    cardID: column.items[index].id
+  }, {
+        headers: {
+          Authorization : `Bearer ${token}`
+        }
+      })
 
   column.items.splice(index, 1);
 
@@ -136,6 +182,7 @@ function deleteCard(column, index, columns, setColumns) {
 }
 
 function Dashboard() {
+  //const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
   const [showAddCardModal, setshowAddCardModal] = useState(false);
@@ -143,6 +190,14 @@ function Dashboard() {
   const [activeColumn, setActiveColumn] = useState(); // the column the user selected to add
   const [activeCard, setActiveCard] = useState(); // the card the user selected to edit
 
+  useEffect(() => {
+    let ignore = false;
+    
+    if (!ignore) {
+      Company() 
+    }
+    return () => { ignore = true; }
+    },[]);
   // handles displaying the add card Modal
   const handleshowAddCardModal = (column) => {
     // tracks which column was selected
@@ -151,9 +206,8 @@ function Dashboard() {
     // make modal appear
     setshowAddCardModal(true);
   };
-
-  // handles displaying edit cardModal
-  const handleshowEditCardModal = (column, card) => {
+  // handles displaying Modal
+  const handleshowEditCardModal = (column, card, columnsFromBackend) => {
     // track which column was selected
     setActiveColumn(column);
 
@@ -259,6 +313,7 @@ function Dashboard() {
                     </div>
                     <div className="category-contain">
                       <p className="column-name">{column.name}</p>
+                      
                       <button
                         className="category-btn"
                         type="submit"
@@ -267,6 +322,7 @@ function Dashboard() {
                       >
                         +
                       </button>
+                      
                       <hr />
                       <Droppable droppableId={id} key={id}>
                         {(provided, snapshot) => {
@@ -288,6 +344,7 @@ function Dashboard() {
                                     draggableId={item.id}
                                     index={index}
                                   >
+                                    
                                     {(provided, snapshot) => {
                                       return (
                                         <div
@@ -319,7 +376,7 @@ function Dashboard() {
                                             {item.role}
                                           </p>
 
-                                          <button
+                                          {/* <button
                                             onClick={() =>
                                               deleteCard(
                                                 column,
@@ -331,7 +388,7 @@ function Dashboard() {
                                             style={{ float: "right" }}
                                           >
                                             Delete
-                                          </button>
+                                          </button> */}
                                         </div>
                                       );
                                     }}
@@ -352,7 +409,9 @@ function Dashboard() {
         </div>
       )}
     </div>
+
   );
 }
 
 export default Dashboard;
+
