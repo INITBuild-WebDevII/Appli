@@ -10,7 +10,6 @@ import {FcGoogle} from "react-icons/fc";
 import {BsFacebook} from "react-icons/bs";
 
 function LogIn() {
-  const {logout} = useLogout()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
@@ -19,11 +18,8 @@ function LogIn() {
     const Handlechange = async (event) => {
       event.preventDefault();
       await login(email,password)
+    }
 
-    }
-    const handleClick = () => {
-      logout()
-    }
   return (
     <body className="body-login">
       <form className="Login-page" onSubmit={Handlechange}>
@@ -69,10 +65,7 @@ function LogIn() {
                 <label className="google"> <a href="googlelogin" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
             </div>
             <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>
-            {/* <Link to="/" className="linkLI"> To Home </Link>
-            <div>
-            <button onClick={handleClick}>Log out</button>
-            </div> */}
+     
               
       </div>
       </form>

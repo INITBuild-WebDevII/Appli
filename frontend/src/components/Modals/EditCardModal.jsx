@@ -1,7 +1,8 @@
 import "./EditCardModal.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-const EditCardModal = ({ closeModal, column, card }) => {
+const EditCardModal = ({ closeModal, column, card}) => {
   const [company, setCompany] = useState(card.name);
   const [position, setPosition] = useState(card.role);
   const [applyLink, setApplyLink] = useState(card.link);
@@ -19,7 +20,7 @@ const EditCardModal = ({ closeModal, column, card }) => {
   useEffect(() => {
     console.log(JSON.stringify(column));
     console.log(JSON.stringify(card));
-    console.log(card);
+    console.log(card.id);
   }, []);
 
   const closeEditCardModal = (e) => {
@@ -27,16 +28,37 @@ const EditCardModal = ({ closeModal, column, card }) => {
       closeModal();
     }
   };
+  function deleteCard() {
+    //alert(column.name)
+    // index position of card in column
+    //alert(index)
+  
+    const User = JSON.parse(localStorage.getItem('user'))
+    const token = User.token
+    axios.patch("/api/cards/", {
+      cardID: card.id
+    }, {
+          headers: {
+            Authorization : `Bearer ${token}`
+          }
+    })
+        
+        console.log(card.id + "index")
+
+  }
 
   const handleSubmit = (e) => {
-    console.log(company);
-    console.log(position);
-    console.log(applyLink);
-    console.log(applyDate);
-    console.log(responseDate);
-    console.log(dueDate);
-    console.log(notes);
+    // console.log(company);
+    // console.log(position);
+    // console.log(applyLink);
+    // console.log(applyDate);
+    // console.log(responseDate);
+    // console.log(dueDate);
+    // console.log(notes);
 
+    const User = JSON.parse(localStorage.getItem('user'))
+    const token = User.token
+    console.log(card.id)
     // changes card's properties
     card.name = company;
     card.role = position;
@@ -45,6 +67,22 @@ const EditCardModal = ({ closeModal, column, card }) => {
     card.responseDate = responseDate
     card.dueDate = dueDate
     card.notes = notes
+
+    console.log(card.name)
+    axios.patch("/api/cards/UP", {
+    companyName: card.name,
+    positionTitle: card.role,
+    applicationLink: card.link,
+    dateApplied: card.applyDate,
+    responseDate: card.responseDate,
+    dueDate: card.dueDate,
+    notes: card.notes,
+    cardID: card.id
+    }, {
+          headers: {
+            Authorization : `Bearer ${token}`
+          }
+    })
 
     e.preventDefault();
 
@@ -148,7 +186,9 @@ const EditCardModal = ({ closeModal, column, card }) => {
           <button className="modal-btn" id="save">
             Save
           </button>
-          <button className="modal-btn" id="delete">
+          <button className="modal-btn" id="delete" onClick={() =>
+                deleteCard()
+             }>
             Delete
           </button>
           <button
