@@ -8,7 +8,7 @@ router.use(requireAuth)
 
 router.post('/GET', getAllCards)
 
-router.get('/:id', getOneCard)
+router.post('/GETO', getOneCard)
 
 router.post('/', addCard)
 

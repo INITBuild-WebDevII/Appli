@@ -14,6 +14,7 @@ const cardsSchema = new mongoose.Schema({
     columnLocation: {
         type: String
     },
+    index: Number,
     cardID: String,
     applicationLink: String,
     dateApplied: Date,

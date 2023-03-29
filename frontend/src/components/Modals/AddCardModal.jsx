@@ -32,6 +32,8 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   };
 
   const handleSubmit = (e) => {
+    console.log(applyDate);
+
     const local_user  = JSON.parse(localStorage.getItem('user'))
     const user_ID = local_user.id
    
