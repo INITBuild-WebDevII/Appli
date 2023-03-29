@@ -42,19 +42,31 @@ function Company() {
     })
     .then((response) => {
         const myArray = response.data
-
+      
         myArray.forEach(function (arrayItem) {
           if (arrayItem.columnLocation === "To Apply") {
-            itemsFromBackend1.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+            itemsFromBackend1.push({id: arrayItem.cardID, name: arrayItem.companyName, 
+              role: arrayItem.positionTitle, link: arrayItem.applicationLink, dateApplied: arrayItem.dateApplied, 
+              dueDate: arrayItem.dueDate, responseDate: arrayItem.responseDate,
+              Notes: arrayItem.Notes})
           } else if (arrayItem.columnLocation === "Applied") {
-            itemsFromBackend2.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+            itemsFromBackend2.push({id: arrayItem.cardID, name: arrayItem.companyName, 
+              role: arrayItem.positionTitle, link: arrayItem.applicationLink, dateApplied: arrayItem.dateApplied, 
+              dueDate: arrayItem.dueDate, responseDate: arrayItem.responseDate,
+              Notes: arrayItem.Notes})
           } else if (arrayItem.columnLocation === "In Progress") {
-            itemsFromBackend3.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+            itemsFromBackend3.push({id: arrayItem.cardID, name: arrayItem.companyName, 
+              role: arrayItem.positionTitle, link: arrayItem.applicationLink, dateApplied: arrayItem.dateApplied, 
+              dueDate: arrayItem.dueDate, responseDate: arrayItem.responseDate,
+              Notes: arrayItem.Notes})
           } else if (arrayItem.columnLocation === "Accepted") {
-            itemsFromBackend4.push({id: arrayItem.cardID, name: arrayItem.companyName, role: arrayItem.positionTitle})
+            itemsFromBackend4.push({id: arrayItem.cardID, name: arrayItem.companyName, 
+              role: arrayItem.positionTitle, link: arrayItem.applicationLink, dateApplied: arrayItem.dateApplied, 
+              dueDate: arrayItem.dueDate, responseDate: arrayItem.responseDate,
+              Notes: arrayItem.Notes})
           }  
         })
-             
+
     })
     
  
@@ -113,8 +125,10 @@ const onDragEnd = (result, columns, setColumns, item) => {
         items: destItems,
       },
     });
-
+deleteCard()
+    console.log(destination.index)
     sessionStorage.setItem('card', JSON.stringify(destColumn.name))
+    sessionStorage.setItem('cardARR', JSON.stringify(destination.index))
     const local_Card_Name  = JSON.parse(sessionStorage.getItem('card'))
    // const user_local = JSON.parse(localStorage.getItem('user'))
     //const user_local_id = user_local.id
@@ -123,6 +137,7 @@ const onDragEnd = (result, columns, setColumns, item) => {
 
     axios.patch("/api/cards/Test", {
       columnLocation: local_Card_Name,
+      index: destination.index,
       id: result.draggableId  
     }, {
       headers: {
@@ -135,6 +150,21 @@ const onDragEnd = (result, columns, setColumns, item) => {
     const copiedItems = [...column.items];
     const [removed] = copiedItems.splice(source.index, 1);
     copiedItems.splice(destination.index, 0, removed);
+
+    sessionStorage.setItem('cardARR', JSON.stringify(destination.index))
+    const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
+    const User = JSON.parse(localStorage.getItem('user'))
+    const token = User.token
+
+    axios.patch("/api/cards/Test", {
+      index: destination.index,
+      id: result.draggableId  
+    }, {
+      headers: {
+        Authorization : `Bearer ${token}`
+      }
+    })
+    
     setColumns({
       ...columns,
       [source.droppableId]: {
@@ -163,20 +193,22 @@ function deleteCard(column, index, columns, setColumns) {
 
   const User = JSON.parse(localStorage.getItem('user'))
   const token = User.token
-  console.log(column.items[index].id)
-  axios.patch("/api/cards/", {
-    cardID: column.items[index].id
-  }, {
-        headers: {
-          Authorization : `Bearer ${token}`
-        }
-      })
 
-  column.items.splice(index, 1);
+  const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
+  console.log(User2)
+  // axios.patch("/api/cards/", {
+  //   cardID: column.items[index].id
+  // }, {
+  //       headers: {
+  //         Authorization : `Bearer ${token}`
+  //       }
+  //     })
 
-  setColumns({
-    ...columns,
-  });
+  // column.items.splice(index, 1);
+
+  // setColumns({
+  //   ...columns,
+  // });
 }
 
 function Dashboard() {
@@ -204,8 +236,10 @@ function Dashboard() {
     // make modal appear
     setshowAddCardModal(true);
   };
+  
   // handles displaying Modal
-  const handleshowEditCardModal = (column, card, columnsFromBackend) => {
+  const handleshowEditCardModal = (column, card) => {
+    console.log(card)
     // track which column was selected
     setActiveColumn(column);
 
