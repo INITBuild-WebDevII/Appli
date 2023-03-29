@@ -1,6 +1,7 @@
 import "./Home.css";
 import Navbar from "../../components/Navbar";
 import LandingSection from "./LandingSection";
+import Footer from "../../components/Footer"
 
 function Home() {
   return (
@@ -27,6 +28,7 @@ function Home() {
       <div className="section">
         <h1>Hey</h1>
       </div>
+      <Footer />
     </div>
   );
 }

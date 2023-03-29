@@ -10,10 +10,10 @@ function ResumeTemplate(){
                 <img className="resume-img" src={ResumeExample} alt="" />
             </div>
             <a className="pdf-link" href={ResumePds} download="Resume">
-                <button className="copy-resume">Get a copy</button> 
+                <button className="copy-resume click">Get a copy</button> 
             </a>
             <a className="docx-link" href={ResumeDocx} download="Resume">
-                <button className="recreate-resume">Recreate</button>
+                <button className="recreate-resume click">Recreate</button>
             </a>
         </div>
     )

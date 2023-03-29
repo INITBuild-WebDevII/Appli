@@ -21,6 +21,7 @@
     color: white;
     border-radius: 7px;
     margin: 30px 0px;
+    font-size: 16px;
 }
 .recreate-resume{
     background-color: #272727;
@@ -30,6 +31,7 @@
     border: 1px solid rgb(160, 158, 158);
     border-radius: 7px;
     margin: 30px 0px;
+    font-size: 16px;
 }
 .pdf-link{
     text-decoration: none;
