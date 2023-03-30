@@ -1,0 +1,72 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: black;
+  flex-direction: column;
+}
+
+.modal-form {
+  margin-top: -100px;
+  background: #ffffff;
+  justify-content: center;
+  border-radius: 5px;
+  width: 800px;
+  height: 550px;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(10, 248, 77, 0.2);
+}
+
+.form-title {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.form-group input {
+  width: 220px;
+  padding: 12px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-btn {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+#save {
+  background-color: #008cba;
+}
+#cancel {
+  background-color: #f44336;
+}
+#delete {
+  background-color: purple;
+}
+
+.modal-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  position: relative;
+}

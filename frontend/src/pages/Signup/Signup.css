@@ -1,10 +1,19 @@
+.bodyS{
+    height: 100vh;
+    background: url("../../assets/background.png");
+    background-size:cover;
+    background-position:0px;
+}
+
+
 .Signup-page{
 
-    background-color: #f7f0ff;
+    background-color: black;
+    color: white;
     border-radius: 3%;
     margin: 50px auto;
-    height: 60vh;
-    width: 60%;
+    height: 86vh;
+    width: 40%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,7 +21,7 @@
 
 }
 
-.Signup-name, .Signup-last, .Signup-email, .Signup-password{
+.Signup-name, .Signup-last, .Signup-email, .Signup-password, .confirm-password{
     width: 50%;
     height: 50px;
     position: relative;
@@ -20,40 +29,40 @@
 }
 
 
-.Signup-name input, .Signup-last input, .Signup-email input, .Signup-password input{
+.Signup-name input, .Signup-last input, .Signup-email input, .Signup-password input, .confirm-password input{
     width: 100%;
     height: 100%;
-    color: black;
+    color: white;
     padding-top: 20px;
     border: none;
     outline: none;
     background: transparent;
 }
 
-.Signup-name label, .Signup-last label, .Signup-email label, .Signup-password label{
+.Signup-name label, .Signup-last label, .Signup-email label, .Signup-password label, .confirm-password label{
     position: absolute;
     bottom:0px;
     left:0%;
     width:100%;
     height:100%;
     pointer-events: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 
 }
 
-.Signup-name label::after, .Signup-last label::after, .Signup-email label::after, .Signup-password label::after{
+.Signup-name label::after, .Signup-last label::after, .Signup-email label::after, .Signup-password label::after, .confirm-password label::after{
     content: "";
     position:absolute;
     height:100%;
     width: 100%;
     left:0px;
     bottom: -1px;
-    border-bottom: 3px solid #1976d2;
+    border-bottom: 3px solid #c12799;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
 }
 
-.S-content-name, .S-content-last, .S-content-email, .S-content-password {
+.S-content-name, .S-content-last, .S-content-email, .S-content-password , .S-re-content-password{
     position:absolute;
     bottom: 5px;
     left: 0px;
@@ -65,7 +74,7 @@
 .Signup-name input:valid+ .S-label-name .S-content-name{
     transform: translateY(-150%);
     font-size: 15px;
-    color: #1976d2;
+    color: #c12799;
 }
 
 .Signup-name input:focus + .S-label-name::after,
@@ -78,7 +87,7 @@
 .Signup-last input:valid+ .S-label-last .S-content-last{
     transform: translateY(-150%);
     font-size: 15px;
-    color: #1976d2;
+    color: #c12799;
 }
 .Signup-name input:focus + .S-label-name::after,
 .Signup-name input:valid + .S-label-name::after{
@@ -91,7 +100,7 @@
 .Signup-email input:valid+ .S-label-email .S-content-email{
     transform: translateY(-150%);
     font-size: 15px;
-    color: #1976d2;
+    color: #c12799;
 }
 .Signup-email input:focus + .S-label-email::after,
 .Signup-email input:valid + .S-label-email::after{
@@ -104,7 +113,7 @@
 .Signup-password input:valid+ .S-label-password .S-content-password{
     transform: translateY(-150%);
     font-size: 15px;
-    color: #1976d2;
+    color: #c12799;
 }
 .Signup-password input:focus + .S-label-password::after,
 .Signup-password input:valid + .S-label-password::after{
@@ -112,24 +121,38 @@
 }
 
 
+.confirm-password input:focus+ .S-label-password2 .S-re-content-password, 
+.confirm-password input:valid+ .S-label-password2 .S-re-content-password{
+    transform: translateY(-150%);
+    font-size: 15px;
+    color: #c12799;
+}
+
+/* .confirm-password input:focus + .S-label-password2::after,
+.confirm-password input:valid + .S-label-password2::after{
+    transform: translateX(0%);
+} */
+
+
 .buttonSU{
-    width: 95px;
-    height: 20px;
-    background-color: transparent;
+    width: 240px;
+    height: 30px;
+    background-color: #c12799;
     border: 1px solid black;
-    border-radius: 5px;
-    color:black; 
+    border-radius: 10px;
+    color:white; 
 }
 
 .buttonSU:hover{
-   cursor: pointer;
-   color:#1976d2; 
-   font-weight: bolder;
-
+    cursor: pointer;
+    opacity: 90%;
+    font-weight: bolder;
+    font-size: 15px;
 }
 
 .link_SU{
-    color:black;
+    text-decoration: none;
+    color:#c12799;
     text-align: center;
     justify-self: center;
     font-weight: normal;
