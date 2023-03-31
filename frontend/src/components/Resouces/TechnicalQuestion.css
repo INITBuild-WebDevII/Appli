@@ -1,0 +1,36 @@
+.technical-question{
+    width: 50%;
+    margin: auto;
+    border: solid 1.5px rgb(160, 158, 158);
+    border-radius: 20px;
+}
+.technical-heading{
+    text-align: center;
+    margin: 45px auto 20px auto;
+}
+.technical-title{
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+.question-list{
+    list-style-type: none;
+}
+.element{
+    padding: 13px;
+    border: .6px solid rgb(160, 158, 158);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.last-element{
+    padding: 10px; 
+    color: #272727;
+}
+.list{
+    /* width: 50%; */
+    display: inline;
+    /* margin-right: 200px; */
+}
+.progress{
+    
+}
