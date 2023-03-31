@@ -17,7 +17,7 @@ function Resources() {
   return (
     <div  className="resources">
       <Navbar />
-      <div className="content">
+      <div className="resource-content">
         <div>
           <img className="strong" src={strong} alt="strong"/>
           <div className="contenttext">
