@@ -4,9 +4,19 @@ import axios from "axios";
 import moment from "moment" 
 
 const EditCardModal = ({ closeModal, column, card, User3}) => {
-  const User2 = JSON.parse(localStorage.getItem('user'))
-  const user_id2 = User2.id
-  const token2 = User2.token
+
+  var User2;
+  var token2;
+  var user_id2;
+  if (JSON.parse(localStorage.getItem('user')) === null) {
+    User2 = JSON.parse(sessionStorage.getItem('user'))
+    user_id2 = User2.id
+    token2 = User2.token
+  } else {
+    User2 = JSON.parse(localStorage.getItem('user')) 
+    user_id2 = User2.id
+    token2 = User2.token
+  }
 
 function GETS() {
   axios.post("/api/cards/GETO", {
@@ -121,8 +131,16 @@ card.Notes = notes
     //alert(column.name)
     // index position of card in column
     //alert(index)
-    const User = JSON.parse(localStorage.getItem('user'))
-    const token = User.token
+    var User;
+    var token;
+    if (JSON.parse(localStorage.getItem('user')) === null) {
+      User = JSON.parse(sessionStorage.getItem('user'))
+      token = User.token
+    } else {
+      User = JSON.parse(localStorage.getItem('user')) 
+      token = User.token
+    }
+
     column.items.forEach(function (arrayItem) {
         if (arrayItem.id === card.id) {
         axios.patch("/api/cards/", {
@@ -139,9 +157,15 @@ card.Notes = notes
   }
 
   const handleSubmit = (e) => {
-    const User = JSON.parse(localStorage.getItem('user'))
-    const token = User.token
-    
+    var User;
+    var token;
+    if (JSON.parse(localStorage.getItem('user')) === null) {
+      User = JSON.parse(sessionStorage.getItem('user'))
+      token = User.token
+    } else {
+      User = JSON.parse(localStorage.getItem('user')) 
+      token = User.token
+    }  
 
     // changes card's properties
     // card.name = company;

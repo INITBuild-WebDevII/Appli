@@ -29,10 +29,19 @@ function Company() {
   itemsFromBackend2.length = 0
   itemsFromBackend3.length = 0
   itemsFromBackend4.length = 0
-  const User = JSON.parse(localStorage.getItem('user'))
-  const user_id = User.id
 
- const token = User.token
+  var User;
+  var user_id;
+  var token;
+  if (JSON.parse(localStorage.getItem('user')) === null) {
+    User = JSON.parse(sessionStorage.getItem('user'))
+    user_id = User.id
+    token = User.token
+  } else {
+    User = JSON.parse(localStorage.getItem('user')) 
+    user_id = User.id
+    token = User.token
+  }
 
   // useEffect(() => {
       axios.post("/api/cards/GET", {
@@ -44,7 +53,7 @@ function Company() {
     })
     .then((response) => {
         const myArray = response.data
-      
+      console.log(response)
         myArray.forEach(function (arrayItem) {
           if (arrayItem.columnLocation === "To Apply") {
             itemsFromBackend1.push({id: arrayItem.cardID, name: arrayItem.companyName, 
@@ -134,8 +143,16 @@ deleteCard()
     const local_Card_Name  = JSON.parse(sessionStorage.getItem('card'))
    // const user_local = JSON.parse(localStorage.getItem('user'))
     //const user_local_id = user_local.id
-    const User = JSON.parse(localStorage.getItem('user'))
-    const token = User.token
+    var User;
+ 
+    var token;
+    if (JSON.parse(localStorage.getItem('user')) === null) {
+      User = JSON.parse(sessionStorage.getItem('user'))
+      token = User.token
+    } else {
+      User = JSON.parse(localStorage.getItem('user')) 
+      token = User.token
+    }
 
     axios.patch("/api/cards/Test", {
       columnLocation: local_Card_Name,
@@ -155,8 +172,15 @@ deleteCard()
 
     sessionStorage.setItem('cardARR', JSON.stringify(destination.index))
     const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
-    const User = JSON.parse(localStorage.getItem('user'))
-    const token = User.token
+    var User;
+    var token;
+    if (JSON.parse(localStorage.getItem('user')) === null) {
+      User = JSON.parse(sessionStorage.getItem('user'))
+      token = User.token
+    } else {
+      User = JSON.parse(localStorage.getItem('user')) 
+      token = User.token
+    }
 
     axios.patch("/api/cards/Test", {
       index: destination.index,
@@ -192,12 +216,18 @@ function deleteCard(column, index, columns, setColumns) {
   //alert(column.name)
   // index position of card in column
   //alert(index)
-
-  const User = JSON.parse(localStorage.getItem('user'))
-  const token = User.token
+  var User;
+  var token;
+  if (JSON.parse(localStorage.getItem('user')) === null) {
+    User = JSON.parse(sessionStorage.getItem('user'))
+    token = User.token
+  } else {
+    User = JSON.parse(localStorage.getItem('user')) 
+    token = User.token
+  }
 
   const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
-  console.log(User2)
+  console.log(User2 + "L")
   // axios.patch("/api/cards/", {
   //   cardID: column.items[index].id
   // }, {
@@ -212,7 +242,6 @@ function deleteCard(column, index, columns, setColumns) {
   //   ...columns,
   // });
 }
-
 function Dashboard() {
   //const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
@@ -221,6 +250,8 @@ function Dashboard() {
   const [showEditCardModal, setshowEditCardModal] = useState(false);
   const [activeColumn, setActiveColumn] = useState(); // the column the user selected to add
   const [activeCard, setActiveCard] = useState(); // the card the user selected to edit
+ const {logout} = useLogout()
+
 
   useEffect(() => {
     let ignore = false;
@@ -230,6 +261,7 @@ function Dashboard() {
     }
     return () => { ignore = true; }
     },[]);
+
   // handles displaying the add card Modal
   const handleshowAddCardModal = (column) => {
     // tracks which column was selected
@@ -271,6 +303,37 @@ function Dashboard() {
     }, 2000);
   }, []);
 
+  const handleLogout = () => {
+    console.log("TEST")
+    logout()
+  } 
+  var User;
+  var Id;
+  var email;
+  if (JSON.parse(localStorage.getItem('user')) === null) {
+    User = JSON.parse(sessionStorage.getItem('user'))
+    Id = User.id
+    email = User.email
+  } else {
+    User = JSON.parse(localStorage.getItem('user')) 
+    Id = User.id
+    email = User.email
+  }
+
+  axios.post("/api/user/look", {
+    Uid: Id
+  })
+  .then((response) => {
+    console.log(response)
+    sessionStorage.setItem('username', JSON.stringify(response.data.Username))
+    // sessionStorage.setItem('userL', JSON.stringify(response.data.lastName))
+    // console.log(response.data.firstName)
+    // console.log(response.data.lastName)
+  })
+  
+  const Username = JSON.parse(sessionStorage.getItem('username'))
+
+  
   return (
     <div className="dashboard">
       {loading ? (
@@ -303,15 +366,19 @@ function Dashboard() {
           )}
           <div className="heading">
             <h1 className="heading middle">My Applications</h1>
-
+            <li>
+                <Link to="/">
+                    <button className="logouts" onClick={handleLogout}>Log Out</button> 
+                </Link>
+            </li>
             <div className="heading-right-container"> 
               <a className="heading right" href="/Profile">
                   <img className="profile-img" src="" alt="" />
                   
                 <div className="userInfo" >
-                  <p1 className="userN-headingright"> userName </p1>
+                  <p1 className="userN-headingright" >  {Username} </p1>
                   <br />
-                  <p1 className="userE-headingright"> useremail@gmail.com </p1>
+                  <p1 className="userE-headingright"> {email} </p1>
                   <br/>
                   <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>
                   <p1 className="expand-headingright"> <MdExpandMore size={35}/></p1>

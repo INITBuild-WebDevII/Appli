@@ -4,7 +4,12 @@ export const useLogout = () => {
     const {dispatch} = useAuthContext()
     const logout = () => {
         //remove localStorage
-        localStorage.removeItem('user')
+        if (JSON.parse(localStorage.getItem('user') === null)) {
+            sessionStorage.removeItem('user')
+        } else {
+            localStorage.removeItem('user')
+        }
+        
 
         //dispatch logout aciton
         dispatch({type: 'LOGOUT'})

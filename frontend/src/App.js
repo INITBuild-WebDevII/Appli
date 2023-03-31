@@ -8,8 +8,12 @@ import Signup from "./pages/Signup/Signup";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
+
+
+
 function App() {
   const {user} = useAuthContext();
+  
   return (
     <div className="App">
       {/* Router to create different links */}
@@ -17,7 +21,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/Dashboard" element={user ? <Dashboard/>: <Navigate to="/Login"/>} />
             <Route path="/Resources" element={<Resources />} />
             <Route path="/Login" element={!user ? <Login />: <Navigate to="/Dashboard"/>} />
             <Route path="/About" element={<About />} />

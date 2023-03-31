@@ -12,12 +12,23 @@ import {BsFacebook} from "react-icons/bs";
 function LogIn() {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [remember, setRemember] = useState(false)
 
   const {login, error, isLoading} = useLogin()
 
     const Handlechange = async (event) => {
-      event.preventDefault();
-      await login(email,password)
+      if (remember === true) {
+        event.preventDefault();
+      await login(email,password, true)
+      } else {
+        event.preventDefault();
+      await login(email,password, false)
+      }
+    }
+
+    const handleRememberClick = async (event) => {
+      setRemember(event.target.checked);
+      console.log(remember)
     }
 
   return (
@@ -48,7 +59,7 @@ function LogIn() {
             <div className="passwordDetails">
 
               <label className="remember-container"> 
-                <input type="checkbox" className="remember"/> Remember me
+                <input type="checkbox" className="remember" onChange={handleRememberClick}/> Remember me
               </label>
 
               <label className="forgot-container"> 
