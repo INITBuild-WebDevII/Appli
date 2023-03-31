@@ -14,7 +14,6 @@ import { useState } from "react";
 function Resources() {
   const [material, setMaterial] = useState("resumeTemplate")
 
-
   return (
     <div  className="resources">
       <Navbar />

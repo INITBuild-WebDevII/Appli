@@ -18,16 +18,19 @@
 .element{
     padding: 13px;
     border: .6px solid rgb(160, 158, 158);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
 }
 .last-element{
     padding: 10px; 
     color: #272727;
 }
 .list{
-    width: 50%;
+    /* width: 50%; */
     display: inline;
-    margin-right: 200px;
+    /* margin-right: 200px; */
 }
 .progress{
-    width: 50%;
+    
 }
