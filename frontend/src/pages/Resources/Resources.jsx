@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import ResourceBtn from "../../components/Resouces/ResourceBtn";
 import ResumeTemplate from "../../components/Resouces/ResumeTemplate";
 import TechnicalQuestion from "../../components/Resouces/TechnicalQuestion";
+import BehavioralQuestion from "../../components/Resouces/BehavioralQuestion";
 import "./Resources.css";
 import strong from "../../assets/strong.png"
 import resumeicon from "../../assets/resumeicon.png"
@@ -35,7 +36,7 @@ function Resources() {
         <div className="interview-resources">
             {material === "resumeTemplate" && <ResumeTemplate />}
             {material === "technicalQuestion" && <TechnicalQuestion />}
-            {/* {material === "behavioralQuestion"} */}
+            {material === "behavioralQuestion" && <BehavioralQuestion />}
             
         </div>
       </div>
