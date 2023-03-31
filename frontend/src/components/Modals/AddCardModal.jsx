@@ -117,7 +117,6 @@ const token = local_user.token
               name="position"
               placeholder="Application Link"
               value={applyLink}
-              required
               onChange={(e) => setApplyLink(e.target.value)}
             />
           </div>

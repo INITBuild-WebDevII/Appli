@@ -239,7 +239,6 @@ card.Notes = notes
               name="position"
               placeholder="Application Link"
               value={applyLink}
-              required
               onChange={(e) => setApplyLink(e.target.value)}
             />
           </div>
