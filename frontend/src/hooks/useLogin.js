@@ -7,7 +7,7 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
 
-    const login = async (email, password) =>  {
+    const login = async (email, password, isRemember) =>  {
         setIsLoading(true)
         setError(null)
 
@@ -19,8 +19,11 @@ axios.post('/api/user/login', {
 .then(function (response) {
     //save user to local storage
     console.log(response.data)
+    if (isRemember) {
     localStorage.setItem('user', JSON.stringify(response.data))
-    
+    } else {
+        sessionStorage.setItem('user', JSON.stringify(response.data))
+    }
     //update auth context
     dispatch({type: 'LOGIN', Payload: response.data})
     

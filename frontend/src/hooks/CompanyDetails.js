@@ -3,8 +3,15 @@ import axios from "axios"
 
 export default function Company() {
     const [cards, setCards] = useState()
-    const User = JSON.parse(localStorage.getItem('user'))
-    const user_id = User.id
+    var User;
+    var user_id;
+    if (JSON.parse(localStorage.getItem('user')) === null) {
+      User = JSON.parse(sessionStorage.getItem('user'))
+      user_id = User.id
+    } else {
+      User = JSON.parse(localStorage.getItem('user')) 
+      user_id = User.id
+    }
 
     useEffect(() => {
         axios.post("/api/cards/T", {

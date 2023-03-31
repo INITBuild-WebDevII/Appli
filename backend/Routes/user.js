@@ -1,5 +1,5 @@
 const express = require('express');
-const {loginUser, signUp} = require('../Controllers/userController');
+const {loginUser, signUp, look} = require('../Controllers/userController');
 const routes = express.Router();
 const Users = require('../Models/Users');
 const requireAuth = require('../middleware/requireAuth')
@@ -10,6 +10,7 @@ routes.post('/Login', loginUser);
 //Sign Up Routes
 routes.post('/signup', signUp);
 
+routes.post('/look', look)
 
 
 routes.get('/', (req, res) => {

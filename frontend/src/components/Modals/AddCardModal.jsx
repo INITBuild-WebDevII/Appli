@@ -33,10 +33,17 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
 
   const handleSubmit = (e) => {
     console.log(applyDate);
+    
+  var local_user;
+  var user_ID;
+  if (JSON.parse(localStorage.getItem('user')) === null) {
+    local_user = JSON.parse(sessionStorage.getItem('user'))
+    user_ID = local_user.id
+  } else {
+    local_user = JSON.parse(localStorage.getItem('user')) 
+    user_ID = local_user.id
+  }
 
-    const local_user  = JSON.parse(localStorage.getItem('user'))
-    const user_ID = local_user.id
-   
     const Items_id = uuidv4()
     column.items.push({ id: Items_id, name: company, role: position, link: applyLink, dateApplied: applyDate, dueDate: dueDate, responseDate: responseDate, Notes: notes });
 

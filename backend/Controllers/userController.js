@@ -105,5 +105,15 @@ const signUp = async (req, res) => {
 //     })
 //   }  
 }
+const look = async(req,res) => {
+    const {Uid} = req.body
+    try {
+    const user = await Users.findById(Uid)
+    
+    res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
 
-module.exports = {loginUser, signUp}
+module.exports = {loginUser, signUp, look}

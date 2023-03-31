@@ -19,9 +19,7 @@ function Signup() {
 
     const Handlechange = async (event) => {
       event.preventDefault();
-      if (Confirm_password === password) {
-        await signup(Username, email,password)
-      } 
+      await signup(Username, email,password)
     }
 
     return (
@@ -71,6 +69,7 @@ function Signup() {
             
             <input disable={isLoading} className="buttonSU" type="submit" value="Sign Up"/>
             {error && <div className="error"> {error}</div>}
+            
         
     
           <p>Already have an account? <Link to="/Login" className="link_SU">Log in here!</Link></p>
