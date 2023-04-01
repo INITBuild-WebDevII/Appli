@@ -7,7 +7,7 @@ import { useLogout } from "../../hooks/useLogout";
 import {FiMail} from "react-icons/fi";
 import {AiOutlineLock} from "react-icons/ai";
 import {FcGoogle} from "react-icons/fc";
-import {BsFacebook} from "react-icons/bs";
+import {BsGithub,BsLinkedin} from "react-icons/bs";
 
 function LogIn() {
   const [email, setEmail] = useState()
@@ -72,7 +72,8 @@ function LogIn() {
             {error && <div className="error"> {error}</div>}
             <div className="loginwith">
               <p className="continue" >or continue with</p>
-                <label className="facebook"> <a href="facebooklogin" className="facebook-link"> <BsFacebook size={40}/> </a> </label>
+                <label className="github"> <a href="github" className="github-link"> <BsGithub size={40} color="white"/> </a> </label>
+                <label className="linkedin"> <a href="linkedin" className="linkedin-link"> <BsLinkedin size={40} color="#0072b1"/> </a> </label>
                 <label className="google"> <a href="googlelogin" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
             </div>
             <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>

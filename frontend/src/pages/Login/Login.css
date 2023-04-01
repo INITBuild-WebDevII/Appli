@@ -184,6 +184,7 @@
 }
 
 .continue{
+    text-align: center;
     background: black;
     margin-bottom: 15px;
 }
@@ -214,11 +215,9 @@
     margin-left: 40px;
 }
 
-.facebook{
-    background: black;
-    color: #0672e6;
-    border-radius: 50%;
-    
+.linkedin{
+    margin-left: 40px;
+
 }
 
 .forgot{
@@ -227,8 +226,8 @@
     text-decoration: none;
     color: white;
 }
-.facebook-link, .google-link::after{
-    color: #0672e6;
+.github-link,.linkedin-link,  .google-link::after{
+    color: black;
 }
 
 .link_LI{
