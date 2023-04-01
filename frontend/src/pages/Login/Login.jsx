@@ -40,33 +40,33 @@ function LogIn() {
     
             <div className="Login-email">
 
-                  <input name="email" onChange={(e) => setEmail(e.target.value)} required className="L-email" type="text"/>  
+                  <input name="email" autocomplete="off" onChange={(e) => setEmail(e.target.value)} required className="L-email" type="text"/>  
                   <label for="L-email" className="L-label-email">
                     <span class="L-content-email"> <FiMail/> Email</span>
                   </label>
               
             </div>
 
-            <div className="Login-password">
+              <div className="Login-password">
 
-                  <input name="password" onChange={(e) => setPassword(e.target.value)} required className="L-password" type="password"/>  
-                  <label for="L-password" className="L-label-password">
-                    <span class="L-content-password"><AiOutlineLock/> Password </span>
-                  </label>
+                    <input name="password" autocomplete="off" onChange={(e) => setPassword(e.target.value)} required className="L-password" type="password"/>  
+                    <label for="L-password" className="L-label-password">
+                      <span class="L-content-password"><AiOutlineLock/> Password </span>
+                    </label>
 
-            </div>
+              </div>
 
-            <div className="passwordDetails">
+              <div className="passwordDetails">
 
-              <label className="remember-container"> 
-                <input type="checkbox" className="remember" onChange={handleRememberClick}/> Remember me
-              </label>
+                <label className="remember-container"> 
+                  <input type="checkbox" className="remember" onChange={handleRememberClick}/> Remember me
+                </label>
 
-              <label className="forgot-container"> 
-                <a className="forgot" href="resetpasswordlink">Forgot Password?</a>
-              </label>
+                <label className="forgot-container"> 
+                  <a className="forgot" href="resetpasswordlink">Forgot Password?</a>
+                </label>
 
-            </div>
+              </div>
 
             <input disable={isLoading} className="Login_button" type="submit" value="Log In"/>
             {error && <div className="error"> {error}</div>}
