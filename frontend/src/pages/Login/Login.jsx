@@ -72,9 +72,9 @@ function LogIn() {
             {error && <div className="error"> {error}</div>}
             <div className="loginwith">
               <p className="continue" >or continue with</p>
-                <label className="github"> <a href="github" className="github-link"> <BsGithub size={40} color="white"/> </a> </label>
-                <label className="linkedin"> <a href="linkedin" className="linkedin-link"> <BsLinkedin size={40} color="#0072b1"/> </a> </label>
-                <label className="google"> <a href="googlelogin" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
+                <label className="github"> <a target="_blank" href="https://github.com/login" className="github-link"> <BsGithub size={40} color="white"/> </a> </label>
+                <label className="linkedin"> <a target="_blank" href="https://www.linkedin.com" className="linkedin-link"> <BsLinkedin size={40} color="#0072b1"/> </a> </label>
+                <label className="google"> <a target="_blank" href="https://accounts.google.com" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
             </div>
             <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>
      
