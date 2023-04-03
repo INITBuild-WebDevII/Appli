@@ -14,12 +14,11 @@ function TechnicalQuestion(){
                 {blind75.map((element)=>{
                     return(
                         <div className="element">
-                            <li className="list">{element}
+                            <li className="list">{element}</li>
                             <input type="range" name="progress" min="0" max="10"></input>
-                            </li>
-                            
                         </div>
                     )})}
+                    <li style={{visibility: "hidden"}} className="element" >.</li>
             </ul>
         </div>
     )

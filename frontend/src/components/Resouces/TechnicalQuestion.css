@@ -16,21 +16,16 @@
     list-style-type: none;
 }
 .element{
-    padding: 13px;
+    padding: 15px 15px 15px 25px;
+
     border: .6px solid rgb(160, 158, 158);
-    justify-content: space-between;
     display: flex;
-    align-items: center;
-}
-.last-element{
-    padding: 10px; 
-    color: #272727;
 }
 .list{
-    /* width: 50%; */
+    width: 50%;
     display: inline;
-    /* margin-right: 200px; */
+    margin-right: 100px;
 }
 .progress{
-    
+    width: 200px;
 }
