@@ -204,7 +204,7 @@ card.Notes = notes
         onSubmit={handleSubmit}
       >
         <div className="form-group">
-          <h1 className="form-title">{column.name}</h1>
+          <h1 className="form-title">{company} - {position}</h1>
           <div className="company-input">
             <h4>Company Name</h4>
 
