@@ -89,6 +89,8 @@
 
 .userInfo,.profile-img{
   display: flexbox;
+  /*justify-content: center;*/
+  font-size: 14px;
 }
 
 .bell-headingright{
