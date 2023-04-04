@@ -16,19 +16,21 @@
 
 .modal-form {
   margin-top: -100px;
-  background: #ffffff;
+  background: url("../../assets/form-background.png");
+  color: white;
+  background-size: contain;
   justify-content: center;
   border-radius: 5px;
   width: 800px;
   height: 550px;
   padding: 40px;
-  box-shadow: 0 0 10px rgba(10, 248, 77, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 .form-title {
   display: flex;
   margin-bottom: 20px;
-  justify-content: center;
+  letter-spacing: 1.5px;
 }
 
 .form-group input {
@@ -39,6 +41,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: transparent;
+  color: white;
+  color-scheme: dark;
 }
 
 .modal-btn {
@@ -49,18 +54,20 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin: 20px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 11px;
 }
 
 #save {
-  background-color: #008cba;
+  background-color: #6979F8;
 }
 #cancel {
-  background-color: #f44336;
+  background-color: transparent;
+  border: 0.5px solid white;
 }
 #delete {
-  background-color: purple;
+  background-color: #f44336;
 }
 
 .modal-buttons {
