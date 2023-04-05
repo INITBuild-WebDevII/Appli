@@ -371,7 +371,7 @@ function Dashboard() {
                   <button className="logouts" onClick={handleLogout}>Log Out</button> 
               </Link>
             <div className="heading-right-container"> 
-              <a className="heading right" href="/Profile">
+              <a className="right" href="/Profile">
                   <img className="profile-img" src="" alt="" />
                   
                 <div className="userInfo" >
@@ -387,7 +387,7 @@ function Dashboard() {
             </div>
           </div>
 
-          {/*<h1 className="greeting">Hello, User</h1>*/}
+          <h1 className="greeting">Hello, {Username}</h1>
 
           <div className="board-columns">
             <DragDropContext
