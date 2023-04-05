@@ -1,18 +1,46 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { React, useState } from "react";
 import './Login.css';
 import axios from "axios";
 import { useLogin } from "../../hooks/useLogin";
 import { useLogout } from "../../hooks/useLogout";
 import {FiMail} from "react-icons/fi";
-import {AiOutlineLock} from "react-icons/ai";
+import {AiOutlineLock,AiOutlineEye} from "react-icons/ai";
 import {FcGoogle} from "react-icons/fc";
 import {BsGithub,BsLinkedin} from "react-icons/bs";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+
+
 function LogIn() {
+
+
+  const[passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisibility = () => {
+    setPasswordShown(passwordShown ? false :true);
+  };
+
+
+
   const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [password, setPassword] = useState({
+    password:"", showPassword:false,
+  })
   const [remember, setRemember] = useState(false)
+
+  const handleClickShowPassword=()=>{
+      setPassword({...password, showPassword: !password.showPassword})
+  }
+
+  const handleMouseDowbPassword=(event) => {
+    event.preventDefault();
+  }
+
+  const handlePasswordChange= (prop)=> (event) => {
+    setPassword({...password, [prop]: event.target.value})
+  }
 
   const {login, error, isLoading} = useLogin()
 
@@ -48,11 +76,13 @@ function LogIn() {
             </div>
 
               <div className="Login-password">
-
-                    <input name="password" autocomplete="off" onChange={(e) => setPassword(e.target.value)} required className="L-password" type="password"/>  
-                    <label for="L-password" className="L-label-password">
+                    
+                    <i className="eye-password" onClick={togglePasswordVisibility}>{eye}</i>
+                    <input name="password" autocomplete="off" type={passwordShown ? "text" : "password"} onChange={(e) => {setPassword(e.target.value)}}  required className="L-password"/>
+                    <label htmlFor="standard-adornment-password" for="password" className="L-label-password"> 
                       <span class="L-content-password"><AiOutlineLock/> Password </span>
                     </label>
+                    
 
               </div>
 
