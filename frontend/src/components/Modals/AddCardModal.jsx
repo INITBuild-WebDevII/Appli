@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
-
 const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   const [company, setCompany] = useState();
   const [position, setPosition] = useState();
@@ -33,37 +32,50 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
 
   const handleSubmit = (e) => {
     console.log(applyDate);
-    
-  var local_user;
-  var user_ID;
-  if (JSON.parse(localStorage.getItem('user')) === null) {
-    local_user = JSON.parse(sessionStorage.getItem('user'))
-    user_ID = local_user.id
-  } else {
-    local_user = JSON.parse(localStorage.getItem('user')) 
-    user_ID = local_user.id
-  }
 
-    const Items_id = uuidv4()
-    column.items.push({ id: Items_id, name: company, role: position, link: applyLink, dateApplied: applyDate, dueDate: dueDate, responseDate: responseDate, Notes: notes });
+    var local_user;
+    var user_ID;
+    if (JSON.parse(localStorage.getItem("user")) === null) {
+      local_user = JSON.parse(sessionStorage.getItem("user"));
+      user_ID = local_user.id;
+    } else {
+      local_user = JSON.parse(localStorage.getItem("user"));
+      user_ID = local_user.id;
+    }
 
-const token = local_user.token
-    axios.post("/api/cards", {
-      companyName: company,
-      positionTitle: position,
-      user_ID: user_ID,
-      columnLocation: column.name,
-      cardID: Items_id,
-      applicationLink: applyLink, 
-      dateApplied: applyDate, 
-      dueDate: dueDate, 
-      responseDate: responseDate, 
-      Notes: notes
-    }, {
-      headers: {
-        Authorization : `Bearer ${token}`
+    const Items_id = uuidv4();
+    column.items.push({
+      id: Items_id,
+      name: company,
+      role: position,
+      link: applyLink,
+      dateApplied: applyDate,
+      dueDate: dueDate,
+      responseDate: responseDate,
+      Notes: notes,
+    });
+
+    const token = local_user.token;
+    axios.post(
+      "/api/cards",
+      {
+        companyName: company,
+        positionTitle: position,
+        user_ID: user_ID,
+        columnLocation: column.name,
+        cardID: Items_id,
+        applicationLink: applyLink,
+        dateApplied: applyDate,
+        dueDate: dueDate,
+        responseDate: responseDate,
+        Notes: notes,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     setColumns({
       ...columns,
@@ -83,8 +95,9 @@ const token = local_user.token
       >
         <div className="form-group">
           <h1 className="form-title">{column.name}</h1>
+
           <div className="company-input">
-            <h3>Company Name</h3>
+            <h4>Company Name</h4>
 
             <input
               type="text"
@@ -97,7 +110,7 @@ const token = local_user.token
           </div>
 
           <div className="position-input">
-            <h3>Position Title</h3>
+            <h4>Position Title</h4>
 
             <input
               type="text"
@@ -110,20 +123,19 @@ const token = local_user.token
           </div>
 
           <div className="link-input">
-            <h3>Application Link</h3>
+            <h4>Application Link</h4>
 
             <input
               type="text"
               name="position"
               placeholder="Application Link"
               value={applyLink}
-              required
               onChange={(e) => setApplyLink(e.target.value)}
             />
           </div>
 
           <div className="apply-date-input">
-            <h3>Date Applied</h3>
+            <h4>Date Applied</h4>
 
             <input
               type="date"
@@ -134,7 +146,7 @@ const token = local_user.token
           </div>
 
           <div className="apply-date-input">
-            <h3>Due Date</h3>
+            <h4>Due Date</h4>
 
             <input
               type="date"
@@ -145,7 +157,7 @@ const token = local_user.token
           </div>
 
           <div className="heard-back-date-input">
-            <h3>Response Date</h3>
+            <h4>Response Date</h4>
 
             <input
               type="date"
@@ -156,7 +168,7 @@ const token = local_user.token
           </div>
 
           <div className="notes-input">
-            <h3 className="content">Notes</h3>
+            <h4 className="content">Notes</h4>
             <textarea
               id="notes"
               name="notes"

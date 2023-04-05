@@ -366,11 +366,9 @@ function Dashboard() {
           )}
           <div className="heading">
             <h1 className="heading middle">My Applications</h1>
-            <li>
-                <Link to="/">
-                    <button className="logouts" onClick={handleLogout}>Log Out</button> 
-                </Link>
-            </li>
+              <Link to="/">
+                  <button className="logouts" onClick={handleLogout}>Log Out</button> 
+              </Link>
             <div className="heading-right-container"> 
               <a className="heading right" href="/Profile">
                   <img className="profile-img" src="" alt="" />

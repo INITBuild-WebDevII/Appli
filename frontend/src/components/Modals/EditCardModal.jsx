@@ -206,7 +206,7 @@ card.Notes = notes
         <div className="form-group">
           <h1 className="form-title">{column.name}</h1>
           <div className="company-input">
-            <h3>Company Name</h3>
+            <h4>Company Name</h4>
 
             <input
               type="text"
@@ -219,7 +219,7 @@ card.Notes = notes
           </div>
 
           <div className="position-input">
-            <h3>Position Title</h3>
+            <h4>Position Title</h4>
 
             <input
               type="text"
@@ -232,20 +232,19 @@ card.Notes = notes
           </div>
 
           <div className="link-input">
-            <h3>Application Link</h3>
+            <h4>Application Link</h4>
 
             <input
               type="text"
               name="position"
               placeholder="Application Link"
               value={applyLink}
-              required
               onChange={(e) => setApplyLink(e.target.value)}
             />
           </div>
 
           <div className="apply-date-input">
-            <h3>Date Applied</h3>
+            <h4>Date Applied</h4>
 
             <input
               type="date"
@@ -256,7 +255,7 @@ card.Notes = notes
           </div>
 
           <div className="apply-date-input">
-            <h3>Due Date</h3>
+            <h4>Due Date</h4>
 
             <input
               type="date"
@@ -267,7 +266,7 @@ card.Notes = notes
           </div>
 
           <div className="heard-back-date-input">
-            <h3>Response Date</h3>
+            <h4>Response Date</h4>
 
             <input
               type="date"
@@ -278,7 +277,7 @@ card.Notes = notes
           </div>
 
           <div className="notes-input">
-            <h3 className="content">Notes</h3>
+            <h4 className="content">Notes</h4>
             <textarea
               id="notes"
               name="notes"

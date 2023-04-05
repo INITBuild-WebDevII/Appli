@@ -7,7 +7,7 @@ import { useLogout } from "../../hooks/useLogout";
 import {FiMail} from "react-icons/fi";
 import {AiOutlineLock} from "react-icons/ai";
 import {FcGoogle} from "react-icons/fc";
-import {BsFacebook} from "react-icons/bs";
+import {BsGithub,BsLinkedin} from "react-icons/bs";
 
 function LogIn() {
   const [email, setEmail] = useState()
@@ -40,40 +40,41 @@ function LogIn() {
     
             <div className="Login-email">
 
-                  <input name="email" onChange={(e) => setEmail(e.target.value)} required className="L-email" type="text"/>  
+                  <input name="email" autocomplete="off" onChange={(e) => setEmail(e.target.value)} required className="L-email" type="text"/>  
                   <label for="L-email" className="L-label-email">
                     <span class="L-content-email"> <FiMail/> Email</span>
                   </label>
               
             </div>
 
-            <div className="Login-password">
+              <div className="Login-password">
 
-                  <input name="password" onChange={(e) => setPassword(e.target.value)} required className="L-password" type="password"/>  
-                  <label for="L-password" className="L-label-password">
-                    <span class="L-content-password"><AiOutlineLock/> Password </span>
-                  </label>
+                    <input name="password" autocomplete="off" onChange={(e) => setPassword(e.target.value)} required className="L-password" type="password"/>  
+                    <label for="L-password" className="L-label-password">
+                      <span class="L-content-password"><AiOutlineLock/> Password </span>
+                    </label>
 
-            </div>
+              </div>
 
-            <div className="passwordDetails">
+              <div className="passwordDetails">
 
-              <label className="remember-container"> 
-                <input type="checkbox" className="remember" onChange={handleRememberClick}/> Remember me
-              </label>
+                <label className="remember-container"> 
+                  <input type="checkbox" className="remember" onChange={handleRememberClick}/> Remember me
+                </label>
 
-              <label className="forgot-container"> 
-                <a className="forgot" href="resetpasswordlink">Forgot Password?</a>
-              </label>
+                <label className="forgot-container"> 
+                  <a className="forgot" href="resetpasswordlink">Forgot Password?</a>
+                </label>
 
-            </div>
+              </div>
 
             <input disable={isLoading} className="Login_button" type="submit" value="Log In"/>
             {error && <div className="error"> {error}</div>}
             <div className="loginwith">
               <p className="continue" >or continue with</p>
-                <label className="facebook"> <a href="facebooklogin" className="facebook-link"> <BsFacebook size={40}/> </a> </label>
-                <label className="google"> <a href="googlelogin" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
+                <label className="github"> <a target="_blank" href="https://github.com/login" className="github-link"> <BsGithub size={40} color="white"/> </a> </label>
+                <label className="linkedin"> <a target="_blank" href="https://www.linkedin.com" className="linkedin-link"> <BsLinkedin size={40} color="#0072b1"/> </a> </label>
+                <label className="google"> <a target="_blank" href="https://accounts.google.com" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
             </div>
             <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>
      

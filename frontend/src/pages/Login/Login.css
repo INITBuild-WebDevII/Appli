@@ -17,10 +17,13 @@
     align-items: center;
     flex-direction: column;
     color: white;
+    min-height: 30em;
+    min-width: 20em;
+    align-content: center;
 }
 
 .Login-email{
-    /* background: black; */
+    background: black;
     width: 100%;
     height: 50px;
     position: relative;
@@ -35,8 +38,7 @@
     padding-top: 20px;
     border: none;
     outline: none;
-    background: transparent;
-    /* background: black; */
+    background: black;
 }
 
 .Login-email label{
@@ -99,7 +101,7 @@
     padding-top: 20px;
     border: none;
     outline: none;
-    background: transparent;
+    background: black;
 }
 
 .Login-password label{
@@ -182,16 +184,17 @@
 }
 
 .continue{
+    text-align: center;
     background: black;
     margin-bottom: 15px;
 }
 
 .passwordDetails{
-    position: relative;
-    margin-top: -30px;
+    /* position: fixed; */
+    margin-top: -20px;
     background: black;
-    margin-left: 30px;
-    width: 254px;
+    margin-left: -10px;
+    width: auto;
     font-size: 13px;
     display:inline;
 }
@@ -203,7 +206,7 @@
 
 .remember-container{
     background: black;
-    margin-right: 38px;
+    margin-right: 60px;
 }
 
 .google{
@@ -212,11 +215,9 @@
     margin-left: 40px;
 }
 
-.facebook{
-    background: black;
-    color: #0672e6;
-    border-radius: 50%;
-    
+.linkedin{
+    margin-left: 40px;
+
 }
 
 .forgot{
@@ -225,8 +226,8 @@
     text-decoration: none;
     color: white;
 }
-.facebook-link, .google-link::after{
-    color: #0672e6;
+.github-link,.linkedin-link,  .google-link::after{
+    color: black;
 }
 
 .link_LI{
