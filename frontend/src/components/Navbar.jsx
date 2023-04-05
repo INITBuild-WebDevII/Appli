@@ -14,7 +14,7 @@ function Navbar() {
       </div>
 
       <ul>
-      <li>
+        <li>
           <Link to="/Dashboard" className="link">
             Dashboard
           </Link>

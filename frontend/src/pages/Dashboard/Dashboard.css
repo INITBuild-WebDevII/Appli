@@ -40,6 +40,7 @@
 
 .board-columns {
   display: flex;
+  margin-top: 60px;
   /*overflow-x: auto;*/
 }
 
@@ -89,8 +90,6 @@
 
 .userInfo,.profile-img{
   display: flexbox;
-  /*justify-content: center;*/
-  font-size: 14px;
 }
 
 .bell-headingright{

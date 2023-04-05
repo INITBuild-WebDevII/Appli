@@ -365,7 +365,7 @@ function Dashboard() {
             />
           )}
           <div className="heading">
-            <h1 className="heading middle">My Applications</h1>
+            <h1 className="middle">My Applications</h1>
               <Link to="/">
                   <button className="logouts" onClick={handleLogout}>Log Out</button> 
               </Link>
