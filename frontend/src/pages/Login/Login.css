@@ -94,17 +94,29 @@
 }
 
 
+.eye-password {
+    position: absolute;
+    top: 69%;
+    right: 6%;
+  }
+  .eye-password:hover {
+    color: #c12799;
+    cursor:pointer;
+  }
+  
+
 .Login-password input{
-    width: 100%;
+    width: 259px;
     height: 100%;
     color: white;
-    padding-top: 20px;
+    padding-top: 44px;
     border: none;
     outline: none;
     background: black;
 }
 
 .Login-password label{
+    color: white;
     position: absolute;
     bottom:0px;
     left:0%;
@@ -118,6 +130,7 @@
 .Login-password label::after{
     content: "";
     position:absolute;
+    color: white;
     height:100%;
     width: 100%;
     left:0px;
@@ -136,15 +149,15 @@
 }
 
 /* works when input is an email, c=modify to when input is text and then verify email if email */
-.Login-password input:focus+ .L-label-password .L-content-password, 
-.Login-password input:valid+ .L-label-password .L-content-password{
+.Login-password .L-password:focus+ .L-label-password .L-content-password, 
+.Login-password .L-password:valid+ .L-label-password .L-content-password{
     transform: translateY(-150%);
     font-size: 15px;
     color: #c12799;
 }
 
-.Login-password input:focus + .L-label-password::after,
-.Login-password input:valid + .L-label-password::after{
+.Login-password .L-password:focus + .L-label-password::after,
+.Login-password .L-password:valid + .L-label-password::after{
     transform: translateX(0%);
 }
 
@@ -190,7 +203,6 @@
 }
 
 .passwordDetails{
-    /* position: fixed; */
     margin-top: -20px;
     background: black;
     margin-left: -10px;
