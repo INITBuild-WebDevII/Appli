@@ -367,11 +367,8 @@ function Dashboard() {
           )}
           <div className="heading">
             <h1 className="middle">My Applications</h1>
-              <Link to="/">
-                  <button className="logouts" onClick={handleLogout}>Log Out</button> 
-              </Link>
             <div className="heading-right-container"> 
-              <a className="heading right" href="/Profile">
+              <div className="right" href="/Profile">
                   <img className="profile-img" src="" alt="" />
                   
                 <div className="userInfo" >
@@ -380,14 +377,14 @@ function Dashboard() {
                   <p1 className="userE-headingright"> {email} </p1>
                   <br/>
                   <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>
-                  <p1 className="expand-headingright"> <MdExpandMore size={35}/></p1>
+                  <div className="expand-headingright" onClick={handleLogout}> <MdExpandMore size={35}/></div>
                 </div>
                 <div/>
-              </a>
+              </div>
             </div>
           </div>
 
-          {/*<h1 className="greeting">Hello, User</h1>*/}
+          <h1 className="greeting">Hello, {Username}</h1>
 
           <div className="board-columns">
             <DragDropContext
