@@ -336,7 +336,7 @@ function Dashboard() {
   
   return (
     <div className="dashboard">
-      {loading ? (
+      {loading && 
         <div className="loader-container">
           <BeatLoader
             color={"#b156f2"}
@@ -346,7 +346,8 @@ function Dashboard() {
             data-testid="loader"
           />
         </div>
-      ) : (
+      }
+      {!loading &&
         <div className="main-contain">
           <DashNavbar />
           {showAddCardModal && (
@@ -506,7 +507,7 @@ function Dashboard() {
             </DragDropContext>
           </div>
         </div>
-      )}
+      }
     </div>
 
   );
