@@ -39,7 +39,7 @@
 }
 
 .items-container {
-  max-height: 64vh;
+  max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
