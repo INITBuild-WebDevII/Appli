@@ -11,17 +11,20 @@ import {CiSettings} from "react-icons/ci";
 function DashNavbar(){
     return(
         <nav className="dashboard-navbar">
-        <img src={logo} alt="logo" className="logo-img" />
-        <table>
-          <tr>
+        <a href="/"><img src={logo} alt="logo" className="logo-img" /></a>
+        <table className="navbar-table">
+          <tr className="click">
             <td>
               <SlHome color="white" size={"2em"} className="navbar-item click icon" src="" alt="Icon"/>
             </td>
             <td>
-              <li className="navbar-item click">Dashboard</li>
+             <Link to="/Dashboard" className="link navbar-item click">
+                Dashboard
+              </Link>
             </td>
+            
           </tr>
-          <tr>
+          <tr className="click">
             <td>
               <HiOutlineSquares2X2 stroke="white"  size={"2em"} className="navbar-item click icon find-icon" src="" alt="Icon"/>
             </td>
@@ -31,7 +34,7 @@ function DashNavbar(){
             </Link>
             </td>
           </tr>
-          <tr>
+          <tr className="click">
             <td>
               <AiOutlineFileText stroke="white" fill="white" size={"2em"} className="navbar-item click icon" src="" alt="Icon"/>
             </td>
@@ -39,7 +42,7 @@ function DashNavbar(){
               <li className="navbar-item click">Resume</li>
             </td>
           </tr>
-          <tr>
+          <tr className="click">
             <td>
               <BsChatLeft stroke="white" fill="white" size={"2em"} className="navbar-item click icon resources-icon" src="" alt="Icon"/>
             </td>
@@ -49,17 +52,17 @@ function DashNavbar(){
               </Link>
             </td>
           </tr>
-          <tr>
+          <tr className="click">
             <td>
               <BsPerson stroke="white" fill="white" size={"2em"} className="navbar-item click icon" src="" alt="Icon"/>
             </td>
             <td>
-              <Link to="/Profile" className="link navbar-item click">
+              <Link to="/" className="link navbar-item click">
                 Profile
               </Link>
             </td>
           </tr>
-          <tr>
+          <tr className="click">
             <td>
               <CiSettings stroke="white" fill="white" size={"2em"} className="navbar-item click icon settings-icon" src="" alt="Icon"/>
             </td>

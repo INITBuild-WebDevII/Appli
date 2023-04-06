@@ -24,6 +24,7 @@
 
 .click:hover{
     opacity: .5;
+    cursor: pointer;
 }
 .calendar{
     border: dashed 1px #fff;
@@ -54,4 +55,8 @@
 
 .resources-icon{
     top: 4px;
+}
+
+.navbar-table {
+    margin-top: 40px;
 }

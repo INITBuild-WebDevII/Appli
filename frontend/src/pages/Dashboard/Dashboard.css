@@ -11,7 +11,7 @@
 .heading {
   text-align: center;
   vertical-align: middle;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .middle {
@@ -35,11 +35,13 @@
 }
 
 .greeting {
-  margin: 3% 0%;
+  margin-top: 30px;
+  margin-left: 10px;
 }
 
 .board-columns {
   display: flex;
+  margin-top: 40px;
   /*overflow-x: auto;*/
 }
 
@@ -89,8 +91,6 @@
 
 .userInfo,.profile-img{
   display: flexbox;
-  /*justify-content: center;*/
-  font-size: 14px;
 }
 
 .bell-headingright{
