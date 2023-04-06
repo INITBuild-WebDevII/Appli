@@ -8,7 +8,6 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-
 @keyframes fadeInAnimation {
   0% {
       opacity: 0;
@@ -17,21 +16,48 @@
       opacity: 1;
    }
 }
-
 .landing-section {
   position: relative;
   width: 100%;
   height: 990px;
   display: flex;
 }
-
 .first-section {
-  height: 100vh;
+  position: relative;
+  bottom: 140px;
 }
-
+.section-text{
+  text-align: center;
+  width: 40%;
+  height: 100%;
+  float: left;
+  margin:150px 10px;
+  font-size: 20px;
+  padding: 15px;
+}
+.section-headings{
+  margin-bottom: 20px;
+}
+.dash-img{
+  width: 55%;
+  float: right;
+}
+.right-float{
+  float: right;
+  position: relative;
+  bottom: 100px;
+}
 .section {
   width: 100%;
   height: 100vh;
   padding: 100px;
-  display: flex;
+}
+.redired-link{
+  text-decoration: none;
+  color: rgb(0, 208, 255);
+  float: right;
+}
+.second-section{
+  justify-content: center;
+  align-items: center;
 }

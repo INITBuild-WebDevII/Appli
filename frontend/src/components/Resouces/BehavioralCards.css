@@ -7,22 +7,23 @@
     border-radius: 20px;
     text-align: left;
     display: inline-table;
-    
 }
-.btn-card {
+.card-btn {
     background-color: #3C3C43;
     border: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     height: 25px;
-    width: 70px;
+    width: 80px;
     font-size: 10px;
     float: right;
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
-.h1-card {
+.card-title {
     font-size: 24px;
     margin-bottom: 20px;
 }
-.p-card{
+.card-body{
     font-size: 18px;
 }
