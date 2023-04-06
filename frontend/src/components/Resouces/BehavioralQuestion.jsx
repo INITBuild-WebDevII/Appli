@@ -55,5 +55,4 @@ function BehavioralQuestion() {
             </div>
     </div>)
 }
-
 export default BehavioralQuestion
