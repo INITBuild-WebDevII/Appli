@@ -376,8 +376,8 @@ function Dashboard() {
                   <br />
                   <p1 className="userE-headingright"> {email} </p1>
                   <br/>
-                  <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>
-                  <div className="expand-headingright" onClick={handleLogout}> <MdExpandMore size={35}/></div>
+                  <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>             
+                  <Link to="/"><div className="expand-headingright" onClick={handleLogout}> <MdExpandMore size={35}/></div> </Link>
                 </div>
                 <div/>
               </div>

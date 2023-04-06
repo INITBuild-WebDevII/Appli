@@ -21,6 +21,7 @@
 .right {
   float: right;
   text-decoration: none;
+  margin-top: 10px;
 }
 
 .profile-img {
@@ -97,12 +98,15 @@
   position: relative;
   top:-29px;
   right: 95px;
+  cursor: pointer;
 }
 
 .expand-headingright{
   position: relative;
   bottom: 65px;
   margin-left: 250px;
+  cursor: pointer;
+  color: white;
 }
 
 .heading-right-container{
