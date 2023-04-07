@@ -19,7 +19,9 @@ function Signup() {
 
     const Handlechange = async (event) => {
       event.preventDefault();
-      await signup(Username, email,password)
+      if (password === Confirm_password) {
+        await signup(Username, email,password)
+      }
     }
 
     return (
