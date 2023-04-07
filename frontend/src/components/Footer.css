@@ -31,3 +31,8 @@
     margin-top: 2%;
     padding-bottom: 30px;
 }
+
+.share-icon{
+    position: relative;
+    top: 3px;
+}
