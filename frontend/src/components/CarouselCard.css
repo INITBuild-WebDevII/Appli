@@ -1,25 +1,11 @@
-.carousel-cards{
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-.card{
+.purple-carousel{
     position: absolute;
-    top:800px;
-    right:0;
-    /* bottom: 0; */
-    left: 0;
-    margin: auto;
-    width: 250px;
-    height: 300px;
+    height: 250px;
+    width: 32%;
+    border-radius: 50px;
+    background-color: blueviolet;
+    z-index: -1;
 }
-.card-left{
-    transform: translateX(-125%) scale(0.8);
-    transition: 500ms;
-    opacity: 0.3;
-}
-.card-right{
-    transform: translateX(125%) scale(0.8);
-    transition: 500ms;
-    opacity: 0.3;
+.main-carousel{
+    width: 30%;
 }

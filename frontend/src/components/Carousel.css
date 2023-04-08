@@ -1,0 +1,43 @@
+.carousel{
+    width: 100%;
+    height: 600px;
+    text-align: center;
+}
+.card{
+    position: absolute;
+    top:100px;
+    right:0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 250px;
+    height: 300px;
+}
+.card-left{
+    transform: translateX(-125%) scale(0.8);
+    transition: 500ms;
+    opacity: 0.3;
+}
+.card-right{
+    transform: translateX(125%) scale(0.8);
+    transition: 500ms;
+    opacity: 0.3;
+}
+.carousel-btn{
+    position: absolute;
+    top: 0px;
+    font-size: 30px;
+    color: white;
+    font-weight: 1000;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+.right-btn{
+    position: absolute;
+    right: 350px;
+}
+.left-btn{
+    position: absolute;
+    left: 350px;
+}

@@ -1,14 +1,18 @@
 import "./CarouselCard.css"
+import { useState } from "react"
 
-function CarouselCard(){
-
-    // const card
+function CarouselCard(prop){
 
     return(
         <div className="carousel-cards">
-            <p className="card card-active"> Carousel 1</p>
-            <p className="card card-left"> Carousel 2</p>
-            <p className="card card-right"> Carousel 3</p>
+            <div className="purple-carousel">
+            </div>
+            <div className="main-carousel `{className}`">
+                <img src="" alt={prop.image} />
+                <h3>{prop.name}</h3>
+                <p>{prop.job}</p>
+                <p>{prop.description}</p>
+            </div>
         </div>
     )
 }
