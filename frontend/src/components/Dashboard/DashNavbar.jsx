@@ -11,7 +11,7 @@ import {CiSettings} from "react-icons/ci";
 function DashNavbar(){
     return(
         <nav className="dashboard-navbar">
-        <a href="/"><img src={logo} alt="logo" className="logo-img" /></a>
+        <img src={logo} alt="logo" className="logo-img" />
         <table className="navbar-table">
           <tr className="click">
             <td>

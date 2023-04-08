@@ -23,10 +23,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Dashboard" element={user ? <Dashboard/>: <Navigate to="/Login"/>} />
-            <Route path="/Resources" element={<Resources />} />
+            <Route path="/Resources" element={user ? <Resources/>: <Navigate to="/Login"/>} />
             <Route path="/Login" element={!user ? <Login />: <Navigate to="/Dashboard"/>} />
             <Route path="/About" element={<About />} />
-            <Route path="/Jobs" element={<Jobs />} />
+            <Route path="/Jobs" element={user ? <Jobs/>: <Navigate to="/Login"/>} />
             <Route path="/Signup" element={!user ?  <Signup/>: <Navigate to="/Dashboard"/>} />
           </Routes>
         </div>
