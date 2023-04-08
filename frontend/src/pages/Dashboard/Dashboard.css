@@ -24,15 +24,25 @@
   margin-top: 10px;
 }
 
-.profile-img {
-  background-color: #85cdfd;
-  height: 30px;
-  width: 30px;
-  top: 10px;
-  border-radius: 50px;
-  color: #85cdfd;
+.initial-container{
+  top: 7px;
   position: relative;
-  margin-left: 20px;
+  right: -110px;
+  background-image: linear-gradient(to bottom right, purple,  rgb(119, 119, 225), aqua);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+
+}
+
+.profile-initial {
+  text-align: center;
+  font-size: 25px;
+  right: 2px;
+  bottom: -3px;
+  font-weight: bolder;
+  color: white;
+  position: relative;
 }
 
 .greeting {
@@ -75,43 +85,54 @@
   z-index: 2;
 }
 
+.userN-headingright{
+  position: relative;
+  right: 70px;
+  top: 4px;
+}
+
 .userInfo{
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  column-gap: 3% ;
+  width: auto;
   height: 40px;
   position: relative;
+  align-content: flex-start;
+  justify-content: flex-start;
   color: white;
-  right: 110px;
-  top: -30px;
-  display: flexbox;
+  right: 80px;
+  top: -35px;
 }
 
 .userE-headingright{
   position: relative;
+  top: -12px;
+  right: 6px;
   opacity: 60%;
 }
 
-.userInfo,.profile-img{
+/* .userInfo,.profile-initial{
   display: flexbox;
-}
+} */
 
 .bell-headingright{
   position: relative;
-  top:-29px;
-  right: 95px;
+  bottom: 87px;
+  right: 195px;
   cursor: pointer;
 }
 
-.expand-headingright{
+.door-headingright{
   position: relative;
-  bottom: 65px;
-  margin-left: 250px;
+  bottom: 123px;
+  margin-left: 180px;
   cursor: pointer;
   color: white;
 }
 
 .heading-right-container{
   position: fixed;
-  
   height: auto;
   width: auto;
   position: relative;

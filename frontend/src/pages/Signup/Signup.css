@@ -128,10 +128,31 @@
     color: #c12799;
 }
 
-/* .confirm-password input:focus + .S-label-password2::after,
+.confirm-password input:focus + .S-label-password2::after,
 .confirm-password input:valid + .S-label-password2::after{
     transform: translateX(0%);
-} */
+}
+
+
+.eye-password {
+    position: absolute;
+    top: 54%;
+    right: 6%;
+  }
+  .eye-password:hover {
+    color: #c12799;
+    cursor:pointer;
+  }
+  
+  .eye-password2 {
+    position: absolute;
+    top: 54%;
+    right: 6%;
+  }
+  .eye-password2:hover {
+    color: #c12799;
+    cursor:pointer;
+  }
 
 
 .buttonSU{
