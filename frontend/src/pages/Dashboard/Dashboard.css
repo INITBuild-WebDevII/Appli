@@ -131,6 +131,10 @@
   color: white;
 }
 
+.door-headingright:hover {
+  filter:drop-shadow(0px 0px 5px white)
+}
+
 .heading-right-container{
   position: fixed;
   height: auto;
