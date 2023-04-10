@@ -13,9 +13,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import AddCardModal from "../../components/Modals/AddCardModal";
 import EditCardModal from "../../components/Modals/EditCardModal";
 import {AiOutlineBell} from "react-icons/ai"
-import {GiExitDoor} from "react-icons/gi"
 import {ImExit} from "react-icons/im"
-import {IoExitOutline} from "react-icons/io5"
 import { useLogout } from "../../hooks/useLogout";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
@@ -380,7 +378,7 @@ function Dashboard() {
                   <p1 className="userE-headingright"> {email} </p1>
                   </div>
                   <br/>
-                  <p1 className="bell-headingright"><AiOutlineBell size={35}/></p1>             
+                  <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>             
                   <Link to="/"><div className="door-headingright" onClick={handleLogout}> <ImExit size={32}/></div> </Link>
                 
                 <div/>
