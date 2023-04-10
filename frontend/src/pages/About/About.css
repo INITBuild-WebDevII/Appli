@@ -1,0 +1,35 @@
+.about {
+  background-color: #272727;
+  min-height: 100vh;
+  height: 200vh;
+  color: white
+}
+
+.about-banner {
+    height: 100%;
+    background-color: red;
+    background: url("../../assets/about-banner.png");
+    background-size: cover;
+    object-fit: cover;
+    width: 100%;
+    display: flex;
+    height: 45vh;
+    width: 100vw;
+    position: relative;
+}
+
+
+.members-container {
+    width: 60vw;
+}
+
+.member-card {
+    align-items: center;
+    background: #47425c;
+    border-radius: 12px;
+    display: flex;
+    height: 75px;
+    margin-block: 10px;
+    transition: all .3s ease;
+    width: 350px;
+}
