@@ -17,7 +17,7 @@ function Resources() {
 
   return (
     <div  className="resources">
-      <Navbar />
+      <Navbar position="relative"/>
       <div className="resource-content">
         <div>
           <img className="strong" src={strong} alt="strong"/>
@@ -41,7 +41,6 @@ function Resources() {
         </div>
       </div>
       <Footer />
-      <Link to="/" className="link">To Home</Link>
     </div>
   );
 }

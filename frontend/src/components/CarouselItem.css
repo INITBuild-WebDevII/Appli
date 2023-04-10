@@ -1,0 +1,56 @@
+.card{
+    position: absolute;
+    top: 0;
+    right:0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 360px;
+    height: 300px;
+    padding: 30px;
+}
+.black-carousel{
+    width: 330px;
+    height: 300px;
+    background-color: black;
+    z-index: -1;
+    border-radius: 50px;
+}
+.purple{
+    width: 360px;
+    height: 260px;
+    position: absolute;
+    border-radius: 50px;
+    background-color: blueviolet;
+    z-index: -2;
+}
+.card-left{
+    transform: translateX(-125%) scale(0.8) rotate(13deg);
+    transition: 800ms;
+    opacity: 0.3;
+}
+.card-right{
+    transform: translateX(125%) scale(0.8) rotate(-13deg);
+    transition: 800ms;
+    opacity: 0.3;
+}
+.card-active{
+    transition: 800ms;
+}
+.purple-card-left{
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+.purple-card-right{
+    position: absolute;
+    bottom: 60px;
+    right: 15px;
+}
+.purple-active-card{
+    transform: rotate(-22deg);
+    position: absolute;
+    top: 35px;
+    width: 360px;
+    height: 280px;
+}

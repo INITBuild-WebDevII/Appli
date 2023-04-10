@@ -40,6 +40,8 @@
 }
 .third-section{
   position: relative;
+  margin: 120px 0px 50px 0px;
+  padding: 15px;
 }
 .section-content{
   text-align: center;

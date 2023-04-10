@@ -1,68 +1,68 @@
 import "./Carousel.css"
-import CarouselCard from "./CarouselCard"
+import CarouselItem from "./CarouselItem"
 import { useState, useEffect } from "react"
-
+import user1 from "../assets/ellipse16.png"
+import User2 from "../assets/Ellipse17.png"
+import User3 from "../assets/Ellipse18.png"
 function Carousel(){
 
     const cardsCollection = [
         {
-            image: "",
-            name:"Hannah Schmitt",
+            image: user1,
+            name:"Nicole",
             jobTitle:"Lead Designer",
             description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni iste expedita recusandae nihil itaque ipsa? Commodi sint libero fugit dolorem molestiae nostrum quo voluptate possimus, saepe et? Quaerat, impedit labore."
         },
         {
             image: "",
-            name:"Hannah Schmitt",
+            name:"Rafael",
             jobTitle:"Lead Designer",
             description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni iste expedita recusandae nihil itaque ipsa? Commodi sint libero fugit dolorem molestiae nostrum quo voluptate possimus, saepe et? Quaerat, impedit labore."
         },
         {
             image: "",
-            name:"Hannah Schmitt",
+            name:"Bruna",
             jobTitle:"Lead Designer",
             description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni iste expedita recusandae nihil itaque ipsa? Commodi sint libero fugit dolorem molestiae nostrum quo voluptate possimus, saepe et? Quaerat, impedit labore."
         }
     ]
+    const [activeIndex, setActiveIndex] = useState(1)
+    
+    const updateIndex = (newIndex) => {
+        newIndex = newIndex % cardsCollection.length
 
-    const [carouselRotation, serCarouselRotation] = useState(0)
-
-    const rotation = (n,m) =>{
-        let result = n % m
-        return result >=0 ? result : result % m;
+        if (newIndex < 0){
+            newIndex = cardsCollection.length - 1
+        }else if (newIndex > cardsCollection.length - 1){
+            newIndex = 0
+        }
+        return newIndex
     }
 
     return(
         <div className="carousel">
             <h1>What Our Clients Say About Us</h1> 
-            <button className="carousel-btn left-btn click"> {`<`} </button>
-            <button className="carousel-btn right-btn click"> {`>`} </button>
+            <button onClick={()=>{setActiveIndex(updateIndex(activeIndex - 1))}} className="carousel-btn left-btn click"> {`<`} </button>
+            <button onClick={()=>{setActiveIndex(updateIndex(activeIndex + 1))}} className="carousel-btn right-btn click"> {`>`} </button>
 
-            {cardsCollection.map((card,index)=>{
-                const cardLeft = rotation(carouselRotation - 1,cardsCollection.length)
-                const cardRight = rotation(carouselRotation + 1,cardsCollection.length)
-
-                let className = "";
-
-                if(index === carouselRotation){
-                    className = "cart-active"
-                }else if(index === cardRight){
-                    className = "card-right"
-                }else{
-                    className = "card-left"
+            {cardsCollection.map((card, index)=>{
+                let newName = ""
+                if(index === activeIndex){
+                    newName = "active-card"
+                }else if (index === updateIndex(activeIndex - 1)){
+                    newName = "card-left"
+                }else if (index === updateIndex(activeIndex + 1)){
+                    newName = "card-right"
                 }
-
-                return(<CarouselCard 
+                console.log(activeIndex)
+                return(<CarouselItem
                     image={card.image} 
                     name={card.name} 
                     job={card.jobTitle} 
                     description={card.description}
-                    className={className}
+                    class={newName}
                 />)
             })}
-            {/* <p className="card card-active"> Carousel 1</p>
-            <p className="card card-left"> Carousel 2</p>
-            <p className="card card-right"> Carousel 3</p> */}
         </div>
     )
 }

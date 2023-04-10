@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import CarouselCard from "../../components/Carousel";
 import LandingSection from "./LandingSection";
 import Footer from "../../components/Footer"
-import dashboardImg from "../../assets/dashboard-example.png"
+import dashboardImg from "../../assets/Dashboard.png"
 import resourceGuy from "../../assets/ResourcesDesign.png"
 import jobGuy from "../../assets/fucking-nerd.png"
 
