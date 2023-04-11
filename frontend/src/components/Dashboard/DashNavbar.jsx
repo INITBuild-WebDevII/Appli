@@ -11,7 +11,7 @@ import {CiSettings} from "react-icons/ci";
 function DashNavbar(){
     return(
         <nav className="dashboard-navbar">
-        <a href="/"><img src={logo} alt="logo" className="logo-img" /></a>
+        <img src={logo} alt="logo" className="logo-img" />
         <table className="navbar-table">
           <tr className="click">
             <td>
@@ -29,7 +29,7 @@ function DashNavbar(){
               <HiOutlineSquares2X2 stroke="white"  size={"2em"} className="navbar-item click icon find-icon" src="" alt="Icon"/>
             </td>
             <td>
-            <Link to="/" className="link navbar-item click">
+            <Link to="/Jobs" className="link navbar-item click">
                 Find Jobs 
             </Link>
             </td>

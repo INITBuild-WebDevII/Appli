@@ -19,7 +19,7 @@
 
 .category-heading h1 {
   float: right;
-  color: #d3d3d3;
+  color: white;
   padding-right: 10%;
   font-size: 50px;
 }
@@ -72,4 +72,5 @@
 
 .category-btn:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
