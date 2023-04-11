@@ -1,4 +1,5 @@
 import "./TechnicalQuestion.css"
+import ProgressBar from "./ProgressBar"
 
 function TechnicalQuestion(){
     const blind75 = ["Array and Hashing","Two Pointers","Sliding Windows","Stack","Binary Search","Linked List",
@@ -12,10 +13,11 @@ function TechnicalQuestion(){
             </div>
             <ul className="question-list">
                 {blind75.map((element)=>{
+                    const randomNumber= Math.floor(Math.random() * 100)
                     return(
                         <div className="element">
-                            <li className="list">{element}</li>
-                            <input type="range" name="progress" min="0" max="10"></input>
+                            <li className="list click">{element}</li>
+                            <ProgressBar percentage={randomNumber}/>
                         </div>
                     )})}
                     <li style={{visibility: "hidden"}} className="element" >.</li>

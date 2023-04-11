@@ -17,7 +17,6 @@
 }
 .element{
     padding: 15px 15px 15px 25px;
-
     border: .6px solid rgb(160, 158, 158);
     display: flex;
 }
@@ -25,6 +24,9 @@
     width: 50%;
     display: inline;
     margin-right: 100px;
+    cursor: pointer;
+    padding: 0px;
+    font-size: 16px;
 }
 .progress{
     width: 200px;

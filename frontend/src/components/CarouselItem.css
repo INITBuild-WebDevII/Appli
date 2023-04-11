@@ -9,16 +9,16 @@
     height: 300px;
     padding: 30px;
 }
-.black-carousel{
+.black{
     width: 330px;
-    height: 300px;
+    height: 320px;
     background-color: black;
     z-index: -1;
     border-radius: 50px;
 }
 .purple{
     width: 360px;
-    height: 260px;
+    height: 300px;
     position: absolute;
     border-radius: 50px;
     background-color: blueviolet;
@@ -48,9 +48,22 @@
     right: 15px;
 }
 .purple-active-card{
-    transform: rotate(-22deg);
+    transform: rotate(-30deg);
     position: absolute;
     top: 35px;
     width: 360px;
-    height: 280px;
+    height: 250px;
+    border-radius: 140px 70px 122px 70px;
+}
+.black-active-card{
+    position: absolute;
+    transform: rotate(11deg);
+    border-radius: 70px 149px 72px 122px;
+}
+.user-name{
+    font-size: 26px;
+    margin-bottom: 14px;
+}
+.user-job-title{
+    margin-bottom: 10px;
 }
