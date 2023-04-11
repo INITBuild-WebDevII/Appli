@@ -16,17 +16,20 @@
     list-style-type: none;
 }
 .element{
-    padding: 15px 15px 15px 25px;
     border: .6px solid rgb(160, 158, 158);
     display: flex;
+    position: relative;
+}
+.dropdown-btn{
+    background-color: transparent;
+    border: none;
+    display: contents;
 }
 .list{
-    width: 50%;
-    display: inline;
-    margin-right: 100px;
-    cursor: pointer;
-    padding: 0px;
+   cursor: pointer;
     font-size: 16px;
+    float: left;
+    padding: 15px 0px 15px 15px;
 }
 .progress{
     width: 200px;

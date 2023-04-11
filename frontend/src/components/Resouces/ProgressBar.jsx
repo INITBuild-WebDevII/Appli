@@ -5,7 +5,7 @@ function ProgressBar (props){
         <div className="container">
             <div className="progress-label">{props.percentage}%</div>
             <div className="progress-bar">
-                <div className="progress-bar-fill"> </div>
+                <div className="progress-bar-fill" style={{width:props.percentage + "%"}}> </div>
             </div>
 
         </div>

@@ -1,19 +1,21 @@
 .container{
     width: 200px;
     display: flex;
+    position: absolute;
+    right: 60px;
+    padding: 15px 0px 15px 15px;
 }
 .progress-bar{
-    width: 100%;
+    width: 200px;
     height: 20px;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgb(176, 172, 172);
 }
 .progress-label{
     margin-right: 10px;
 }
 .progress-bar-fill{
     height: 100%;
-    width: 70%;
     border-radius: 10px;
     background-color: black;
 }
