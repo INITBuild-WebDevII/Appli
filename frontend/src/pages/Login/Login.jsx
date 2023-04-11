@@ -44,6 +44,8 @@ function LogIn() {
 
   const {login, error, isLoading} = useLogin()
 
+  //To put the Login Information to the await login to check in the useLogin 
+  //the remember variable is used to check if the Remember button was pressed
     const Handlechange = async (event) => {
       if (remember === true) {
         event.preventDefault();
@@ -58,6 +60,7 @@ function LogIn() {
       setRemember(event.target.checked);
       console.log(remember)
     }
+
 
   return (
     <body className="body-login">
@@ -104,7 +107,7 @@ function LogIn() {
               <p className="continue" >or continue with</p>
                 <label className="github"> <a target="_blank" href="https://github.com/login" className="github-link"> <BsGithub size={40} color="white"/> </a> </label>
                 <label className="linkedin"> <a target="_blank" href="https://www.linkedin.com" className="linkedin-link"> <BsLinkedin size={40} color="#0072b1"/> </a> </label>
-                <label className="google"> <a target="_blank" href="https://accounts.google.com" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
+                <label className="google"> <a target="_blank" href="http://localhost:4000/auth/TEST" className="google-link"><FcGoogle color="black" size={40}/> </a>  </label>
             </div>
             <p className="p_Login">Don't have an account? &nbsp; <Link to="/Signup" className="link_LI"> Sign Up.</Link></p>
      

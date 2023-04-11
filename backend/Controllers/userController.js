@@ -105,7 +105,7 @@ const signUp = async (req, res) => {
 //     })
 //   }  
 }
-const look = async(req,res) => {
+const lookUp = async(req,res) => {
     const {Uid} = req.body
     try {
     const user = await Users.findById(Uid)
@@ -116,4 +116,60 @@ const look = async(req,res) => {
     }
 }
 
-module.exports = {loginUser, signUp, look}
+const googleSignUp = async (profile) => {
+    const email = profile.email
+    const Username = profile.displayName
+    
+    try {
+        const exists = await Users.findOne({email})
+        if (exists) {
+            throw Error('Email already in use') 
+        } 
+        const Signuser = await Users.create({Username, email})
+        const token = createToken(Signuser._id)
+        return "Signuser"
+        // res.status(200).json(Signuser)
+    } catch (error) {
+        return error
+        console.log(error)
+        // res.status(400).json({error: error.message})
+    }
+}
+    async function googleSignUp2(req, res) {
+    const email = req.body.email
+    const Username = req.body.displayName
+    
+    try {
+    const exists = await Users.findOne({email})
+    if (exists) {
+        throw Error('Email already in use') 
+    } 
+    
+        const Signuser = await Users.create({Username, email})
+
+        const token = createToken(Signuser._id)
+    
+
+   
+    res.status(200).json(Signuser)
+    } catch (error){
+        res.status(400).json({error: error.message})
+    }
+    
+}
+const googleLogin = async (req,res) => {
+    const test = passport.authenticate('google', {scope: ['email', 'profile']})
+    console.log(test)
+    const Loguser = await Users.findOne({email})
+        try {
+        if (!Loguser) {
+            throw Error('Incorrect Email')
+        } 
+        const token = createToken(Loguser._id)
+        res.status(200).json(Loguser, token)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+module.exports = {loginUser, signUp, lookUp, googleSignUp}

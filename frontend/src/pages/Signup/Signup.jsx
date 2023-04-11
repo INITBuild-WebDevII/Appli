@@ -17,10 +17,14 @@ function Signup() {
 
   const {signup, error, isLoading} = useSignup()
 
+  //To put the signup Information to the await signup to check in the useSignup 
     const Handlechange = async (event) => {
       event.preventDefault();
-      await signup(Username, email,password)
+      if (password === Confirm_password) {
+        await signup(Username, email,password)
+      }
     }
+
 
     return (
       <body className="bodyS">

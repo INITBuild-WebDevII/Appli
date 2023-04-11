@@ -1,20 +1,17 @@
 const express = require('express');
-const {loginUser, signUp, look} = require('../Controllers/userController');
+const {loginUser, signUp, lookUp, googleSignUp} = require('../Controllers/userController');
 const routes = express.Router();
-const Users = require('../Models/Users');
-const requireAuth = require('../middleware/requireAuth')
-
+const auth = require('../Auth/google_auth')
+const passport = require('passport')
+const app = express()
 //Login Routes
 routes.post('/Login', loginUser);
 
 //Sign Up Routes
 routes.post('/signup', signUp);
 
-routes.post('/look', look)
+//Look Up User Route
+routes.post('/lookUp', lookUp)
 
-
-routes.get('/', (req, res) => {
-    res.json({ msg: "Test" });
-})
-
+// routes.post('/L', googleSignUp)
 module.exports = routes;

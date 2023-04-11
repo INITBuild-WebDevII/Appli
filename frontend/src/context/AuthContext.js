@@ -1,6 +1,6 @@
 import {createContext, useEffect, useReducer } from 'react'
 
-
+//Used to check if there is a User Login
 export const AuthContext = createContext()
 
 export const authReducer = (state, action) => {

@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose')
 const Cards = require('../Models/Cards')
 const Users = require('../Models/Users')
 
-//get All workout
+//Gets all the Cards
 const getAllCards = async(req, res) => {
     const {user_ID} = req.body
 
@@ -10,8 +10,7 @@ const getAllCards = async(req, res) => {
     
     res.status(200).json(getCards)
 }
-//get Single Workout
-//Ignore
+//Gets the information of a single Card
 const getOneCard = async (req, res) => {
     const {user_ID, cardID} = req.body
     // if (!mongoose.Types.ObjectId.isValid(id)) {

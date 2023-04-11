@@ -6,10 +6,13 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-const User = require('./Models/Users')
 const userRoute = require('../backend/Routes/user')
-const Dashboard = require('../backend/Routes/cards')
+const cardRoute = require('../backend/Routes/cards')
+const authRoutes = require('./Routes/auth-router')
+const profileRoutes = require('./Routes/profile-routes')
+
 const app = express();
+
 
 // middleware
 app.use(express.json()); // Allows our API to parse json
@@ -37,17 +40,11 @@ mongoose
     console.log(error);
   });
 
+//Connects to the routes file
 app.use('/api/user', userRoute);
-app.use('/api/cards', Dashboard);
+app.use('/api/cards', cardRoute);
+app.use('/auth', authRoutes)
+app.use('/profile', profileRoutes)
 
 
-// test connection
-app.get("/", (req, res) => {
-  // sends back json object string
-  res.json({ msg: "Welcome" });
-});
 
-app.get("/hello", (req, res) => {
-  // sends back json object string
-  res.json({ msg: "Hello" });
-});

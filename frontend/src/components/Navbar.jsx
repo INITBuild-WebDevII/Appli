@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/logo-letter.png";
 import letters from "../assets/appli-letters.png";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function Navbar() {
   return (

@@ -9,11 +9,9 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 
-
-
 function App() {
   const {user} = useAuthContext();
-  
+
   return (
     <div className="App">
       {/* Router to create different links */}
@@ -29,6 +27,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      
     </div>
   );
 }

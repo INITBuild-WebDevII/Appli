@@ -11,6 +11,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
+//Going through the signup function from the userController
 axios.post('/api/user/signup', {
     Username: Username,
 	email: email,
@@ -18,9 +19,8 @@ axios.post('/api/user/signup', {
 })
 .then(function (response) {
     //save user to local storage
+    
     localStorage.setItem('user', JSON.stringify(response.data))
-    //localStorage.setItem('user', JSON.stringify(response.data.token))
-    //localStorage.setItem('user', JSON.stringify(response.data._id))
 
     //update auth context
     dispatch({type: 'LOGIN', Payload: response.data})

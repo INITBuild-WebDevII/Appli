@@ -19,17 +19,21 @@ import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
+//Holding the individual Cards in each Column
 let itemsFromBackend1 =[]
 let itemsFromBackend2 = []
 let itemsFromBackend3 =[]
 let itemsFromBackend4 = []
 
 function Company() {
+  //Needs the length to start at 0, to not have any repeats of Cards
   itemsFromBackend1.length = 0
   itemsFromBackend2.length = 0
   itemsFromBackend3.length = 0
   itemsFromBackend4.length = 0
 
+  //To hold the User information onto the local/session storage
   var User;
   var user_id;
   var token;
@@ -43,17 +47,19 @@ function Company() {
     token = User.token
   }
 
-  // useEffect(() => {
+  // To retreive all the cars that coressponds to the User
       axios.post("/api/cards/GET", {
         user_ID: user_id
     }, {
+      //Needed to put the token on the header to authorize this process
       headers: {
         Authorization : `Bearer ${token}`
       }
     })
     .then((response) => {
+      /*To check every individual card that user has and put it into the 
+      corressponding column location */
         const myArray = response.data
-      console.log(response)
         myArray.forEach(function (arrayItem) {
           if (arrayItem.columnLocation === "To Apply") {
             itemsFromBackend1.push({id: arrayItem.cardID, name: arrayItem.companyName, 
@@ -77,10 +83,7 @@ function Company() {
               Notes: arrayItem.Notes})
           }  
         })
-
     })
-    
- 
 }
 
 const columnsFromBackend = {
@@ -108,9 +111,9 @@ const columnsFromBackend = {
     items: itemsFromBackend4,
     color: "#ff6798",
   },
-  
 };
 
+//This drags the individual cards
 const onDragEnd = (result, columns, setColumns, item) => {
   // nothing will happen if we drop card outside of column area
   if (!result.destination) return;
@@ -136,15 +139,13 @@ const onDragEnd = (result, columns, setColumns, item) => {
         items: destItems,
       },
     });
-deleteCard()
-    console.log(destination.index)
+
     sessionStorage.setItem('card', JSON.stringify(destColumn.name))
     sessionStorage.setItem('cardARR', JSON.stringify(destination.index))
     const local_Card_Name  = JSON.parse(sessionStorage.getItem('card'))
-   // const user_local = JSON.parse(localStorage.getItem('user'))
-    //const user_local_id = user_local.id
+   
+    //To get the user token on the local/session storage
     var User;
- 
     var token;
     if (JSON.parse(localStorage.getItem('user')) === null) {
       User = JSON.parse(sessionStorage.getItem('user'))
@@ -154,6 +155,7 @@ deleteCard()
       token = User.token
     }
 
+    //This uses card Drag Id to update the column location  
     axios.patch("/api/cards/Test", {
       columnLocation: local_Card_Name,
       index: destination.index,
@@ -170,8 +172,11 @@ deleteCard()
     const [removed] = copiedItems.splice(source.index, 1);
     copiedItems.splice(destination.index, 0, removed);
 
+    //Put the card column location on the session storage
     sessionStorage.setItem('cardARR', JSON.stringify(destination.index))
     const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
+    
+    //To get the user token on the local/session storage
     var User;
     var token;
     if (JSON.parse(localStorage.getItem('user')) === null) {
@@ -182,6 +187,7 @@ deleteCard()
       token = User.token
     }
 
+    //This uses card Drag Id to update the column location
     axios.patch("/api/cards/Test", {
       index: destination.index,
       id: result.draggableId  
@@ -201,49 +207,8 @@ deleteCard()
   }
 };
 
-function createNewCard(column, columns, setColumns) {
-  //alert(column.name);
-  console.log(JSON.stringify(column));
 
-  column.items.push({ id: uuidv4(), name: "New" });
-
-  setColumns({
-    ...columns,
-  });
-}
-
-function deleteCard(column, index, columns, setColumns) {
-  //alert(column.name)
-  // index position of card in column
-  //alert(index)
-  var User;
-  var token;
-  if (JSON.parse(localStorage.getItem('user')) === null) {
-    User = JSON.parse(sessionStorage.getItem('user'))
-    token = User.token
-  } else {
-    User = JSON.parse(localStorage.getItem('user')) 
-    token = User.token
-  }
-
-  const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
-  console.log(User2 + "L")
-  // axios.patch("/api/cards/", {
-  //   cardID: column.items[index].id
-  // }, {
-  //       headers: {
-  //         Authorization : `Bearer ${token}`
-  //       }
-  //     })
-
-  // column.items.splice(index, 1);
-
-  // setColumns({
-  //   ...columns,
-  // });
-}
 function Dashboard() {
-  //const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
   const [showAddCardModal, setshowAddCardModal] = useState(false);
@@ -252,7 +217,7 @@ function Dashboard() {
   const [activeCard, setActiveCard] = useState(); // the card the user selected to edit
  const {logout} = useLogout()
 
-
+//Needed to run the function that puts the cards in the right columns only once
   useEffect(() => {
     let ignore = false;
     
@@ -294,8 +259,6 @@ function Dashboard() {
     setshowEditCardModal(false);
   };
 
-  const { user } = useAuthContext();
-
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -303,10 +266,12 @@ function Dashboard() {
     }, 2000);
   }, []);
 
+  //Connect to the useLogout in the hooks, to logout the user
   const handleLogout = () => {
-    console.log("TEST")
     logout()
   } 
+  
+  //Used to got the information of the User from the local/session storage
   var User;
   var Id;
   var email;
@@ -320,20 +285,17 @@ function Dashboard() {
     email = User.email
   }
 
-  axios.post("/api/user/look", {
+  //Used to look up which ser this is and to get there Username
+  axios.post("/api/user/lookUp", {
     Uid: Id
   })
   .then((response) => {
     console.log(response)
     sessionStorage.setItem('username', JSON.stringify(response.data.Username))
-    // sessionStorage.setItem('userL', JSON.stringify(response.data.lastName))
-    // console.log(response.data.firstName)
-    // console.log(response.data.lastName)
   })
-  
-  const Username = JSON.parse(sessionStorage.getItem('username'))
+  var Username = JSON.parse(sessionStorage.getItem('username'))
 
-  
+
   return (
     <div className="dashboard">
       {loading && 
@@ -472,20 +434,6 @@ function Dashboard() {
                                           <p style={{ fontSize: "13px" }}>
                                             {item.role}
                                           </p>
-
-                                          {/* <button
-                                            onClick={() =>
-                                              deleteCard(
-                                                column,
-                                                index,
-                                                columns,
-                                                setColumns
-                                              )
-                                            }
-                                            style={{ float: "right" }}
-                                          >
-                                            Delete
-                                          </button> */}
                                         </div>
                                       );
                                     }}
@@ -506,7 +454,6 @@ function Dashboard() {
         </div>
       }
     </div>
-
   );
 }
 
