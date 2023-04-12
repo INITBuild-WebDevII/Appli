@@ -1,14 +1,14 @@
 import "./Carousel.css"
 import CarouselItem from "./CarouselItem"
 import { useState, useEffect } from "react"
-import user1 from "../assets/ellipse16.png"
+import User1 from "../assets/ellipse16.png"
 import User2 from "../assets/Ellipse17.png"
 import User3 from "../assets/Ellipse18.png"
 function Carousel(){
 
     const cardsCollection = [
         {
-            image: user1,
+            image: {User1},
             name:"Nicole",
             jobTitle:"Lead Designer",
             description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni iste expedita recusandae nihil itaque ipsa? Commodi sint libero fugit dolorem molestiae nostrum quo voluptate possimus, saepe et? Quaerat, impedit labore."

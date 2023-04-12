@@ -8,10 +8,10 @@ function CarouselItem(prop){
         <div className="carousel-cards">
             <div className={"card " + prop.class}>
             <div className={"card purple purple-" + prop.class}></div>
-            <div className="card black-carousel"></div>
+            <div className={"card black black-" + prop.class}></div>
                 <img src="" alt={prop.image} />
-                <h3>{prop.name}</h3>
-                <p>{prop.job}</p>
+                <h3 className="user-name">{prop.name}</h3>
+                <p className="user-job-title">{prop.job}</p>
                 <p>{prop.description}</p>
             </div>
         </div>

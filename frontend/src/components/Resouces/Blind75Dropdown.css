@@ -1,0 +1,13 @@
+.dropdown{
+    width: 100%;
+}
+.dropdown-menu{
+    background-color: rgb(130, 128, 128);
+    margin: 50px 0px 0px ;
+}
+.blind75-question{
+    padding: 15px;
+}
+.data-structure-type{
+    /* border-bottom: .6px solid rgb(160, 158, 158); */
+}
