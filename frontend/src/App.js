@@ -7,6 +7,7 @@ import About from "./pages/About/About";
 import Signup from "./pages/Signup/Signup";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Jobs from "./pages/Job/Jobs";
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/Dashboard" element={user ? <Dashboard/>: <Navigate to="/Login"/>} />
             <Route path="/Resources" element={<Resources />} />
             <Route path="/Login" element={!user ? <Login />: <Navigate to="/Dashboard"/>} />
+            <Route path="/Jobs" element={<Jobs />} />
             <Route path="/About" element={<About />} />
             <Route path="/Signup" element={!user ?  <Signup/>: <Navigate to="/Dashboard"/>} />
           </Routes>
