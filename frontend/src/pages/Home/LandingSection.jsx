@@ -14,8 +14,8 @@ function LandingSection() {
           Appli is the best platform for people to find tech jobs, manage your
           applications, and ace those interviews!
         </p>
-        <Link to="/Login" className="link">
-          <button className="sign-up-button">Sign Up</button>
+        <Link to="/Signup" className="link">
+          <button className="sign-up-button"><span>Create Account</span></button>
         </Link>
       </div>
     </div>

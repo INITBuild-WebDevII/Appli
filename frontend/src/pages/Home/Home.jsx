@@ -19,7 +19,7 @@ function Home() {
       </div>
 
       <div className="first-section">
-        <div className="section-content">
+        <div className="section-content first-section-content">
           <h1 className="section-title">Track Your applications</h1>
           <p>
             Our dashboard helps you keep track of all your technical job
@@ -30,7 +30,7 @@ function Home() {
             Get Started {`>`}
           </Link>
         </div>
-        <img className="dash-img" src={dashboardImg} alt="" />
+        <img className="dash-img floating" src={dashboardImg} alt="" />
       </div>
 
 
