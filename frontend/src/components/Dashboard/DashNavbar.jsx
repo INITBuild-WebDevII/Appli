@@ -6,9 +6,13 @@ import {HiOutlineSquares2X2} from "react-icons/hi2";
 import {AiOutlineFileText} from "react-icons/ai";
 import {BsChatLeft, BsPerson} from "react-icons/bs";
 import {CiSettings} from "react-icons/ci";
+import Calendar from "react-calendar";
+import { useState } from "react";
 
 
 function DashNavbar(){
+  const [date, setDate] = useState(new Date());
+
     return(
         <nav className="dashboard-navbar">
         <img src={logo} alt="logo" className="logo-img" />
@@ -74,6 +78,7 @@ function DashNavbar(){
 
         <div className="calendar">
           <p>Calendar</p>
+          <Calendar className= "calendar1" onChange={setDate} value={date} selectRange={true}/>
         </div>
       </nav>
     );
