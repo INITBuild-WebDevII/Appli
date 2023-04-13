@@ -1,4 +1,4 @@
-.main {
+.home-page {
   min-height: 100vh;
   height: 100%;
   background: url("../../assets/background.png");
@@ -8,7 +8,6 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-
 @keyframes fadeInAnimation {
   0% {
       opacity: 0;
@@ -17,21 +16,52 @@
       opacity: 1;
    }
 }
-
+.section {
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
+}
 .landing-section {
   position: relative;
   width: 100%;
   height: 990px;
   display: flex;
 }
-
 .first-section {
-  height: 100vh;
-}
-
-.section {
+  position: relative;
+  bottom: 120px;
   width: 100%;
-  height: 100vh;
-  padding: 100px;
+}
+.second-section{
   display: flex;
+  justify-content:space-around;
+  align-items: center;
+  width: 100%;
+}
+.third-section{
+  position: relative;
+  margin: 120px 0px 50px 0px;
+  padding: 15px;
+}
+.section-content{
+  text-align: center;
+  width: 40%;
+  font-size: 20px;
+  padding: 15px;
+  display: inline-block;
+}
+.section-title{
+  margin-bottom: 20px;
+}
+.dash-img{
+  width: 55%;
+  float: right;
+}
+.redired-link{
+  text-decoration: none;
+  color: rgb(0, 208, 255);
+  float: right;
+}
+.second-section-imgs{
+  height: 400px;
 }

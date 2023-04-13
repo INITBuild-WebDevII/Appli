@@ -3,9 +3,9 @@ import "./Navbar.css";
 import logo from "../assets/logo-letter.png";
 import letters from "../assets/appli-letters.png";
 
-function Navbar() {
+function Navbar(prop) {
   return (
-    <nav>
+    <nav className={prop.position}>
       <div className="logo">
         <a href="/">
           <img src={logo} alt="logo" id="logo" />
