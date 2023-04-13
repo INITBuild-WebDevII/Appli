@@ -47,10 +47,30 @@
   width: 200px;
   color: white;
   font-size: 17px;
+  transition: all 0.5s;
 }
 
-.sign-up-button:hover {
+.sign-up-button span {
   cursor: pointer;
-  background-color: white;
-  color: #ad54f2;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.sign-up-button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.sign-up-button:hover span {
+  padding-right: 25px;
+}
+
+.sign-up-button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
