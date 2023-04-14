@@ -7,7 +7,5 @@
 }
 .blind75-question{
     padding: 15px;
-}
-.data-structure-type{
-    /* border-bottom: .6px solid rgb(160, 158, 158); */
+    cursor: pointer;
 }
