@@ -63,19 +63,55 @@
 }
 
 .job-filter{
-    width: 15%;
+    width: 20%;
+    padding: 10px 25px;
 }
 .filter-title{
     margin: 15px 0px;
 }
 .open-jobs{
-    width: 50%;
+    width: 55%;
 }
-
 .company{
     display: flex;
-    height: 170px;
     background-color: #323443;
     margin-top: 10px;
     border-radius: 5px;
+}
+.company-logo{
+    height: 100px;
+    width: 20%;
+    margin: auto 20px;
+}
+.company-info{
+    margin: 20px;
+    width: 80%;
+    padding: 0;
+}
+.job-title{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 3px;
+}
+.job-flex{
+    display: flex;
+    justify-content:space-between;
+    margin: 9px 0px;
+}
+.job-pages{
+    margin: 40px;
+    text-align: center;
+}
+.nextPage{
+    margin: 5px;
+    height: 40px;
+    width: 40px;
+    font-weight: 700;
+    background-color: #323443;
+    border: none;
+    color: white;
+}
+.nextPage:active{
+    background-color: #2196f3;
+    color: black;
 }

@@ -40,7 +40,7 @@ const companies = [
         type : "Full time",
         salary : "50-55k",
         date : "29 min ago",
-        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
+        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod."
     },
     {
         logo: Notion,
@@ -50,7 +50,7 @@ const companies = [
         type : "Full time",
         salary : "30-32k",
         date : "1 day ago",
-        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
+        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod."
     },
     {
         logo: Spline,
@@ -60,7 +60,7 @@ const companies = [
         type : "Full time",
         salary : "50-52k",
         date : "1 day ago",
-        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
+        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod."
     },
     {
         logo: Raycast,
@@ -70,7 +70,7 @@ const companies = [
         type : "Full time",
         salary : "40-42k",
         date : "2 day ago",
-        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
+        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod."
     },
     {
         logo: Loom,
@@ -80,7 +80,7 @@ const companies = [
         type : "Full time",
         salary : "38-40k",
         date : "3 day ago",
-        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
+        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod."
     },
     {
         logo: Trainline,
@@ -90,7 +90,7 @@ const companies = [
         type : "Full time",
         salary : "38-40k",
         date : "4 day ago",
-        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
+        description : "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod."
     }
 ]
 
@@ -135,13 +135,34 @@ function Jobs(){
                     {companies.map((company) =>{
                         return(
                             <div className="company">
-                                <img className="" src={company.logo} alt="" />
-                                <div>
-                                    <p>Linear company</p>
+                                <img className="company-logo" src={company.logo} alt="" />
+                                <div className="company-info">
+                                    <p>{company.name}</p>
+                                    <p className="job-title" >{company.position}</p>
+                                    <div className="job-flex" >
+                                        <p>{company.location}</p>
+                                        <p>.</p>
+                                        <p>{company.type}</p>
+                                        <p>.</p>
+                                        <p>{company.salary}</p>
+                                        <p>.</p>
+                                        <p>{company.date}</p>
+                                    </div>
+                                    <p>{company.description}</p>
                                 </div>
                             </div>
                         )
                     })}
+
+                    <div className="job-pages">
+                        <button className="nextPage">{"<"}</button>
+                        <button className="nextPage"> 1 </button>
+                        <button className="nextPage"> 2 </button>
+                        <button className="nextPage"> 3 </button>
+                        <button className="nextPage"> 4 </button>
+                        <button className="nextPage"> 5 </button>
+                        <button className="nextPage">{">"}</button>
+                    </div>
                 </div>
 
             </div>
