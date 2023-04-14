@@ -1,6 +1,4 @@
 import "./BehavioralCards.css"
-import LearnMore from "./LearnMore"
-import { useState } from "react"
 
 function BehavioralCards(props){
 

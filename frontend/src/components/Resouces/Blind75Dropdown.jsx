@@ -14,7 +14,8 @@ function Blind75Dropdown({unit}){
             <div className="dropdown-menu">
                 {dropdown && unit.questions.map((question)=>{
                     return(
-                        <p className="blind75-question">{question}</p>
+                        <a className="leetcode-link" href={question.link}><p className="blind75-question">{question.name}</p></a>
+                        
                     )
                 })}
             </div>
