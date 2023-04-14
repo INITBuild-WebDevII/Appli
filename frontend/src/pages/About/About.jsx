@@ -7,27 +7,24 @@ import julianPic from "../../assets/team-photos/jul.png";
 import alexPic from "../../assets/team-photos/alex.png";
 import dannyPic from "../../assets/team-photos/danny.png";
 import camiPic from "../../assets/team-photos/cami.png";
-import aboutBanner from "../../assets/about-banner.png";
-import aboutBanner2 from "../../assets/about-banner-v2.png";
+import aboutBanner3 from "../../assets/background_About_Banner.png";
 
 function About() {
   return (
     <div className="about-page">
       <Navbar position="relative"/>
       <div className="about">
-        <div style={{ height: "120px" }}></div>
-
-        {/*<img className="about-banner" src={aboutBanner2} />*/}
-
-        {/*
+        <div style={{ height: "250px" }}></div>
         <div className="about-banner">
-          <img className="banner" src={aboutBanner} />
+          <img className="banner" src={aboutBanner3} />
           <h2 className="about-left">
-            We are a team of engineers at FIU who created this website to help
-            other engineers with getting internships and jobs!
+            We are a team of engineers at FIU <br />
+            who created this website <br />
+            to help other engineers <br />
+            with getting internships and jobs!
           </h2>
-          <h1>About Us</h1> 
-        </div>*/}
+          <h1 className="about-us">About Us</h1> 
+        </div>
 
         <div className="team-border">
           <h1 id="team-title">Meet Our Team!</h1>
