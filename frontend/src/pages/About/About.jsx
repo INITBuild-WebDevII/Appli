@@ -14,7 +14,7 @@ function About() {
     <div className="about-page">
       <Navbar position="relative"/>
       <div className="about">
-        <div style={{ height: "250px" }}></div>
+        {/*<div style={{ height: "250px" }}></div>
         <div className="about-banner">
           <img className="banner" src={aboutBanner3} />
           <h2 className="about-left">
@@ -24,7 +24,7 @@ function About() {
             with getting internships and jobs!
           </h2>
           <h1 className="about-us">About Us</h1> 
-        </div>
+  </div>*/}
 
         <div className="team-border">
           <h1 id="team-title">Meet Our Team!</h1>
