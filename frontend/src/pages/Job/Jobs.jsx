@@ -154,14 +154,14 @@ function Jobs(){
                         )
                     })}
 
-                    <div className="job-pages">
-                        <button className="nextPage">{"<"}</button>
-                        <button className="nextPage"> 1 </button>
-                        <button className="nextPage"> 2 </button>
-                        <button className="nextPage"> 3 </button>
-                        <button className="nextPage"> 4 </button>
-                        <button className="nextPage"> 5 </button>
-                        <button className="nextPage">{">"}</button>
+                    <div className="job-next-pages">
+                        <button className="next-page">{"<"}</button>
+                        <button className="next-page"> 1 </button>
+                        <button className="next-page"> 2 </button>
+                        <button className="next-page"> 3 </button>
+                        <button className="next-page"> 4 </button>
+                        <button className="next-page"> 5 </button>
+                        <button className="next-page">{">"}</button>
                     </div>
                 </div>
 
