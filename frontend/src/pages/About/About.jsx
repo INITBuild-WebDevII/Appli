@@ -18,8 +18,9 @@ function About() {
         <div className="about-banner">
           <img className="banner" src={aboutBanner3} />
           <h2 className="about-left">
-            We are a team of engineers at FIU who <br />
-            &emsp;&emsp; created this website to help other engineers <br />
+            We are a team of engineers at FIU <br />
+            who created this website <br />
+            to help other engineers <br />
             with getting internships and jobs!
           </h2>
           <h1 className="about-us">About Us</h1> 
