@@ -32,13 +32,14 @@ nav li {
 
 nav ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 32rem;
 }
 
 nav ul a {
   text-decoration: none;
   color: white;
+  transition: all 0.3s ease;
 }
 
 nav ul a:hover {

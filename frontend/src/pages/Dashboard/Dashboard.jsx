@@ -13,7 +13,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import AddCardModal from "../../components/Modals/AddCardModal";
 import EditCardModal from "../../components/Modals/EditCardModal";
 import {AiOutlineBell} from "react-icons/ai"
-import {MdExpandMore} from "react-icons/md"
+import {ImExit} from "react-icons/im"
 import { useLogout } from "../../hooks/useLogout";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
@@ -369,16 +369,18 @@ function Dashboard() {
             <h1 className="middle">My Applications</h1>
             <div className="heading-right-container"> 
               <div className="right" href="/Profile">
-                  <img className="profile-img" src="" alt="" />
-                  
+                <div className="initial-container">
+                    <p1 className="profile-initial"> {Username.charAt(0)} </p1>
+                </div>
                 <div className="userInfo" >
                   <p1 className="userN-headingright" >  {Username} </p1>
                   <br />
                   <p1 className="userE-headingright"> {email} </p1>
+                  </div>
                   <br/>
-                  <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>
-                  <div className="expand-headingright" onClick={handleLogout}> <MdExpandMore size={35}/></div>
-                </div>
+                  <p1 className="bell-headingright"><AiOutlineBell size={30}/></p1>             
+                  <Link to="/"><div className="door-headingright" onClick={handleLogout}> <ImExit size={32}/></div> </Link>
+                
                 <div/>
               </div>
             </div>

@@ -1,0 +1,29 @@
+.behavioral-cards{
+    background-color: #323443;
+    width: 45%;
+    height: 200px;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 20px;
+    text-align: left;
+    display: inline-table;
+}
+.card-btn {
+    background-color: #3C3C43;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    height: 25px;
+    width: 80px;
+    font-size: 10px;
+    float: right;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+.card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.card-body{
+    font-size: 18px;
+}

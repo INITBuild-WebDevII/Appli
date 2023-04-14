@@ -192,14 +192,17 @@
 .Login_button:hover{
     cursor: pointer;
     opacity: 90%;
-    font-weight: bolder;
-    font-size: 15px;
 }
 
 .continue{
     text-align: center;
     background: black;
     margin-bottom: 15px;
+}
+
+.github:hover, .linkedin:hover, .google-link:hover {
+    opacity: 60%;
+    transition: transform 0.3s ease;
 }
 
 .passwordDetails{
@@ -219,6 +222,7 @@
 .remember-container{
     background: black;
     margin-right: 60px;
+    left: 0;
 }
 
 .google{

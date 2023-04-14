@@ -29,8 +29,8 @@ function Resources() {
         <div className="resource-icons">
 
           <ResourceBtn click={()=>setMaterial(`resumeTemplate`)} title="Resume Template"  src={resumeicon} />
-          <ResourceBtn click={()=>setMaterial(`technicalQuestion`)} title="Technical Question"  src={technicalicon}/>
-          <ResourceBtn click={()=>setMaterial(`behavioralQuestion`)} title="Behavioral Question"  src={behavioralicon} />
+          <ResourceBtn click={()=>setMaterial(`technicalQuestion`)} title="Technical Questions"  src={technicalicon}/>
+          <ResourceBtn click={()=>setMaterial(`behavioralQuestion`)} title="Behavioral Questions"  src={behavioralicon} />
         
         </div>
         <div className="interview-resources">

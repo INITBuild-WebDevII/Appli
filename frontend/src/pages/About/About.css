@@ -1,0 +1,90 @@
+.about-page {
+  background-color: #272727;
+  color: white;
+  width: 100%;
+  min-width: 100vh;
+  height: 100%;
+  overflow: hidden;
+}
+
+.banner {
+  width: 100%;
+  position: relative;
+  filter: blur(3px);
+  z-index: 0;
+}
+
+.about-banner {
+  display:inline;
+  align-items: center;
+  text-align: center;
+  position: static; 
+}
+
+.about-left {
+  position: relative;
+  color: #D3D3D3;
+  line-height: 70px;
+  z-index: 2;
+  margin: 50px;
+  font-size: 35px;
+  bottom: 12em;
+  left: -15em;
+  font-weight: lighter;
+}
+.about-us{
+  position: relative;
+  z-index: 2;
+  left: 4.5em;
+  font-size: 90px;
+  bottom: 8.7em;
+}
+.team-border {
+  border: solid 1px rgb(160, 158, 158);
+  border-radius: 20px;
+  height: auto;
+  align-items: center;
+  margin: 50px 300px;
+  margin-bottom: 100px;
+}
+
+#team-title {
+  margin: 60px;
+  text-align: center;
+}
+
+#team-info {
+  margin: 65px;
+  padding: 30px;
+  text-align: center;
+}
+
+.team-list-container {
+  margin: 50px 0px;
+  padding: 20px;
+  display: flex;
+}
+
+.member-card {
+  background: #323443;
+  border-radius: 12px;
+  padding: 10px;
+  height: 75px;
+  margin: 10px;
+  transition: all 0.3s ease;
+  width: 370px;
+}
+
+.member-card:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.member-card a {
+  color: white;
+  text-decoration: none;
+}
+
+.team-photo {
+  float: right;
+}
