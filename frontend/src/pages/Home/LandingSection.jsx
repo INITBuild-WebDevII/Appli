@@ -9,7 +9,7 @@ function LandingSection() {
       <img className="rectangle" src={rectangleImg} />
       <img className="cards" src={landingPageCards} />
       <div className="intro">
-        <h1 id="title">Ace your Applications</h1>
+        <h1 id="title">Ace Your Applications</h1>
         <p id="description">
           Appli is the best platform for people to find tech jobs, manage your
           applications, and ace those interviews!

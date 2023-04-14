@@ -32,7 +32,7 @@ nav li {
 
 nav ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 32rem;
 }
 

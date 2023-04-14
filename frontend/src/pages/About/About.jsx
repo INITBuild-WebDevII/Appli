@@ -13,7 +13,7 @@ import aboutBanner2 from "../../assets/about-banner-v2.png";
 function About() {
   return (
     <div className="about-page">
-      <Navbar />
+      <Navbar position="relative"/>
       <div className="about">
         <div style={{ height: "120px" }}></div>
 
