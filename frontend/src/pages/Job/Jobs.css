@@ -64,14 +64,41 @@
 
 .job-filter{
     width: 20%;
-    padding: 10px 25px;
+    padding: 7px 25px;
+}
+.job-filter-title{
+    font-size: 25px;
+}
+.filter-section{
+    margin-left: 10px;
 }
 .filter-title{
-    margin: 15px 0px;
+    font-size: 20px;
+    margin: 10px 0px;
 }
+.filter-checkbox{
+    padding: 4px;
+    margin-left: 10px;
+}
+
 .open-jobs{
     width: 55%;
 }
+.open-jobs-title{
+    display: flex;
+    justify-content: space-between
+}
+.filter-by{
+    background-color: #323443;
+    border: solid .1px whitesmoke;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    height: 40px;
+    width: 30%;
+}
+
 .company{
     display: flex;
     background-color: #323443;
@@ -114,4 +141,46 @@
 .next-page:active{
     background-color: #2196f3;
     color: black;
+}
+
+/*  */
+.subcribe{
+    width: 18%;
+    margin: 40px 30px;
+}
+.subcribe-box{
+    background-color: #323443;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 15px;
+}
+.subcribe-title{
+    font-weight: 900;
+    margin-bottom: 3%;
+}
+.subcribe-boby{
+    color: rgb(220, 217, 217);
+    font-size: 12px;
+}
+.get-email{
+    background-color: transparent;
+    border: solid .5px rgb(0, 0, 0);
+    height: 25px;
+    padding-left: 15px;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+.subcribe-btn{
+    width: 80%;
+    height: 30px;
+    margin: 4% 8%;
+    background-color: #2196f3;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: 900;
+}
+.subcribe-btn:active{
+    background-color: white;
+    color: #2196f3;
 }

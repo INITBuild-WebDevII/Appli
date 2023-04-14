@@ -115,23 +115,30 @@ function Jobs(){
 
             <div className="find-job-section">
                 <div className="job-filter">
-                    <h3>Filters</h3>
+                    <h3 className="job-filter-title">Filters</h3>
                     {searchFilter.map( (search) =>{
                         return(
-                            <ul>
+                            <div className="filter-section">
                                 <p className="filter-title">{search.title}</p>
-                                <li>{search.filters.map( filter =>{
-                                    return(
-                                        <li>{filter}</li>
-                                    )
-                                })}</li>
-                            </ul>
-                        )
+                            {search.filters.map((filter) =>{
+                                return(
+                                    <div className="filter-checkbox">
+                                        <input type="checkbox" name="" id={filter} />
+                                        <label htmlFor={filter}>{" " + filter}</label>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                            )    
                     })}        
                 </div>
 
                 <div className="open-jobs">
-                    <h2>3177 Jobs</h2>
+                    <div className="open-jobs-title">
+                        <h2>3177 Jobs</h2>
+                        <input className="filter-by" type="text" value="Filter By" placeholder="Filter By" />
+                    </div>
+                    
                     {companies.map((company) =>{
                         return(
                             <div className="company">
@@ -164,7 +171,19 @@ function Jobs(){
                         <button className="next-page">{">"}</button>
                     </div>
                 </div>
-
+                <div className="subcribe">
+                    <div className="subcribe-box">
+                        <h3 className="subcribe-title">Email me for jobs</h3>
+                        <p className="subcribe-boby">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, harum? Quae cupiditate ipsum quaerat quis tempore laboriosam?</p>
+                        <input className="get-email" type="email" placeholder="email@gmail.com" />
+                        <button className="subcribe-btn">Subcribe</button>
+                    </div>
+                    <div  className="subcribe-box">
+                        <h3 className="subcribe-title">Get noticed faster</h3>
+                        <p className="subcribe-boby">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, harum?</p>
+                        <button className="subcribe-btn">Upload our resume</button>
+                    </div>
+                </div>
             </div>
             
             <Footer />
