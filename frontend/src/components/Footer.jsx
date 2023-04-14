@@ -9,7 +9,7 @@ import {IoShareSocialOutline} from "react-icons/io5";
 function Footer() {
     return (
         <div className="footer">
-            <hr className="footer-div" />
+            <hr style={{width: "100%"}} className="footer-div" />
             <div className="contact-info">
                 <div className="logo footer-logo">
                     <img src={logo} alt="logo" className="logo-img" />
@@ -25,12 +25,15 @@ function Footer() {
                 </div>
             </div>
             <hr className="footer-div" />
-                <div className="company-info">
+                <div className="company-info" style={{display: "flex", justifyContent: "space-between"}}>
+                    <div>
                     <p className="contact"> ABOUT US </p>
                     <p className="contact"> CONTACT US </p>
                     <p className="contact"> HELP </p>
                     <p className="contact"> PRIVACY POLICY </p>
                     <p className="contact"> DISCLAIMER </p>
+                    </div>
+                    <p>Copyright &copy; 2023 • Appli Inc.</p>
                 </div>
         </div>
     );

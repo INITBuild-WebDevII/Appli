@@ -7,7 +7,7 @@ import Footer from "../../components/Footer"
 import dashboardImg from "../../assets/Dashboard.png"
 import resourceGuy from "../../assets/ResourcesDesign.png"
 import jobGuy from "../../assets/fucking-nerd.png"
-
+import footerBackground from "../../assets/footer-background.png"
 
 function Home() {
   return (
@@ -20,7 +20,7 @@ function Home() {
 
       <div className="first-section">
         <div className="section-content first-section-content">
-          <h1 className="section-title">Track Your applications</h1>
+          <h1 className="section-title">Track Your Applications</h1>
           <p>
             Our dashboard helps you keep track of all your technical job
             applications in one place. Stay organized and on top of your job
@@ -39,7 +39,7 @@ function Home() {
           <img className="second-section-imgs" src={jobGuy} alt="" />
           <h1 className="section-title">Find Jobs</h1>
           <p>Our job search tool simplifies the process of finding new opportunities.
-             Allowing users to easily filter though job postings and save listings for future reference</p>
+             Allowing users to easily filter through job postings and save listings for future reference.</p>
           <Link to="/Jobs" className="link redired-link">
             View Jobs {`>`}
           </Link>
@@ -48,8 +48,8 @@ function Home() {
         <div className="section-content">
           <img className="second-section-imgs" src={resourceGuy} alt="" srcset="" />
           <h1 className="section-title">Resources</h1>
-          <p>Get the edge you need to ace your next technical interview with our resources,
-             including LeetCode questions, resume templates, and interview tips</p>
+          <p>Get the edge you need to ace your next technical interview with our free resources,
+             including LeetCode questions, resume templates, and interview tips.</p>
           <Link to="/Resources" className="link redired-link">
               View Resources {`>`}
           </Link>
@@ -61,7 +61,9 @@ function Home() {
         <CarouselCard />
       </div>
 
+      <div style={{backgroundImage: `url(${footerBackground})`}}>
       <Footer />
+      </div>
     </div>
   );
 }
