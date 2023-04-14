@@ -1,0 +1,35 @@
+.learn-more-popup{
+    background-color: #323443;
+    color: white;
+    width: 900px;
+    height: 500px;
+    position: absolute;
+    bottom: 160px;
+    right: 250px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+.popup-btn{
+    height: 35px;
+    width: 100px;
+    margin-bottom: 10px;
+    position: relative;
+    border: none;
+    top: 270px;
+    border-radius: 15px;
+    background-color: #2196f3;
+    color: white;
+    font-size: 20px;
+    font-weight:900;
+    padding: 0px ;
+}
+.popup-title{
+    text-align: center;
+    font-size: 30px;
+    margin: 3% auto 1% auto;
+}
+.popup-body{
+    text-align: left;
+    padding: 3%;
+}

@@ -11,26 +11,45 @@
 .footer-logo{
     width: 50%;
 }
+
 .footer-info{
     width: 50%;
 }
+
 .footer-resources{
     padding: 8px 0px
 }
+
 .contact{
     display: inline;
     margin-right: 70px;
 }
+
 .footer-div{
     width: 85%;
     border: solid 1px rgb(148, 147, 147);
     margin: 20px auto 10px auto;
 }
+
 .company-info{
     margin: 0px 110px;
     margin-top: 2%;
     padding-bottom: 30px;
 }
+
+
+.icons-share{
+    width: 50%;
+    position: relative;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    top: -19px;
+    right: -6em;
+
+}
+
+
 
 .share-icon{
     position: relative;
