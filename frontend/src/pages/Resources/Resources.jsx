@@ -6,10 +6,10 @@ import ResumeTemplate from "../../components/Resouces/ResumeTemplate";
 import TechnicalQuestion from "../../components/Resouces/TechnicalQuestion";
 import BehavioralQuestion from "../../components/Resouces/Behavioral/BehavioralQuestion"
 import "./Resources.css";
-import strong from "../../assets/strong.png"
-import resumeicon from "../../assets/resumeicon.png"
-import technicalicon from "../../assets/technicalicon.png"
-import behavioralicon from "../../assets/behavioralicon.png"
+import strong from "../../assets/resources/strong.png"
+import resumeicon from "../../assets/resources/resumeicon.png"
+import technicalicon from "../../assets/resources/technicalicon.png"
+import behavioralicon from "../../assets/resources/behavioralicon.png"
 import { useState } from "react";
 
 function Resources() {
