@@ -1,13 +1,12 @@
 import "./About.css";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import miguelPic from "../../assets/team-photos/miguel.png";
-import nicolePic from "../../assets/team-photos/nic.png";
-import julianPic from "../../assets/team-photos/jul.png";
-import alexPic from "../../assets/team-photos/alex.png";
-import dannyPic from "../../assets/team-photos/danny.png";
-import camiPic from "../../assets/team-photos/cami.png";
-import aboutBanner3 from "../../assets/background_About_Banner.png";
+import miguelPic from "../../assets/about/miguel.png";
+import nicolePic from "../../assets/about/nic.png";
+import julianPic from "../../assets/about/jul.png";
+import alexPic from "../../assets/about/alex.png";
+import dannyPic from "../../assets/about/danny.png";
+import camiPic from "../../assets/about/cami.png";
 
 function About() {
   return (

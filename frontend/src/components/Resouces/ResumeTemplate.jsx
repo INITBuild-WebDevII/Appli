@@ -1,7 +1,7 @@
 import "./ResumeTemplate.css"
-import ResumeExample from "../../assets/resumeExample.png"
-import ResumePds from "../../assets/resumeExample.pdf"
-import ResumeDocx from "../../assets/resumeExample.docx"
+import ResumeExample from "../../assets/resources/resumeExample.png"
+import ResumePds from "../../assets/resources/resumeExample.pdf"
+import ResumeDocx from "../../assets/resources/resumeExample.docx"
 
 function ResumeTemplate(){
     return(

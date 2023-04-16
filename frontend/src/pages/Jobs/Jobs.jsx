@@ -1,13 +1,13 @@
 import "./Jobs.css"
-import Linear from "../../assets/Companies/LinearLogo.png"
-import Notion from "../../assets/Companies/NotionLogo.png"
-import Spline from "../../assets/Companies/SplineLogo.png"
-import Raycast from "../../assets/Companies/RaycastLogo.png"
-import Loom from "../../assets/Companies/LoomLogo.png"
-import Trainline from "../../assets/Companies/TrainlineLogo.png"
+import Linear from "../../assets/jobs/Companies/LinearLogo.png"
+import Notion from "../../assets/jobs/Companies/NotionLogo.png"
+import Spline from "../../assets/jobs/Companies/SplineLogo.png"
+import Raycast from "../../assets/jobs/Companies/RaycastLogo.png"
+import Loom from "../../assets/jobs/Companies/LoomLogo.png"
+import Trainline from "../../assets/jobs/Companies/TrainlineLogo.png"
 import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
-import JobGuy from "../../assets/JobGuy.png"
+import JobGuy from "../../assets/jobs/JobGuy.png"
 
 const searchFilter = [
     {
