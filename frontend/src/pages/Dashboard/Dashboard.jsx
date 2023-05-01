@@ -16,7 +16,6 @@ import {AiOutlineBell} from "react-icons/ai"
 import {ImExit} from "react-icons/im"
 import { useLogout } from "../../hooks/useLogout";
 import axios from "axios";
-import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 let itemsFromBackend1 =[]
@@ -228,19 +227,6 @@ function deleteCard(column, index, columns, setColumns) {
 
   const User2 = JSON.parse(sessionStorage.getItem('cardARR'))
   console.log(User2 + "L")
-  // axios.patch("/api/cards/", {
-  //   cardID: column.items[index].id
-  // }, {
-  //       headers: {
-  //         Authorization : `Bearer ${token}`
-  //       }
-  //     })
-
-  // column.items.splice(index, 1);
-
-  // setColumns({
-  //   ...columns,
-  // });
 }
 function Dashboard() {
   //const {logout} = useLogout()

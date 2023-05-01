@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { React, useState } from "react";
 import "./Login.css";
-import axios from "axios";
 import { useLogin } from "../../hooks/useLogin";
 import { FiMail } from "react-icons/fi";
 import { AiOutlineLock, AiOutlineEye } from "react-icons/ai";
@@ -24,18 +23,6 @@ function LogIn() {
     showPassword: false,
   });
   const [remember, setRemember] = useState(false);
-
-  const handleClickShowPassword = () => {
-    setPassword({ ...password, showPassword: !password.showPassword });
-  };
-
-  const handleMouseDowbPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handlePasswordChange = (prop) => (event) => {
-    setPassword({ ...password, [prop]: event.target.value });
-  };
 
   const { login, error, isLoading } = useLogin();
 

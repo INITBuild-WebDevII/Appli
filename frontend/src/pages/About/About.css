@@ -63,6 +63,7 @@
   margin: 50px 0px;
   padding: 20px;
   display: flex;
+  justify-content: center;
 }
 
 .member-card {
