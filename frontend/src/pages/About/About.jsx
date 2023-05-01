@@ -11,20 +11,8 @@ import camiPic from "../../assets/about/cami.png";
 function About() {
   return (
     <div className="about-page">
-      <Navbar position="relative"/>
+      <Navbar position="relative" />
       <div className="about">
-        {/*<div style={{ height: "250px" }}></div>
-        <div className="about-banner">
-          <img className="banner" src={aboutBanner3} />
-          <h2 className="about-left">
-            We are a team of engineers at FIU <br />
-            who created this website <br />
-            to help other engineers <br />
-            with getting internships and jobs!
-          </h2>
-          <h1 className="about-us">About Us</h1> 
-  </div>*/}
-
         <div className="team-border">
           <h1 id="team-title">Meet Our Team!</h1>
           <h1 id="team-info">
