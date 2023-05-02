@@ -40,10 +40,11 @@ function Carousel(){
 
     return(
         <div className="carousel">
-            <h1>What Our Clients Say About Us</h1> 
+            <div style={{display: "flex", justifyContent: "center"}}>
             <button onClick={()=>{setActiveIndex(updateIndex(activeIndex - 1))}} className="carousel-btn left-btn click"> {`<`} </button>
+            <h1>What Our Clients Say About Us</h1> 
             <button onClick={()=>{setActiveIndex(updateIndex(activeIndex + 1))}} className="carousel-btn right-btn click"> {`>`} </button>
-
+            </div>
             {cardsCollection.map((card, index)=>{
                 let newName = ""
                 if(index === activeIndex){

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../assets/logo-letter.png";
 import letters from "../assets/appli-letters.png";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function Navbar(prop) {
   return (
@@ -38,6 +39,9 @@ function Navbar(prop) {
           </Link>
         </li>
       </ul>
+      <button class="burger-menu" id="burger-menu">
+        <GiHamburgerMenu />
+      </button>
     </nav>
   );
 }
