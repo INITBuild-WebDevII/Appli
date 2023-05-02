@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { React, useState } from "react";
 import "./Login.css";
-import axios from "axios";
 import { useLogin } from "../../hooks/useLogin";
 import { FiMail } from "react-icons/fi";
 import { AiOutlineLock, AiOutlineEye } from "react-icons/ai";
@@ -25,26 +24,14 @@ function LogIn() {
   });
   const [remember, setRemember] = useState(false);
 
-  const handleClickShowPassword = () => {
-    setPassword({ ...password, showPassword: !password.showPassword });
-  };
-
-  const handleMouseDowbPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handlePasswordChange = (prop) => (event) => {
-    setPassword({ ...password, [prop]: event.target.value });
-  };
-
   const { login, error, isLoading } = useLogin();
 
   const Handlechange = async (event) => {
-    if (remember === true) {
-      event.preventDefault();
+    event.preventDefault();
+    
+    if (remember === true) {   
       await login(email, password, true);
     } else {
-      event.preventDefault();
       await login(email, password, false);
     }
   };
@@ -71,8 +58,8 @@ function LogIn() {
             />
             <label for="L-email" className="L-label-email">
               <span class="L-content-email">
-                {" "}
-                <FiMail /> Email
+                <FiMail />
+                <div style={{ marginLeft: "5px" }}>Email</div>
               </span>
             </label>
           </div>
@@ -97,7 +84,8 @@ function LogIn() {
               className="L-label-password"
             >
               <span class="L-content-password">
-                <AiOutlineLock /> Password{" "}
+                <AiOutlineLock />
+                <div style={{ marginLeft: "5px" }}>Password</div>
               </span>
             </label>
           </div>
@@ -123,7 +111,7 @@ function LogIn() {
             disable={isLoading}
             className="Login_button"
             type="submit"
-            value="Log In"
+            value="LOGIN"
           />
           {error && <div className="error"> {error}</div>}
           <div className="loginwith">
@@ -165,7 +153,7 @@ function LogIn() {
             Don't have an account? &nbsp;{" "}
             <Link to="/Signup" className="link_LI">
               {" "}
-              Sign Up.
+              Sign Up
             </Link>
           </p>
         </div>

@@ -12,6 +12,7 @@
   left: 0;
   color: black;
   flex-direction: column;
+  
 }
 
 .modal-form {
@@ -44,6 +45,7 @@
   background-color: transparent;
   color: white;
   color-scheme: dark;
+  font-family: "Inria Sans";
 }
 
 #notes {

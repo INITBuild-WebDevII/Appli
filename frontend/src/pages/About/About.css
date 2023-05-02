@@ -5,40 +5,9 @@
   min-width: 100vh;
   height: 100%;
   overflow: hidden;
+  font-family: "Inria Sans";
 }
 
-.banner {
-  width: 100%;
-  position: relative;
-  filter: blur(3px);
-  z-index: 0;
-}
-
-.about-banner {
-  display:inline;
-  align-items: center;
-  text-align: center;
-  position: static; 
-}
-
-.about-left {
-  position: relative;
-  color: #D3D3D3;
-  line-height: 70px;
-  z-index: 2;
-  margin: 50px;
-  font-size: 35px;
-  bottom: 12em;
-  left: -15em;
-  font-weight: lighter;
-}
-.about-us{
-  position: relative;
-  z-index: 2;
-  left: 4.5em;
-  font-size: 90px;
-  bottom: 8.7em;
-}
 .team-border {
   border: solid 1px rgb(160, 158, 158);
   border-radius: 20px;
@@ -63,6 +32,7 @@
   margin: 50px 0px;
   padding: 20px;
   display: flex;
+  justify-content: center;
 }
 
 .member-card {

@@ -8,6 +8,7 @@ nav {
   justify-content: space-between;
   padding: 1.5rem 3.5rem;
   z-index: 1;
+  font-family: 'IBM Plex Sans';
 }
 
 .logo {
