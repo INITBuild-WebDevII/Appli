@@ -8,7 +8,7 @@ nav {
   justify-content: space-between;
   padding: 1.5rem 3.5rem;
   z-index: 1;
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
 }
 
 .logo {
@@ -46,6 +46,48 @@ nav ul a {
 nav ul a:hover {
   opacity: 0.5;
 }
-.relative{
+
+.relative {
   position: relative;
+}
+
+.burger-menu {
+  color: white;
+  font-size: 2rem;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  nav {
+    padding: 1.5rem 1rem;
+  }
+
+  nav ul {
+    position: fixed;
+    background-color: #1b1b1b;
+    border-radius: 11px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    top: 86px;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    transform: translateX(120%);
+    transition: transform 0.5s ease-in;
+  }
+
+  nav ul li {
+    margin: 8px;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  nav ul.show {
+    transform: translateX(0);
+  }
 }

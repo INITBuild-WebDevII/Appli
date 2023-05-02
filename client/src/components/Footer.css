@@ -55,3 +55,9 @@
     position: relative;
     top: 3px;
 }
+
+@media screen and (max-width: 720px) {
+    .company-info{
+        font-size: 15px;
+    }
+}
