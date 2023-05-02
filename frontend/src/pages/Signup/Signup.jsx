@@ -131,7 +131,7 @@ function Signup() {
           disable={isLoading}
           className="buttonSU"
           type="submit"
-          value="Sign Up"
+          value="SIGN UP"
         />
         {error && <div className="error"> {error}</div>}
 
@@ -141,10 +141,6 @@ function Signup() {
             Log in here!
           </Link>
         </p>
-
-        {/* <Link to="/" className="link">
-            To Home
-          </Link> */}
       </form>
     </body>
   );

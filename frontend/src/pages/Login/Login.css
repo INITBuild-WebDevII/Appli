@@ -1,256 +1,252 @@
-.body-login{
-    height: 100vh;
-    background: url("../../assets/background.png");
-    background-size:cover;
-    background-position:0px;
+.body-login {
+  height: 100vh;
+  background: url("../../assets/LoginBackground.png");
+  background-size: cover;
+  background-position: 0px;
+  font-family: "Inria Sans";
 }
 
-.Login-page{
-
-    background-color: black;
-    border-radius: 3%;
-    margin: 50px auto;
-    height: 86vh;
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    min-height: 30em;
-    min-width: 20em;
-    align-content: center;
+.Login-page {
+  background-color: black;
+  border-radius: 3%;
+  margin: 50px auto;
+  width: 30%;
+  height: 86vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  min-height: 30em;
+  min-width: 20em;
 }
 
-.Login-email{
-    background: black;
-    width: 100%;
-    height: 50px;
-    position: relative;
-    overflow: hidden;
+.Login-email {
+  background: black;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
 }
 
-
-.Login-email input{
-    width: 100%;
-    height: 100%;
-    color: whitesmoke;
-    padding-top: 20px;
-    border: none;
-    outline: none;
-    background: black;
+.Login-email input {
+  width: 100%;
+  height: 100%;
+  color: whitesmoke;
+  padding-top: 20px;
+  border: none;
+  outline: none;
+  background: black;
 }
 
-.Login-email label{
-    position: absolute;
-    bottom:0px;
-    left:0%;
-    width:100%;
-    height:100%;
-    pointer-events: none;
-    border-bottom: 1px solid white;
+.Login-email label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid white;
 }
 
-.Login-email label::after{
-    content: "";
-    position:absolute;
-    height:100%;
-    width: 100%;
-    left:0px;
-    bottom: -1px;
-    border-bottom: 3px solid #c12799;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+.Login-email label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  border-bottom: 3px solid #c12799;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
-.L-content-email{
-    background: black;
-    position:absolute;
-    bottom: 5px;
-    left: 0px;
-    transition: all 0.3s ease;
+.L-content-email {
+  background: black;
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
 /* works when input is an email, c=modify to when input is text and then verify email if email */
-.Login-email input:focus+ .L-label-email .L-content-email, 
-.Login-email input:valid+ .L-label-email .L-content-email{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.Login-email input:focus + .L-label-email .L-content-email,
+.Login-email input:valid + .L-label-email .L-content-email {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
 
 .Login-email input:focus + .L-label-email::after,
-.Login-email input:valid + .L-label-email::after{
-    transform: translateX(0%);
+.Login-email input:valid + .L-label-email::after {
+  transform: translateX(0%);
 }
 
-
-
-.Login-password{
-    width: 100%;
-    height: 70px;
-    position: relative;
-    overflow: hidden;
+.Login-password {
+  width: 100%;
+  height: 70px;
+  position: relative;
+  overflow: hidden;
 }
-
 
 .eye-password {
-    position: absolute;
-    top: 69%;
-    right: 6%;
-  }
-  .eye-password:hover {
-    color: #c12799;
-    cursor:pointer;
-  }
-  
-
-.Login-password input{
-    width: 259px;
-    height: 100%;
-    color: white;
-    padding-top: 44px;
-    border: none;
-    outline: none;
-    background: black;
+  position: absolute;
+  top: 69%;
+  right: 6%;
+}
+.eye-password:hover {
+  color: #c12799;
+  cursor: pointer;
 }
 
-.Login-password label{
-    color: white;
-    position: absolute;
-    bottom:0px;
-    left:0%;
-    width:100%;
-    height:100%;
-    pointer-events: none;
-    border-bottom: 1px solid white;
-
+.Login-password input {
+  width: 259px;
+  height: 100%;
+  color: white;
+  padding-top: 44px;
+  border: none;
+  outline: none;
+  background: black;
 }
 
-.Login-password label::after{
-    content: "";
-    position:absolute;
-    color: white;
-    height:100%;
-    width: 100%;
-    left:0px;
-    bottom: -1px;
-    border-bottom: 3px solid #c12799;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+.Login-password label {
+  color: white;
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid white;
 }
 
-.L-content-password{
-    background: black;
-    position:absolute;
-    bottom: 5px;
-    left: 0px;
-    transition: all 0.3s ease;
+.Login-password label::after {
+  content: "";
+  position: absolute;
+  color: white;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  border-bottom: 3px solid #c12799;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.L-content-password {
+  background: black;
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
 /* works when input is an email, c=modify to when input is text and then verify email if email */
-.Login-password .L-password:focus+ .L-label-password .L-content-password, 
-.Login-password .L-password:valid+ .L-label-password .L-content-password{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.Login-password .L-password:focus + .L-label-password .L-content-password,
+.Login-password .L-password:valid + .L-label-password .L-content-password {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
 
 .Login-password .L-password:focus + .L-label-password::after,
-.Login-password .L-password:valid + .L-label-password::after{
-    transform: translateX(0%);
+.Login-password .L-password:valid + .L-label-password::after {
+  transform: translateX(0%);
 }
 
-.h1_Login{
-    background: black;
-    color: white;
-    font-weight: bolder;
-    font-size: 5 0px;
-    text-align: center;
-    margin-top: 15px;
+.h1_Login {
+  background: black;
+  color: white;
+  font-weight: bolder;
+  font-size: 5 0px;
+  text-align: center;
 }
 
-
-.p_Login{
-    background: black;
-    margin-top: 40px;
-    text-align: center;
-    color:white;
-    font-weight: bolder;
+.p_Login {
+  background: black;
+  margin-top: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bolder;
 }
 
-.Login_button{
-    width: 240px;
-    height: 30px;
-    background-color: #c12799;
-    border: 1px solid black;
-    border-radius: 10px;
-    color:white; 
-
+.Login_button {
+  width: 240px;
+  height: 30px;
+  background-color: #c12799;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
 }
 
-.Login_button:hover{
-    cursor: pointer;
-    opacity: 90%;
+.Login_button:hover {
+  cursor: pointer;
+  opacity: 90%;
 }
 
-.continue{
-    text-align: center;
-    background: black;
-    margin-bottom: 15px;
+.continue {
+  text-align: center;
+  background: black;
+  margin-bottom: 15px;
 }
 
-.github:hover, .linkedin:hover, .google-link:hover {
-    opacity: 60%;
-    transition: transform 0.3s ease;
+.github:hover,
+.linkedin:hover,
+.google-link:hover {
+  opacity: 60%;
+  transition: transform 0.3s ease;
 }
 
-.passwordDetails{
-    margin-top: -20px;
-    background: black;
-    margin-left: -10px;
-    width: auto;
-    font-size: 13px;
-    display:inline;
+.passwordDetails {
+  display: flex;
+  background: black;
+  font-size: 13px;
+  justify-content: flex-end;
+  font-family: "Poppins";
 }
 
-.remember{
-    height: 10px;
-    width: 10px;
+.remember {
+  height: 10px;
+  width: 10px;
 }
 
-.remember-container{
-    background: black;
-    margin-right: 60px;
-    left: 0;
+.remember-container {
+  background: black;
+  margin-right: 60px;
+  left: 0;
 }
 
-.google{
-    height: 50px;
-    width: 50px;
-    margin-left: 40px;
+.google {
+  height: 50px;
+  width: 50px;
+  margin-left: 40px;
 }
 
-.linkedin{
-    margin-left: 40px;
-
+.linkedin {
+  margin-left: 40px;
 }
 
-.forgot{
-    opacity: 50%;
-    background: black;
-    text-decoration: none;
-    color: white;
+.forgot {
+  opacity: 50%;
+  background: black;
+  text-decoration: none;
+  color: white;
 }
-.github-link,.linkedin-link,  .google-link::after{
-    color: black;
+.github-link,
+.linkedin-link,
+.google-link::after {
+  color: black;
 }
 
-.link_LI{
-    text-decoration: none;
-    background: black;
-    color:#c12799;
-    text-align: center;
-    justify-self: center;
-    font-weight: normal;
+.link_LI {
+  text-decoration: none;
+  background: black;
+  color: #c12799;
+  text-align: center;
+  justify-self: center;
+  font-weight: normal;
 }

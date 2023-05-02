@@ -1,6 +1,7 @@
 .resources{
     background-color: #272727;
     min-height: 100vh;
+    font-family: "Inria Sans";
 }
 .resource-content {
     padding-top: 100px;

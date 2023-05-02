@@ -7,6 +7,7 @@
   animation: fadeInAnimation ease-in-out 0.4s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  font-family: "Inria Sans";
 }
 
 @keyframes fadeInAnimation {
@@ -57,6 +58,7 @@
   margin: 50px 0px;
   font-size: 24px;
   color: #d3d3d3;
+  font-family: 'IBM Plex Sans';
 }
 
 .sign-up-button {
@@ -69,6 +71,7 @@
   font-size: 17px;
   transition: all 0.5s;
   cursor: pointer;
+  font-family: 'IBM Plex Sans';
 }
 
 .sign-up-button span {

@@ -5,6 +5,7 @@
   min-width: 100vh;
   height: 100%;
   overflow: hidden;
+  font-family: "Inria Sans";
 }
 
 .team-border {

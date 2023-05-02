@@ -1,180 +1,195 @@
-.bodyS{
-    height: 100vh;
-    background: url("../../assets/background.png");
-    background-size:cover;
-    background-position:0px;
+.bodyS {
+  height: 100vh;
+  background: url("../../assets/LoginBackground.png");
+  background-size: cover;
+  background-position: 0px;
+  font-family: "Inria Sans";
 }
 
-
-.Signup-page{
-
-    background-color: black;
-    color: white;
-    border-radius: 3%;
-    margin: 50px auto;
-    height: 86vh;
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-
+.Signup-page {
+  background-color: black;
+  color: white;
+  border-radius: 3%;
+  margin: 50px auto;
+  height: 86vh;
+  width: 35%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  min-height: 30em;
+  min-width: 20em;
 }
 
-.Signup-name, .Signup-last, .Signup-email, .Signup-password, .confirm-password{
-    width: 50%;
-    height: 50px;
-    position: relative;
-    overflow: hidden;
+.Signup-name,
+.Signup-last,
+.Signup-email,
+.Signup-password,
+.confirm-password {
+  width: 50%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
 }
 
-
-.Signup-name input, .Signup-last input, .Signup-email input, .Signup-password input, .confirm-password input{
-    width: 100%;
-    height: 100%;
-    color: white;
-    padding-top: 20px;
-    border: none;
-    outline: none;
-    background: transparent;
+.Signup-name input,
+.Signup-last input,
+.Signup-email input,
+.Signup-password input,
+.confirm-password input {
+  width: 100%;
+  height: 100%;
+  color: white;
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
-.Signup-name label, .Signup-last label, .Signup-email label, .Signup-password label, .confirm-password label{
-    position: absolute;
-    bottom:0px;
-    left:0%;
-    width:100%;
-    height:100%;
-    pointer-events: none;
-    border-bottom: 1px solid white;
-
+.Signup-name label,
+.Signup-last label,
+.Signup-email label,
+.Signup-password label,
+.confirm-password label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid white;
 }
 
-.Signup-name label::after, .Signup-last label::after, .Signup-email label::after, .Signup-password label::after, .confirm-password label::after{
-    content: "";
-    position:absolute;
-    height:100%;
-    width: 100%;
-    left:0px;
-    bottom: -1px;
-    border-bottom: 3px solid #c12799;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
+.Signup-name label::after,
+.Signup-last label::after,
+.Signup-email label::after,
+.Signup-password label::after,
+.confirm-password label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  border-bottom: 3px solid #c12799;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
-.S-content-name, .S-content-last, .S-content-email, .S-content-password , .S-re-content-password{
-    position:absolute;
-    bottom: 5px;
-    left: 0px;
-    transition: all 0.3s ease;
+.S-content-name,
+.S-content-last,
+.S-content-email,
+.S-content-password,
+.S-re-content-password {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
 }
 
 /* Animation of Name*/
-.Signup-name input:focus+ .S-label-name .S-content-name, 
-.Signup-name input:valid+ .S-label-name .S-content-name{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.Signup-name input:focus + .S-label-name .S-content-name,
+.Signup-name input:valid + .S-label-name .S-content-name {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
 
 .Signup-name input:focus + .S-label-name::after,
-.Signup-name input:valid + .S-label-name::after{
-    transform: translateX(0%);
+.Signup-name input:valid + .S-label-name::after {
+  transform: translateX(0%);
 }
 
 /* Animation of Last Name*/
-.Signup-last input:focus+ .S-label-last .S-content-last, 
-.Signup-last input:valid+ .S-label-last .S-content-last{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.Signup-last input:focus + .S-label-last .S-content-last,
+.Signup-last input:valid + .S-label-last .S-content-last {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
 .Signup-name input:focus + .S-label-name::after,
-.Signup-name input:valid + .S-label-name::after{
-    transform: translateX(0%);
+.Signup-name input:valid + .S-label-name::after {
+  transform: translateX(0%);
 }
 
 /* Animation of Email */
-
-.Signup-email input:focus+ .S-label-email .S-content-email, 
-.Signup-email input:valid+ .S-label-email .S-content-email{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.Signup-email input:focus + .S-label-email .S-content-email,
+.Signup-email input:valid + .S-label-email .S-content-email {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
 .Signup-email input:focus + .S-label-email::after,
-.Signup-email input:valid + .S-label-email::after{
-    transform: translateX(0%);
+.Signup-email input:valid + .S-label-email::after {
+  transform: translateX(0%);
 }
 
 /* Animation of Password*/
 
-.Signup-password input:focus+ .S-label-password .S-content-password, 
-.Signup-password input:valid+ .S-label-password .S-content-password{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.Signup-password input:focus + .S-label-password .S-content-password,
+.Signup-password input:valid + .S-label-password .S-content-password {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
+
 .Signup-password input:focus + .S-label-password::after,
-.Signup-password input:valid + .S-label-password::after{
-    transform: translateX(0%);
+.Signup-password input:valid + .S-label-password::after {
+  transform: translateX(0%);
 }
 
-
-.confirm-password input:focus+ .S-label-password2 .S-re-content-password, 
-.confirm-password input:valid+ .S-label-password2 .S-re-content-password{
-    transform: translateY(-150%);
-    font-size: 15px;
-    color: #c12799;
+.confirm-password input:focus + .S-label-password2 .S-re-content-password,
+.confirm-password input:valid + .S-label-password2 .S-re-content-password {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #c12799;
 }
 
 .confirm-password input:focus + .S-label-password2::after,
-.confirm-password input:valid + .S-label-password2::after{
-    transform: translateX(0%);
+.confirm-password input:valid + .S-label-password2::after {
+  transform: translateX(0%);
 }
-
 
 .eye-password {
-    position: absolute;
-    top: 54%;
-    right: 6%;
-  }
-  .eye-password:hover {
-    color: #c12799;
-    cursor:pointer;
-  }
-  
-  .eye-password2 {
-    position: absolute;
-    top: 54%;
-    right: 6%;
-  }
-  .eye-password2:hover {
-    color: #c12799;
-    cursor:pointer;
-  }
-
-
-.buttonSU{
-    width: 240px;
-    height: 30px;
-    background-color: #c12799;
-    border: 1px solid black;
-    border-radius: 10px;
-    color:white; 
+  position: absolute;
+  top: 54%;
+  right: 6%;
 }
 
-.buttonSU:hover{
-    cursor: pointer;
-    opacity: 90%;
-    font-weight: bolder;
-    font-size: 15px;
+.eye-password:hover {
+  color: #c12799;
+  cursor: pointer;
 }
 
-.link_SU{
-    text-decoration: none;
-    color:#c12799;
-    text-align: center;
-    justify-self: center;
-    font-weight: normal;
+.eye-password2 {
+  position: absolute;
+  top: 54%;
+  right: 6%;
+}
+.eye-password2:hover {
+  color: #c12799;
+  cursor: pointer;
+}
+
+.buttonSU {
+  width: 240px;
+  height: 30px;
+  background-color: #c12799;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+}
+
+.buttonSU:hover {
+  cursor: pointer;
+  opacity: 90%;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.link_SU {
+  text-decoration: none;
+  color: #c12799;
+  text-align: center;
+  justify-self: center;
+  font-weight: normal;
 }

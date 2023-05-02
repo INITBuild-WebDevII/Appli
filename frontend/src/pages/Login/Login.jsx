@@ -27,11 +27,11 @@ function LogIn() {
   const { login, error, isLoading } = useLogin();
 
   const Handlechange = async (event) => {
-    if (remember === true) {
-      event.preventDefault();
+    event.preventDefault();
+    
+    if (remember === true) {   
       await login(email, password, true);
     } else {
-      event.preventDefault();
       await login(email, password, false);
     }
   };
@@ -58,8 +58,8 @@ function LogIn() {
             />
             <label for="L-email" className="L-label-email">
               <span class="L-content-email">
-                {" "}
-                <FiMail /> Email
+                <FiMail />
+                <div style={{ marginLeft: "5px" }}>Email</div>
               </span>
             </label>
           </div>
@@ -84,7 +84,8 @@ function LogIn() {
               className="L-label-password"
             >
               <span class="L-content-password">
-                <AiOutlineLock /> Password{" "}
+                <AiOutlineLock />
+                <div style={{ marginLeft: "5px" }}>Password</div>
               </span>
             </label>
           </div>
@@ -110,7 +111,7 @@ function LogIn() {
             disable={isLoading}
             className="Login_button"
             type="submit"
-            value="Log In"
+            value="LOGIN"
           />
           {error && <div className="error"> {error}</div>}
           <div className="loginwith">
@@ -152,7 +153,7 @@ function LogIn() {
             Don't have an account? &nbsp;{" "}
             <Link to="/Signup" className="link_LI">
               {" "}
-              Sign Up.
+              Sign Up
             </Link>
           </p>
         </div>

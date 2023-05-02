@@ -102,7 +102,7 @@ function Jobs(){
             <div className="jobs-heading">
                 <img className="jobs-heading-img" src={JobGuy} alt="" />
                 <div className="jobs-heading-text">
-                    <h1 className="jobs-heading-main" >Find Job!</h1>
+                    <h1 className="jobs-heading-main" >Find Jobs!</h1>
                     <p className="jobs-heading-body">Appli offers you different jobs opportunities to help you find work related to your field and area!</p>
                 </div>
             </div>
