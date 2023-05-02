@@ -7,8 +7,8 @@ const morgan = require('morgan')
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 const User = require('./Models/Users')
-const userRoute = require('../backend/Routes/user')
-const Dashboard = require('../backend/Routes/cards')
+const userRoute = require('../server/Routes/user')
+const Dashboard = require('../server/Routes/cards')
 const app = express();
 
 // middleware
