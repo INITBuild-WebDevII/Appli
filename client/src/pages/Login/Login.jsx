@@ -1,28 +1,21 @@
+import "./Login.css";
 import { Link } from "react-router-dom";
 import { React, useState } from "react";
-import "./Login.css";
 import { useLogin } from "../../hooks/useLogin";
 import { FiMail } from "react-icons/fi";
-import { AiOutlineLock, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineLock, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-const eye = <FontAwesomeIcon icon={faEye} />;
-
 function LogIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState({password: "", showPassword: false});
+  const [remember, setRemember] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
+  
   const togglePasswordVisibility = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState({
-    password: "",
-    showPassword: false,
-  });
-  const [remember, setRemember] = useState(false);
 
   const { login, error, isLoading } = useLogin();
 
@@ -66,7 +59,7 @@ function LogIn() {
 
           <div className="Login-password">
             <i className="eye-password" onClick={togglePasswordVisibility}>
-              {eye}
+              {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye/>}
             </i>
             <input
               name="password"
@@ -102,18 +95,15 @@ function LogIn() {
 
             <label className="forgot-container">
               <a className="forgot" href="resetpasswordlink">
-                Forgot Password?
+                Forgot Password ?
               </a>
             </label>
           </div>
 
-          <input
-            disable={isLoading}
-            className="Login_button"
-            type="submit"
-            value="LOGIN"
-          />
+          <button disable={isLoading} className="Login_button">LOGIN</button>
+          
           {error && <div className="error"> {error}</div>}
+          
           <div className="loginwith">
             <p className="continue">or continue with</p>
             <label className="github">
