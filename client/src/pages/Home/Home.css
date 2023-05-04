@@ -10,6 +10,7 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   font-family: "Inria Sans";
+  zoom: 90%;
 }
 
 @keyframes fadeInAnimation {
@@ -157,7 +158,7 @@
 
 .redired-link {
   text-decoration: none;
-  color: rgb(0, 208, 255);
+  color: #43b5e7;
   float: right;
   font-family: "IBM Plex Sans";
   font-size: 18px;

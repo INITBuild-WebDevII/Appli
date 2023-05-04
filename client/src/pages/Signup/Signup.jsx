@@ -1,12 +1,13 @@
+import "./Signup.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Signup.css";
 import { useSignup } from "../../hooks/useSignup";
 import { FiMail } from "react-icons/fi";
 import { AiOutlineLock } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function Signup() {
   const eye1 = <FontAwesomeIcon icon={faEye} />;
@@ -77,7 +78,8 @@ function Signup() {
 
         <div className="Signup-password">
           <i className="eye-password" onClick={togglePasswordVisibility}>
-            {eye1}
+          {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye/>}
+
           </i>
           <input
             value={password}
@@ -103,7 +105,8 @@ function Signup() {
 
         <div className="confirm-password">
           <i className="eye-password2" onClick={togglePasswordVisibility2}>
-            {eye2}
+
+            {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye/>}
           </i>
           <input
             value={Confirm_password}
