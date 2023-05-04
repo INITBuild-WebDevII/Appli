@@ -20,6 +20,10 @@ Appli is the best platform for people to find tech jobs, manage your application
 - Add company, position, application link, date applied, due date, response date, and notes
 - Delete cards
 
+## Preview
+
+<img width="740" src="https://i.imgur.com/2CakqOc.png%22%3E" />
+
 ## Tech
 - [MongoDB](https://www.mongodb.com/)
 - [Express.js](https://expressjs.com/)
