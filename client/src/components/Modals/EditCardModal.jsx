@@ -206,7 +206,7 @@ card.Notes = notes
         <div className="form-group">
           <h1 className="form-title">{column.name} (Editing)</h1>
           <div className="company-input">
-            <h4>Company Name</h4>
+            <h4>Company</h4>
 
             <input
               type="text"
@@ -219,7 +219,7 @@ card.Notes = notes
           </div>
 
           <div className="position-input">
-            <h4>Position Title</h4>
+            <h4>Position</h4>
 
             <input
               type="text"
