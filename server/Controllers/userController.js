@@ -1,14 +1,13 @@
-const Users = require('../Models/Users');
-const Cards = require('../Models/Cards')
-const {signup, login} = require("../Auth/auth")
+const User = require('../Models/userModel');
 const bycrypt = require('bcrypt')
 const validator  = require('validator')
 const jwt = require('jsonwebtoken');
 
-
+// Generate JWT
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET)
 }
+
 //Login User
 const loginUser  = async (req, res) => {
     const {firstName, lastName, email, password} = req.body
@@ -17,7 +16,7 @@ const loginUser  = async (req, res) => {
             throw Error('All fields must be filled')
         }
     
-        const Loguser = await Users.findOne({email})
+        const Loguser = await User.findOne({email})
         
         if (!Loguser) {
             throw Error('Incorrect Email')
@@ -64,7 +63,7 @@ const signUp = async (req, res) => {
             throw Error('Password is not strong enough')
         }
         
-        const exists = await Users.findOne({email})
+        const exists = await User.findOne({email})
         
     
         if (exists) {
@@ -74,7 +73,7 @@ const signUp = async (req, res) => {
         const salt = await bycrypt.genSalt(10)
         const hash = await bycrypt.hash(password, salt)
     
-        const Signuser = await Users.create({Username, email, password: hash})
+        const Signuser = await User.create({Username, email, password: hash})
     
         const token = createToken(Signuser._id)
         const id = Signuser._id
@@ -105,10 +104,11 @@ const signUp = async (req, res) => {
 //     })
 //   }  
 }
+
 const look = async(req,res) => {
     const {Uid} = req.body
     try {
-    const user = await Users.findById(Uid)
+    const user = await User.findById(Uid)
     
     res.status(200).json(user)
     } catch (error) {

@@ -1,7 +1,7 @@
-const Users = require("../Models/Users")
+const Users = require("../Models/userModel")
 const bycrypt = require('bcrypt')
 const validator  = require('validator')
-const { use } = require("../Routes/user")
+
 //Static SignUp Method
 const signup = async (email, password) => {
     //validation
@@ -17,7 +17,6 @@ const signup = async (email, password) => {
         }
         
         const exists = await Users.findOne({email})
-        
     
         if (exists) {
             throw Error('Email already in use')
@@ -32,8 +31,6 @@ const signup = async (email, password) => {
     } catch (error) {
         res.status(400).json({error: error.message})
     }
-
-    
 }
 
 //Static login method
