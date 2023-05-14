@@ -113,7 +113,7 @@ function DashNavbar() {
           </td>
         </tr>
       </table>
-
+      {/*}
       <div className="calendar">
         <p>Calendar</p>
         <Calendar
@@ -122,7 +122,7 @@ function DashNavbar() {
           value={date}
           selectRange={true}
         />
-      </div>
+  </div>*/}
     </nav>
   );
 }

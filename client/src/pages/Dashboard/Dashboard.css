@@ -3,7 +3,7 @@
   color: white;
   width: 80%;
   min-height: 100vh;
-  height: 100%;
+  height: 100vh;
   float: right;
   padding: 2%;
   font-family: "Inria Sans";
@@ -52,8 +52,12 @@
 
 .board-columns {
   display: flex;
-  margin-top: 40px;
+  /*justify-content: center;
+  width: 100%;
+*/
+  margin: 40px auto;
   /*overflow-x: auto;*/
+  zoom: 95%;
 }
 
 .board-columns::-webkit-scrollbar {
