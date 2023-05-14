@@ -102,7 +102,7 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
             <input
               type="text"
               name="company"
-              placeholder="Company Name"
+              placeholder="Company"
               value={company}
               required
               onChange={(e) => setCompany(e.target.value)}
@@ -115,7 +115,7 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
             <input
               type="text"
               name="position"
-              placeholder="Position Title"
+              placeholder="Position"
               value={position}
               required
               onChange={(e) => setPosition(e.target.value)}

@@ -340,7 +340,7 @@ function Dashboard() {
   }
 
   axios
-    .post("/api/user/look", {
+    .post("/api/users/look", {
       Uid: Id,
     })
     .then((response) => {

@@ -2,20 +2,20 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
-const helmet = require('helmet')
-const morgan = require('morgan')
+const helmet = require("helmet");
+const morgan = require("morgan");
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-const User = require('./Models/Users')
-const userRoute = require('../server/Routes/user')
-const Dashboard = require('../server/Routes/cards')
+const User = require("./Models/userModel");
+const userRoute = require("./Routes/userRoute");
+const Dashboard = require("../server/Routes/cards");
 const app = express();
 
 // middleware
 app.use(express.json()); // Allows our API to parse json
-app.use(cors()) // allow cross-origin resource sharing
-app.use(helmet()) //Security (Adds HTTP Headers)
-app.use(morgan('combined')) //Logger HTTP Request
+app.use(cors()); // allow cross-origin resource sharing
+app.use(helmet()); //Security (Adds HTTP Headers)
+app.use(morgan("combined")); //Logger HTTP Request
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -37,9 +37,9 @@ mongoose
     console.log(error);
   });
 
-app.use('/api/user', userRoute);
-app.use('/api/cards', Dashboard);
-
+// ROUTES
+app.use("/api/users", userRoute);
+app.use("/api/cards", Dashboard);
 
 // test connection
 app.get("/", (req, res) => {

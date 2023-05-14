@@ -11,7 +11,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-axios.post('/api/user/signup', {
+axios.post('/api/users/signup', {
     Username: Username,
 	email: email,
 	password: password

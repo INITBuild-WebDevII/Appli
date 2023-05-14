@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Users = require('../Models/Users')
 
 const cardsSchema = new mongoose.Schema({
     companyName: {

@@ -1,6 +1,6 @@
 const { default: mongoose } = require('mongoose')
 const Cards = require('../Models/Cards')
-const Users = require('../Models/Users')
+const Users = require('../Models/userModel')
 
 //get All workout
 const getAllCards = async(req, res) => {

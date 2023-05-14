@@ -12,7 +12,7 @@ export const useLogin = () => {
         setError(null)
 
 
-axios.post('/api/user/login', {
+axios.post('/api/users/login', {
 	email: email,
 	password: password
 })
