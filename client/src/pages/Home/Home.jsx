@@ -5,7 +5,7 @@ import CarouselCard from "../../components/Carousel";
 import Footer from "../../components/Footer";
 import dashboardImg from "../../assets/Dashboard.png";
 import resourceGuy from "../../assets/ResourcesDesign.png";
-import jobGuy from "../../assets/fucking-nerd.png";
+import jobGuy from "../../assets/FindJobsGuy.png";
 import footerBackground from "../../assets/footer-background.png";
 import rectangleImg from "../../assets/Rectangle.png";
 import landingPageCards from "../../assets/LandingPageCards.png";
@@ -16,8 +16,8 @@ function Home() {
       <div className="landing-section">
         <Navbar />
         <div className="hero">
-          <img className="rectangle" src={rectangleImg} />
-          <img className="cards" src={landingPageCards} />
+          <img className="rectangle" src={rectangleImg} alt="rectangle background"/>
+          <img className="cards" src={landingPageCards} alt="landing page cards"/>
           <div className="intro">
             <h1 id="title">Ace Your Applications</h1>
             <p id="description">
@@ -45,12 +45,12 @@ function Home() {
             Get Started {`>`}
           </Link>
         </div>
-        <img className="dash-img floating" src={dashboardImg} alt="" />
+        <img className="dash-img floating" src={dashboardImg} alt="floating dashboard" />
       </div>
 
       <div className="second-section">
         <div className="section-content">
-          <img className="second-section-imgs" src={jobGuy} alt="" />
+          <img className="second-section-imgs" src={jobGuy} alt="Job Search Guy" />
           <h1 className="section-title">Find Jobs</h1>
           <p>
             Our job search tool simplifies the process of finding new
@@ -66,8 +66,7 @@ function Home() {
           <img
             className="second-section-imgs"
             src={resourceGuy}
-            alt=""
-            srcset=""
+            alt="Resources Guy"
           />
           <h1 className="section-title">Resources</h1>
           <p>
