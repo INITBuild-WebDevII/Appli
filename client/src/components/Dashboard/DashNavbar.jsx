@@ -109,7 +109,9 @@ function DashNavbar() {
             />
           </td>
           <td>
-            <li className="navbar-item click">Settings</li>
+            <Link to="/Settings" className="link navbar-item click">
+              Settings
+            </Link>
           </td>
         </tr>
       </table>

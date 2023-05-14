@@ -1,0 +1,9 @@
+.settings-page {
+  background-color: #242424;
+  width: 80%;
+  float: right;
+  color: white;
+  height: 100%;
+  min-height: 100vh;
+  padding: 2%;
+}
