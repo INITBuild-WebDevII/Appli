@@ -44,6 +44,7 @@
   border: none;
   outline: none;
   background: transparent;
+  padding-top: 20px;
 }
 
 .Signup-name label,

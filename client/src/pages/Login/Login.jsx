@@ -9,7 +9,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 function LogIn() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState({password: "", showPassword: false});
+  const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   
@@ -19,7 +19,7 @@ function LogIn() {
 
   const { login, error, isLoading } = useLogin();
 
-  const Handlechange = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     
     if (remember === true) {   
@@ -36,7 +36,7 @@ function LogIn() {
 
   return (
     <body className="body-login">
-      <form className="Login-page" onSubmit={Handlechange}>
+      <form className="Login-page" onSubmit={handleSubmit}>
         <div className="Login-page">
           <h1 className="h1_Login">Login</h1>
 

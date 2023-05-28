@@ -260,8 +260,8 @@ function deleteCard(column, index, columns, setColumns) {
   const User2 = JSON.parse(sessionStorage.getItem("cardARR"));
   console.log(User2 + "L");
 }
+
 function Dashboard() {
-  //const {logout} = useLogout()
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
   const [showAddCardModal, setshowAddCardModal] = useState(false);
