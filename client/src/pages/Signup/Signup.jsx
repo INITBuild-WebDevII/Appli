@@ -23,7 +23,7 @@ function Signup() {
     setRePasswordShown(rePasswordShown ? false : true);
   };
 
-  const [Username, setUsername] = useState();
+  const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [Confirm_password, setConfirm_Password] = useState();
@@ -33,7 +33,7 @@ function Signup() {
   const Handlechange = async (event) => {
     event.preventDefault();
     if (password === Confirm_password) {
-      await signup(Username, email, password);
+      await signup(username, email, password);
     }
   };
 
@@ -62,7 +62,7 @@ function Signup() {
 
         <div className="Signup-name">
           <input
-            value={Username}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
             className="S-name"

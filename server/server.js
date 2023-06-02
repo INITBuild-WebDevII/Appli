@@ -6,7 +6,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-const User = require("./Models/userModel");
 const userRoute = require("./Routes/userRoute");
 const Dashboard = require("../server/Routes/cards");
 const app = express();
@@ -18,7 +17,7 @@ app.use(helmet()); //Security (Adds HTTP Headers)
 app.use(morgan("combined")); //Logger HTTP Request
 
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
+  console.log(req.method, req.path);
   next();
 });
 

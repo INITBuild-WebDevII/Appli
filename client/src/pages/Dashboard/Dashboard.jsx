@@ -347,14 +347,14 @@ function Dashboard() {
       console.log(response);
       sessionStorage.setItem(
         "username",
-        JSON.stringify(response.data.Username)
+        JSON.stringify(response.data.username)
       );
       // sessionStorage.setItem('userL', JSON.stringify(response.data.lastName))
       // console.log(response.data.firstName)
       // console.log(response.data.lastName)
     });
 
-  const Username = JSON.parse(sessionStorage.getItem("username"));
+  const username = JSON.parse(sessionStorage.getItem("username"));
 
   return (
     <div className="dashboard">
@@ -394,12 +394,12 @@ function Dashboard() {
               <div className="heading-right-container">
                 <div className="right" href="/Profile">
                   <div className="initial-container">
-                    <p1 className="profile-initial"> {Username.charAt(0)} </p1>
+                    <p className="profile-initial"> {username.charAt(0)} </p>
                   </div>
                   <div className="userInfo">
-                    <p1 className="userN-headingright"> {Username} </p1>
+                    <p className="userN-headingright"> {username} </p>
                     <br />
-                    <p1 className="userE-headingright"> {email} </p1>
+                    <p className="userE-headingright"> {email} </p>
                   </div>
                   <br />
                   <p1 className="bell-headingright">
@@ -417,7 +417,7 @@ function Dashboard() {
               </div>
             </div>
 
-            <h1 className="greeting">Hello, {Username}</h1>
+            <h1 className="greeting">Hello, {username}</h1>
 
             <div className="board-columns">
               <DragDropContext
