@@ -9,6 +9,7 @@ const getAllCards = async (req, res) => {
 
   // gets all cards for a user sorted from newest on top
   const cards = await Card.find({ user_ID: user_ID }).sort({ createdAt: -1 });
+  //const cards = await Card.find()
 
   res.status(200).json(cards);
 };
@@ -89,6 +90,13 @@ const deleteCard = async (req, res) => {
     return res.status(404).json({ error: "No Card Exists" });
   }
 
+  const card = await Card.findOneAndDelete({ _id: id });
+
+  // Checks if card doesn't exist
+  if (!card) {
+    return res.status(404).json({ error: "No Card Exists" });
+  }
+
   // delete's card from User's appliedCards array
   const Delete = await Users.updateOne(
     { "appliedCards._id": id },
@@ -96,13 +104,6 @@ const deleteCard = async (req, res) => {
   );
 
   if (!Delete) {
-    return res.status(404).json({ error: "No Card Exists" });
-  }
-
-  const card = await Card.findOneAndDelete({ _id: id });
-
-  // Checks if card doesn't exist
-  if (!card) {
     return res.status(404).json({ error: "No Card Exists" });
   }
 
@@ -119,15 +120,10 @@ const updateCard = async (req, res) => {
   }
 
   // updates any changed card attributes
-  const card = await Card.findOneAndUpdate(
-    { _id: id },
-    {
-      ...req.body,
-    }
-  );
+  const updatedCard = await Card.findByIdAndUpdate(id, req.body, { new: true });
 
-  // Checks if card doesn't exist
-  if (!card) {
+  //Checks if card doesn't exist
+  if (!updatedCard) {
     return res.status(400).json({ error: "No Card Exists" });
   }
 
@@ -137,9 +133,8 @@ const updateCard = async (req, res) => {
     { $set: { "appliedCards.$.columnLocation": req.body.columnLocation } }
   );
 
-  res.status(200).json(card);
+  res.status(200).json(updatedCard);
 };
-
 
 
 
@@ -173,5 +168,5 @@ module.exports = {
   addCard,
   deleteCard,
   updateCard,
-  updateCardLoc
+  updateCardLoc,
 };

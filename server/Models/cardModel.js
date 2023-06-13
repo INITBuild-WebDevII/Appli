@@ -16,6 +16,11 @@ const cardSchema = new mongoose.Schema(
     user_ID: String,
     //card_ID: String,
     columnLocation: String,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User"
+    }
   },
   {
     timestamps: true,
