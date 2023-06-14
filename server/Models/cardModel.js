@@ -13,14 +13,13 @@ const cardSchema = new mongoose.Schema(
     dueDate: Date,
     responseDate: Date,
     notes: String,
-    user_ID: String,
     //card_ID: String,
     columnLocation: String,
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User"
-    }
+      ref: "User",
+    },
   },
   {
     timestamps: true,

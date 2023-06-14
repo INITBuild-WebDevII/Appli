@@ -1,21 +1,18 @@
+const asyncHandler = require("express-async-handler");
 const Card = require("../Models/cardModel");
-const Users = require("../Models/userModel");
+const User = require("../Models/userModel");
 const mongoose = require("mongoose");
 
 // get all cards for a user
-const getAllCards = async (req, res) => {
-  // ID of user
-  const { user_ID } = req.body;
-
+const getAllCards = asyncHandler(async (req, res) => {
   // gets all cards for a user sorted from newest on top
-  const cards = await Card.find({ user_ID: user_ID }).sort({ createdAt: -1 });
-  //const cards = await Card.find()
+  const cards = await Card.find({ user: req.user.id }).sort({ createdAt: -1 });
 
   res.status(200).json(cards);
-};
+});
 
 // get a single card
-const getOneCard = async (req, res) => {
+const getOneCard = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   // Check if id is a valid mongodb object id
@@ -31,10 +28,10 @@ const getOneCard = async (req, res) => {
   }
 
   res.status(200).json(card);
-};
+});
 
 // Create New Card
-const addCard = async (req, res) => {
+const addCard = asyncHandler(async (req, res) => {
   const {
     companyName,
     positionTitle,
@@ -43,7 +40,6 @@ const addCard = async (req, res) => {
     dueDate,
     responseDate,
     notes,
-    user_ID,
     //card_ID,
     columnLocation,
   } = req.body;
@@ -58,86 +54,111 @@ const addCard = async (req, res) => {
       dueDate,
       responseDate,
       notes,
-      user_ID,
       //card_ID,
       columnLocation,
+      user: req.user.id,
     });
 
+    /*
     // adds new card to user's appliedCards via their user_ID
-    const add_Card_User = await Users.findByIdAndUpdate(user_ID, {
+    const add_Card_User = await User.findByIdAndUpdate(req.user.id, {
       $push: { appliedCards: card },
     });
 
     // updates user's appliedCards
     if (add_Card_User == null) {
-      const add_Card_User = await Users.findByIdAndUpdate(user_ID, {
+      const add_Card_User = await User.findByIdAndUpdate(req.user.id, {
         $set: { appliedCards: card },
       });
     }
+    */
 
     res.status(200).json(card);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-};
+});
 
 //Delete a Card
-const deleteCard = async (req, res) => {
+const deleteCard = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   // Check if id is a valid mongodb object id
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No Card Exists" });
+    return res.status(400).json({ error: "Not Valid Card ID" });
   }
 
-  const card = await Card.findOneAndDelete({ _id: id });
+  const card = await Card.findById(id);
 
-  // Checks if card doesn't exist
   if (!card) {
     return res.status(404).json({ error: "No Card Exists" });
   }
 
-  // delete's card from User's appliedCards array
-  const Delete = await Users.updateOne(
-    { "appliedCards._id": id },
-    { $pull: { appliedCards: { _id: id } } }
-  );
+  const user = await User.findById(req.user.id);
 
-  if (!Delete) {
-    return res.status(404).json({ error: "No Card Exists" });
+  // Check for user
+  if (!user) {
+    return res.status(401).json({ error: "User not found" });
   }
 
+  // Make sure the logged in user's id matches the card user id
+  if (card.user.toString() !== user.id) {
+    return res.status(401).json({ error: "User not authorized" });
+  }
+
+  //await card.deleteOne({ _id: id });
+
+  await Card.findOneAndDelete({ _id: id });
+
+  // delete's card from User's appliedCards array
+  /*const Delete = await User.updateOne(
+    { "appliedCards._id": id },
+    { $pull: { appliedCards: { _id: id } } }
+  );*/
+
   res.status(200).json(card);
-};
+});
 
 // update a card
-const updateCard = async (req, res) => {
+const updateCard = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   // Check if id is a valid mongodb object id
   if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Not Valid Card ID" });
+  }
+
+  const card = await Card.findById(id);
+
+  if (!card) {
     return res.status(404).json({ error: "No Card Exists" });
   }
 
-  // updates any changed card attributes
-  const updatedCard = await Card.findByIdAndUpdate(id, req.body, { new: true });
+  const user = await User.findById(req.user.id);
 
-  //Checks if card doesn't exist
-  if (!updatedCard) {
-    return res.status(400).json({ error: "No Card Exists" });
+  // Check for user
+  if (!user) {
+    return res.status(401).json({ error: "User not found" });
   }
 
+  // Make sure the logged in user's id matches the card user id
+  if (card.user.toString() !== user.id) {
+    return res.status(401).json({ error: "User not authorized" });
+  }
+
+  // updates any changed card attributes
+  const updatedCard = await Card.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
+
   // updates card column location in user's appliedCards
-  const upDate = await Users.updateOne(
+  /*const upDate = await User.updateOne(
     { "appliedCards._id": req.body.id },
     { $set: { "appliedCards.$.columnLocation": req.body.columnLocation } }
-  );
+  );*/
 
   res.status(200).json(updatedCard);
-};
-
-
-
+});
 
 //Update Card location
 const updateCardLoc = async (req, res) => {
@@ -154,7 +175,7 @@ const updateCardLoc = async (req, res) => {
     }
   );
 
-  const upDate = await Users.updateOne(
+  const upDate = await User.updateOne(
     { "appliedCards._id": id },
     { $set: { "appliedCards.$.columnLocation": req.body.columnLocation } }
   );

@@ -13,6 +13,7 @@ const app = express();
 
 // middleware
 app.use(express.json()); // Allows our API to parse json
+app.use(express.urlencoded({extended: false}))
 app.use(cors()); // allow cross-origin resource sharing
 app.use(helmet()); //Security (Adds HTTP Headers)
 //app.use(morgan("combined")); //Logger HTTP Request

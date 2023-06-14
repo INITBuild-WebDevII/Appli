@@ -8,9 +8,9 @@ const {
   updateCardLoc,
 } = require("../Controllers/cardController");
 const router = express.Router();
-const requireAuth = require("../middleware/requireAuth");
+const { protect } = require("../Middleware/authMiddleware");
 
-//router.use(requireAuth)
+router.use(protect);
 
 // get all cards
 router.get("/", getAllCards);
@@ -25,10 +25,7 @@ router.get("/:id", getOneCard);
 router.delete("/:id", deleteCard);
 
 // updates a single card
-router.patch("/:id", updateCard);
-
-
-
+router.put("/:id", updateCard);
 
 // location
 router.patch("/Test", updateCardLoc);

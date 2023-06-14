@@ -12,7 +12,7 @@ export const useSignup = () => {
     setError(null);
 
     axios
-      .post("/api/users/signup", {
+      .post("/api/user/register", {
         username: username,
         email: email,
         password: password,
