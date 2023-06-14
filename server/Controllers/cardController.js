@@ -3,7 +3,12 @@ const Card = require("../Models/cardModel");
 const User = require("../Models/userModel");
 const mongoose = require("mongoose");
 
-// get all cards for a user
+/**
+ * @desc Gets all cards for a user
+ * @method GET
+ * @access private
+ * @endpoint /api/cards
+ **/
 const getAllCards = asyncHandler(async (req, res) => {
   // gets all cards for a user sorted from newest on top
   const cards = await Card.find({ user: req.user.id }).sort({ createdAt: -1 });
@@ -11,7 +16,12 @@ const getAllCards = asyncHandler(async (req, res) => {
   res.status(200).json(cards);
 });
 
-// get a single card
+/**
+ * @desc Gets a single card for a user
+ * @method GET
+ * @access private
+ * @endpoint /api/cards/:id
+ **/
 const getOneCard = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
@@ -30,7 +40,12 @@ const getOneCard = asyncHandler(async (req, res) => {
   res.status(200).json(card);
 });
 
-// Create New Card
+/**
+ * @desc Create a new card for a user
+ * @method POST
+ * @access private
+ * @endpoint /api/cards/
+ **/
 const addCard = asyncHandler(async (req, res) => {
   const {
     companyName,
@@ -79,7 +94,12 @@ const addCard = asyncHandler(async (req, res) => {
   }
 });
 
-//Delete a Card
+/**
+ * @desc Deletes a single card
+ * @method DELETE
+ * @access private
+ * @endpoint /api/cards/:id
+ **/
 const deleteCard = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
@@ -119,7 +139,12 @@ const deleteCard = asyncHandler(async (req, res) => {
   res.status(200).json(card);
 });
 
-// update a card
+/**
+ * @desc Updates a single card for a user
+ * @method PUT
+ * @access private
+ * @endpoint /api/cards/:id
+ **/
 const updateCard = asyncHandler(async (req, res) => {
   const { id } = req.params;
 

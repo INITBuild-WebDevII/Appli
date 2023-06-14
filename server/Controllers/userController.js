@@ -9,7 +9,12 @@ const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 };
 
-//Login User
+/**
+ * @desc Authenticate a user
+ * @method POST
+ * @access public
+ * @endpoint /api/users/login
+ **/
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -39,7 +44,12 @@ const loginUser = asyncHandler(async (req, res) => {
   });
 });
 
-//Sign Up User
+/**
+ * @desc Register new user
+ * @method POST
+ * @access public
+ * @endpoint /api/users/register
+ **/
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -80,6 +90,12 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ * @desc Get a user
+ * @method GET
+ * @access private
+ * @endpoint /api/users/me
+ **/
 const getUserData = asyncHandler(async (req, res) => {
   const { _id, name, email } = await User.findById(req.user.id);
 
