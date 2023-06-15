@@ -3,7 +3,6 @@ const {
   loginUser,
   registerUser,
   getUserData,
-  look,
 } = require("../Controllers/userController");
 const router = express.Router();
 const { protect } = require("../Middleware/authMiddleware");
@@ -15,7 +14,5 @@ router.post("/login", loginUser);
 router.post("/register", registerUser);
 
 router.get("/me", protect, getUserData);
-
-router.post("/look", look);
 
 module.exports = router;
