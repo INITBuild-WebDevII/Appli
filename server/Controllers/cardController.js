@@ -10,8 +10,7 @@ const mongoose = require("mongoose");
  * @endpoint /api/cards
  **/
 const getAllCards = asyncHandler(async (req, res) => {
-  // gets all cards for a user sorted from newest on top
-  const cards = await Card.find({ user: req.user.id }).sort({ createdAt: -1 });
+  const cards = await Card.find({ user: req.user.id })
 
   res.status(200).json(cards);
 });
