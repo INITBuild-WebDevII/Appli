@@ -5,14 +5,9 @@ import { useSignup } from "../../hooks/useSignup";
 import { FiMail } from "react-icons/fi";
 import { AiOutlineLock } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function Signup() {
-  const eye1 = <FontAwesomeIcon icon={faEye} />;
-  const eye2 = <FontAwesomeIcon icon={faEye} />;
-
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisibility = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -23,7 +18,7 @@ function Signup() {
     setRePasswordShown(rePasswordShown ? false : true);
   };
 
-  const [username, setUsername] = useState();
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [Confirm_password, setConfirm_Password] = useState();
@@ -33,7 +28,7 @@ function Signup() {
   const Handlechange = async (event) => {
     event.preventDefault();
     if (password === Confirm_password) {
-      await signup(username, email, password);
+      await signup(name, email, password);
     }
   };
 
@@ -62,8 +57,8 @@ function Signup() {
 
         <div className="Signup-name">
           <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
             className="S-name"
             type="text"
@@ -71,15 +66,14 @@ function Signup() {
           <label for="S-name" className="S-label-name">
             <span className="S-content-name">
               {" "}
-              <BsPerson /> Username
+              <BsPerson /> Name
             </span>
           </label>
         </div>
 
         <div className="Signup-password">
           <i className="eye-password" onClick={togglePasswordVisibility}>
-          {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye/>}
-
+            {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </i>
           <input
             value={password}
@@ -105,8 +99,7 @@ function Signup() {
 
         <div className="confirm-password">
           <i className="eye-password2" onClick={togglePasswordVisibility2}>
-
-            {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye/>}
+            {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </i>
           <input
             value={Confirm_password}

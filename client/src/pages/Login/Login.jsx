@@ -35,7 +35,7 @@ function LogIn() {
   };
 
   return (
-    <body className="body-login">
+    <div className="body-login">
       <form className="Login-page" onSubmit={handleSubmit}>
         <div className="Login-page">
           <h1 className="h1_Login">Login</h1>
@@ -43,27 +43,27 @@ function LogIn() {
           <div className="Login-email">
             <input
               name="email"
-              autocomplete="off"
+              autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
               required
               className="L-email"
               type="text"
             />
-            <label for="L-email" className="L-label-email">
-              <span class="L-content-email">
+            <label htmlFor="L-email" className="L-label-email">
+              <span className="L-content-email">
                 <FiMail />
                 <div style={{ marginLeft: "5px" }}>Email</div>
               </span>
             </label>
           </div>
 
-          <div className="Login-password">
+          <div className="Login-password" style={{display: "flex", alignItems: "center"}}>
             <i className="eye-password" onClick={togglePasswordVisibility}>
               {passwordShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye/>}
             </i>
             <input
               name="password"
-              autocomplete="off"
+              autoComplete="off"
               type={passwordShown ? "text" : "password"}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -76,7 +76,7 @@ function LogIn() {
               for="password"
               className="L-label-password"
             >
-              <span class="L-content-password">
+              <span className="L-content-password">
                 <AiOutlineLock />
                 <div style={{ marginLeft: "5px" }}>Password</div>
               </span>
@@ -148,7 +148,7 @@ function LogIn() {
           </p>
         </div>
       </form>
-    </body>
+    </div>
   );
 }
 
