@@ -7,13 +7,9 @@ const EditCardModal = ({ closeModal, column, card }) => {
   const [company, setCompany] = useState(card.companyName);
   const [position, setPosition] = useState(card.positionTitle);
   const [applyLink, setApplyLink] = useState(card.applicationLink);
-  const [applyDate, setApplyDate] = useState(
-    moment.parseZone(card.dateApplied).format("YYYY-MM-DD")
-  );
-  const [responseDate, setResponseDate] = useState(
-    moment.parseZone(card.responseDate).format("YYYY-MM-DD")
-  );
-  const [dueDate, setDueDate] = useState(card.dueDate);
+  const [applyDate, setApplyDate] = useState(card.dateApplied === undefined ? undefined : moment.parseZone(card.dateApplied).format("YYYY-MM-DD"));
+  const [dueDate, setDueDate] = useState(card.dueDate === undefined ? undefined : moment.parseZone(card.dueDate).format("YYYY-MM-DD"));
+  const [responseDate, setResponseDate] = useState(card.responseDate === undefined ? undefined : moment.parseZone(card.responseDate).format("YYYY-MM-DD"));
   const [notes, setNotes] = useState(card.notes);
 
   var User = JSON.parse(sessionStorage.getItem("user"));
@@ -38,7 +34,7 @@ const EditCardModal = ({ closeModal, column, card }) => {
       // Find the card by the card ID
       if (arrayItem._id === card._id) {
         // Delete card from the database
-        axios.delete(`https://appli-server.onrender.com/api/cards/${card._id}`, {
+        axios.delete(`/api/cards/${card._id}`, {
             headers: {
               Authorization: `Bearer ${User.token}`,
             },
@@ -70,7 +66,7 @@ const EditCardModal = ({ closeModal, column, card }) => {
 
     // Update the card in the database
     axios.put(
-        `https://appli-server.onrender.com/api/cards/${card._id}`,
+        `/api/cards/${card._id}`,
         {
           companyName: company,
           positionTitle: position,
