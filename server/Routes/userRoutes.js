@@ -5,7 +5,7 @@ const {
   getUserData,
 } = require("../Controllers/userController");
 const router = express.Router();
-const { protect } = require("../Middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware");
 
 //Login Routes
 router.post("/login", loginUser);

@@ -8,7 +8,7 @@ const {
   updateCardLoc,
 } = require("../Controllers/cardController");
 const router = express.Router();
-const { protect } = require("../Middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware");
 
 router.use(protect);
 
