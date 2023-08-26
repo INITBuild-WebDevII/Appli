@@ -34,7 +34,7 @@ const EditCardModal = ({ closeModal, column, card }) => {
       // Find the card by the card ID
       if (arrayItem._id === card._id) {
         // Delete card from the database
-        axios.delete(`/api/cards/${card._id}`, {
+        axios.delete(`https://appli-server.onrender.com/api/cards/${card._id}`, {
             headers: {
               Authorization: `Bearer ${User.token}`,
             },
@@ -66,7 +66,7 @@ const EditCardModal = ({ closeModal, column, card }) => {
 
     // Update the card in the database
     axios.put(
-        `/api/cards/${card._id}`,
+        `https://appli-server.onrender.com/api/cards/${card._id}`,
         {
           companyName: company,
           positionTitle: position,
