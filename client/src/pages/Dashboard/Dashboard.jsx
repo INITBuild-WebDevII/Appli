@@ -4,12 +4,10 @@ import "./Dashboard.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { IconContext } from "react-icons";
 import { AiOutlineStar, AiOutlineCheck } from "react-icons/ai";
 import { RiStackLine } from "react-icons/ri";
 import { BsTrophy } from "react-icons/bs";
 import BeatLoader from "react-spinners/BeatLoader";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import AddCardModal from "../../components/Modals/AddCardModal";
 import EditCardModal from "../../components/Modals/EditCardModal";
 import { AiOutlineBell } from "react-icons/ai";
@@ -23,86 +21,39 @@ let itemsFromBackend2 = [];
 let itemsFromBackend3 = [];
 let itemsFromBackend4 = [];
 
-function Company() {
+var User;
+
+function getCards() {
   itemsFromBackend1.length = 0;
   itemsFromBackend2.length = 0;
   itemsFromBackend3.length = 0;
   itemsFromBackend4.length = 0;
 
-  var User;
-  var user_id;
-  var token;
-  if (JSON.parse(localStorage.getItem("user")) === null) {
-    User = JSON.parse(sessionStorage.getItem("user"));
-    user_id = User.id;
-    token = User.token;
-  } else {
-    User = JSON.parse(localStorage.getItem("user"));
-    user_id = User.id;
-    token = User.token;
-  }
+  // Get user info from session storage
+  User = JSON.parse(sessionStorage.getItem("user"));
 
-  // useEffect(() => {
-  axios
-    .post(
-      "/api/cards/GET",
-      {
-        user_ID: user_id,
+  console.log("Logged in User:");
+  console.log(JSON.stringify(User));
+
+  // GET Request for all of the User's cards
+  axios.get("/api/cards/", {
+      headers: {
+        Authorization: `Bearer ${User.token}`,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-    .then((response) => {
-      const myArray = response.data;
-      console.log(response);
-      myArray.forEach(function (arrayItem) {
-        if (arrayItem.columnLocation === "To Apply") {
-          itemsFromBackend1.push({
-            id: arrayItem.cardID,
-            name: arrayItem.companyName,
-            role: arrayItem.positionTitle,
-            link: arrayItem.applicationLink,
-            dateApplied: arrayItem.dateApplied,
-            dueDate: arrayItem.dueDate,
-            responseDate: arrayItem.responseDate,
-            Notes: arrayItem.Notes,
-          });
-        } else if (arrayItem.columnLocation === "Applied") {
-          itemsFromBackend2.push({
-            id: arrayItem.cardID,
-            name: arrayItem.companyName,
-            role: arrayItem.positionTitle,
-            link: arrayItem.applicationLink,
-            dateApplied: arrayItem.dateApplied,
-            dueDate: arrayItem.dueDate,
-            responseDate: arrayItem.responseDate,
-            Notes: arrayItem.Notes,
-          });
-        } else if (arrayItem.columnLocation === "In Progress") {
-          itemsFromBackend3.push({
-            id: arrayItem.cardID,
-            name: arrayItem.companyName,
-            role: arrayItem.positionTitle,
-            link: arrayItem.applicationLink,
-            dateApplied: arrayItem.dateApplied,
-            dueDate: arrayItem.dueDate,
-            responseDate: arrayItem.responseDate,
-            Notes: arrayItem.Notes,
-          });
-        } else if (arrayItem.columnLocation === "Accepted") {
-          itemsFromBackend4.push({
-            id: arrayItem.cardID,
-            name: arrayItem.companyName,
-            role: arrayItem.positionTitle,
-            link: arrayItem.applicationLink,
-            dateApplied: arrayItem.dateApplied,
-            dueDate: arrayItem.dueDate,
-            responseDate: arrayItem.responseDate,
-            Notes: arrayItem.Notes,
-          });
+    })
+    .then(({ data }) => {
+      const cards = data;
+
+      // Organize cards by their column location
+      cards.forEach((card) => {
+        if (card.columnLocation === "To Apply") {
+          itemsFromBackend1.push(card);
+        } else if (card.columnLocation === "Applied") {
+          itemsFromBackend2.push(card);
+        } else if (card.columnLocation === "In Progress") {
+          itemsFromBackend3.push(card);
+        } else if (card.columnLocation === "Accepted") {
+          itemsFromBackend4.push(card);
         }
       });
     });
@@ -160,7 +111,7 @@ const onDragEnd = (result, columns, setColumns, item) => {
         items: destItems,
       },
     });
-    deleteCard();
+
     console.log(destination.index);
     sessionStorage.setItem("card", JSON.stringify(destColumn.name));
     sessionStorage.setItem("cardARR", JSON.stringify(destination.index));
@@ -232,35 +183,6 @@ const onDragEnd = (result, columns, setColumns, item) => {
   }
 };
 
-function createNewCard(column, columns, setColumns) {
-  //alert(column.name);
-  console.log(JSON.stringify(column));
-
-  column.items.push({ id: uuidv4(), name: "New" });
-
-  setColumns({
-    ...columns,
-  });
-}
-
-function deleteCard(column, index, columns, setColumns) {
-  //alert(column.name)
-  // index position of card in column
-  //alert(index)
-  var User;
-  var token;
-  if (JSON.parse(localStorage.getItem("user")) === null) {
-    User = JSON.parse(sessionStorage.getItem("user"));
-    token = User.token;
-  } else {
-    User = JSON.parse(localStorage.getItem("user"));
-    token = User.token;
-  }
-
-  const User2 = JSON.parse(sessionStorage.getItem("cardARR"));
-  console.log(User2 + "L");
-}
-
 function Dashboard() {
   const [columns, setColumns] = useState(columnsFromBackend);
   const [loading, setLoading] = useState(false);
@@ -274,7 +196,7 @@ function Dashboard() {
     let ignore = false;
 
     if (!ignore) {
-      Company();
+      getCards();
     }
     return () => {
       ignore = true;
@@ -292,7 +214,6 @@ function Dashboard() {
 
   // handles displaying Modal
   const handleshowEditCardModal = (column, card) => {
-    console.log(card);
     // track which column was selected
     setActiveColumn(column);
 
@@ -312,8 +233,6 @@ function Dashboard() {
   const handleCloseEditCardModal = () => {
     setshowEditCardModal(false);
   };
-
-  const { user } = useAuthContext();
 
   useEffect(() => {
     setLoading(true);
@@ -339,22 +258,18 @@ function Dashboard() {
     email = User.email;
   }
 
-  axios
-    .post("/api/users/look", {
-      Uid: Id,
+  axios.get("/api/users/me", {
+      headers: {
+        Authorization: `Bearer ${User.token}`,
+      },
     })
-    .then((response) => {
-      console.log(response);
-      sessionStorage.setItem(
-        "username",
-        JSON.stringify(response.data.username)
-      );
-      // sessionStorage.setItem('userL', JSON.stringify(response.data.lastName))
-      // console.log(response.data.firstName)
-      // console.log(response.data.lastName)
+    .then(({ data }) => {
+      console.log(data);
+
+      sessionStorage.setItem("name", JSON.stringify(data.name));
     });
 
-  const username = JSON.parse(sessionStorage.getItem("username"));
+  const name = JSON.parse(sessionStorage.getItem("name"));
 
   return (
     <div className="dashboard">
@@ -394,10 +309,10 @@ function Dashboard() {
               <div className="heading-right-container">
                 <div className="right" href="/Profile">
                   <div className="initial-container">
-                    <p className="profile-initial"> {username.charAt(0)} </p>
+                    <p className="profile-initial"> {name.charAt(0)} </p>
                   </div>
                   <div className="userInfo">
-                    <p className="userN-headingright"> {username} </p>
+                    <p className="userN-headingright"> {name} </p>
                     <br />
                     <p className="userE-headingright"> {email} </p>
                   </div>
@@ -417,7 +332,7 @@ function Dashboard() {
               </div>
             </div>
 
-            <h1 className="greeting">Hello, {username}</h1>
+            <h1 className="greeting">Hello, {name}</h1>
 
             <div className="board-columns">
               <DragDropContext
@@ -470,8 +385,8 @@ function Dashboard() {
                                 {column.items.map((item, index) => {
                                   return (
                                     <Draggable
-                                      key={item.id}
-                                      draggableId={item.id}
+                                      key={item._id}
+                                      draggableId={item._id}
                                       index={index}
                                     >
                                       {(provided, snapshot) => {
@@ -490,20 +405,17 @@ function Dashboard() {
                                               ...provided.draggableProps.style,
                                             }}
                                             className="item"
-                                            title={item.name + " " + item.role}
+                                            title={item.companyName + " " + item.positionTitle}
                                             onClick={() => {
-                                              console.log(
-                                                index + "," + item.name
-                                              );
                                               handleshowEditCardModal(
                                                 column,
                                                 item
                                               );
                                             }}
                                           >
-                                            <p>{item.name}</p>
+                                            <p>{item.companyName}</p>
                                             <p style={{ fontSize: "13px" }}>
-                                              {item.role}
+                                              {item.positionTitle}
                                             </p>
 
                                             {/* <button

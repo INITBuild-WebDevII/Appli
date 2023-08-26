@@ -20,7 +20,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Dashboard" element={user ? <Dashboard/>: <Navigate to="/Login"/>} />
           <Route path="/Resources" element={user ? <Resources/>: <Navigate to="/Login"/>} />
-          <Route path="/Login" element={!user ? <Login />: <Navigate to="/Dashboard"/>} />            <Route path="/About" element={<About />} />
+          <Route path="/Login" element={!user ? <Login />: <Navigate to="/Dashboard"/>} />            
+          <Route path="/About" element={<About />} />
           <Route path="/Jobs" element={user ? <Jobs/>: <Navigate to="/Login"/>} />
           <Route path="/Signup" element={!user ?  <Signup/>: <Navigate to="/Dashboard"/>} />
           <Route path="/Settings" element={<Settings />} />

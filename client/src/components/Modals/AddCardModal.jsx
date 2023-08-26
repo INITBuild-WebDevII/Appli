@@ -1,6 +1,5 @@
 import "./AddCardModal.css";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
 const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
@@ -12,17 +11,7 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
   const [dueDate, setDueDate] = useState();
   const [notes, setNotes] = useState();
 
-  //console.log(columns);
-  //console.log(JSON.stringify(column));
-  //console.log(typeof setColumns);
-  //console.log(typeof closeModal);
-
   let myRef;
-
-  useEffect(() => {
-    console.log(JSON.stringify(column.name));
-    console.log(JSON.stringify(column));
-  }, []);
 
   const closeAddCardModal = (e) => {
     if (myRef && myRef.contains(e.target)) {
@@ -30,60 +19,50 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    console.log(applyDate);
+  useEffect(() => {
+    console.log("The column the new card is going to be made in: " + JSON.stringify(column.name));
+  }, []);
 
-    var local_user;
-    var user_ID;
-    if (JSON.parse(localStorage.getItem("user")) === null) {
-      local_user = JSON.parse(sessionStorage.getItem("user"));
-      user_ID = local_user.id;
-    } else {
-      local_user = JSON.parse(localStorage.getItem("user"));
-      user_ID = local_user.id;
-    }
-
-    const Items_id = uuidv4();
-    column.items.push({
-      id: Items_id,
-      name: company,
-      role: position,
-      link: applyLink,
-      dateApplied: applyDate,
-      dueDate: dueDate,
-      responseDate: responseDate,
-      Notes: notes,
-    });
-
-    const token = local_user.token;
-    axios.post(
-      "/api/cards",
-      {
-        companyName: company,
-        positionTitle: position,
-        user_ID: user_ID,
-        columnLocation: column.name,
-        cardID: Items_id,
-        applicationLink: applyLink,
-        dateApplied: applyDate,
-        dueDate: dueDate,
-        responseDate: responseDate,
-        Notes: notes,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    setColumns({
-      ...columns,
-    });
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    closeModal();
+    var local_user = JSON.parse(sessionStorage.getItem("user"));
+
+    const token = local_user.token;
+
+    // Create new card to database
+    axios.post(
+        "/api/cards",
+        {
+          companyName: company,
+          positionTitle: position,
+          applicationLink: applyLink,
+          dateApplied: applyDate,
+          dueDate: dueDate,
+          responseDate: responseDate,
+          notes: notes,
+          columnLocation: column.name,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      ).then(({ data }) => {
+        // The newly created card data sent from the POST request
+        const card = data;
+
+        console.log(card);
+
+        // Visually update the columns on the dashboard
+        column.items.push(card);
+
+        setColumns({
+          ...columns,
+        });
+
+        closeModal();
+      });
   };
 
   return (

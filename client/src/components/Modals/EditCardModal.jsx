@@ -1,197 +1,95 @@
 import "./EditCardModal.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import moment from "moment" 
+import moment from "moment";
 
-const EditCardModal = ({ closeModal, column, card, User3}) => {
+const EditCardModal = ({ closeModal, column, card }) => {
+  const [company, setCompany] = useState(card.companyName);
+  const [position, setPosition] = useState(card.positionTitle);
+  const [applyLink, setApplyLink] = useState(card.applicationLink);
+  const [applyDate, setApplyDate] = useState(
+    moment.parseZone(card.dateApplied).format("YYYY-MM-DD")
+  );
+  const [responseDate, setResponseDate] = useState(
+    moment.parseZone(card.responseDate).format("YYYY-MM-DD")
+  );
+  const [dueDate, setDueDate] = useState(card.dueDate);
+  const [notes, setNotes] = useState(card.notes);
 
-  var User2;
-  var token2;
-  var user_id2;
-  if (JSON.parse(localStorage.getItem('user')) === null) {
-    User2 = JSON.parse(sessionStorage.getItem('user'))
-    user_id2 = User2.id
-    token2 = User2.token
-  } else {
-    User2 = JSON.parse(localStorage.getItem('user')) 
-    user_id2 = User2.id
-    token2 = User2.token
-  }
+  var User = JSON.parse(sessionStorage.getItem("user"));
 
-function GETS() {
-  axios.post("/api/cards/GETO", {
-    user_ID: user_id2,
-    cardID: card.id
-  }, {
-    headers: {
-      Authorization : `Bearer ${token2}`
-    }
-  })
-  .then ((response) => {
-    if (response.data[0].responseDate === undefined) {
-      var response_date = undefined
-    } else {
-      response_date = moment.parseZone(response.data[0].responseDate).format('YYYY-MM-DD');
-    }
-    if (response.data[0].dateApplied === undefined) {
-      var apply_date = undefined
-    } else {
-      apply_date = moment.parseZone(response.data[0].dateApplied).format('YYYY-MM-DD');
-    }
-    if (response.data[0].dueDate === undefined) {
-      var due_date = undefined
-    } else {
-      due_date = moment.parseZone(response.data[0].dueDate).format('YYYY-MM-DD');
-    }
-    
-    
-    card.name = response.data[0].companyName
-    card.role = response.data[0].positionTitle
-    card.link = response.data[0].applicationLink
-    card.Notes = response.data[0].Notes
-    card.dateApplied = apply_date
-    card.dueDate = due_date
-    card.responseDate = response_date
-
-    setApplyDate(apply_date)
-    setDueDate(due_date)
-    setResponseDate(response_date)
-    setNotes(card.Notes)
-
-
-  })
-} 
-
-useEffect(() => {
-  let ignore = false;
-  if (!ignore) {
-    GETS()
-  }
-  return () => { ignore = true; }
-  },[]);
-
-  if (card.responseDate === undefined) {
-    var response_date = undefined
-  } else {
-    response_date = moment.parseZone(card.responseDate).format('YYYY-MM-DD');
-  }
-  if (card.dateApplied === undefined) {
-    var apply_date = undefined
-  } else {
-    apply_date = moment.parseZone(card.dateApplied).format('YYYY-MM-DD');
-  }
-  if (card.dueDate === undefined) {
-    var due_date = undefined
-  } else {
-    due_date = moment.parseZone(card.dueDate).format('YYYY-MM-DD');
-  }
-
-  const [company, setCompany] = useState(card.name);
-  const [position, setPosition] = useState(card.role);
-  const [applyLink, setApplyLink] = useState(card.link);
-  const [applyDate, setApplyDate] = useState(apply_date);
-  const [responseDate, setResponseDate] = useState(response_date);
-  const [dueDate, setDueDate] = useState(due_date);
-  const [notes, setNotes] = useState(card.Notes);
-  
-// changes card's properties
-card.name = company;
-card.role = position;
-card.link = applyLink
-card.applyDate = applyDate
-card.responseDate = responseDate
-card.dueDate = dueDate
-card.notes = notes 
-
-//Another step to not make the cards appear weird
-card.dateApplied = applyDate
-card.dueDate = dueDate
-card.responseDate = responseDate
-card.Notes = notes
-
-  //console.log(columns);
-  //console.log(typeof setColumns);
-  //console.log(typeof closeModal);
+  useEffect(() => {
+    console.log(JSON.stringify(column));
+    console.log(card);
+  }, []);
 
   let myRef;
-
-  // useEffect(() => {
-  //   console.log(JSON.stringify(column));
-  //   console.log(JSON.stringify(card));
-  //   console.log(card.id);
-  // }, []);
-
 
   const closeEditCardModal = (e) => {
     if (myRef && myRef.contains(e.target)) {
       closeModal();
     }
   };
-  function deleteCard() {
-    //alert(column.name)
-    // index position of card in column
-    //alert(index)
-    var User;
-    var token;
-    if (JSON.parse(localStorage.getItem('user')) === null) {
-      User = JSON.parse(sessionStorage.getItem('user'))
-      token = User.token
-    } else {
-      User = JSON.parse(localStorage.getItem('user')) 
-      token = User.token
-    }
 
+  // Function for handling card deletion
+  function deleteCard() {
+    // Traverse the column cards to find the card we want to delete
     column.items.forEach(function (arrayItem) {
-        if (arrayItem.id === card.id) {
-        axios.patch("/api/cards/", {
-          cardID: card.id
-        }, {
-              headers: {
-                Authorization : `Bearer ${token}`
-              }
-        })  
-        let ind = column.items.indexOf(arrayItem)
-        column.items.splice(ind, 1);       
-        }
-    })
+      // Find the card by the card ID
+      if (arrayItem._id === card._id) {
+        // Delete card from the database
+        axios.delete(`/api/cards/${card._id}`, {
+            headers: {
+              Authorization: `Bearer ${User.token}`,
+            },
+          })
+          .then((response) => {
+            console.log("Deleted card successfully");
+            console.log(response.data);
+          });
+
+        // Visually delete the card from the dashboard
+        let index = column.items.indexOf(arrayItem);
+        column.items.splice(index, 1);
+      }
+    });
   }
 
-  const handleSubmit = (e) => {
-    var User;
-    var token;
-    if (JSON.parse(localStorage.getItem('user')) === null) {
-      User = JSON.parse(sessionStorage.getItem('user'))
-      token = User.token
-    } else {
-      User = JSON.parse(localStorage.getItem('user')) 
-      token = User.token
-    }  
+  // Function for updating the card on submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     // changes card's properties
-    // card.name = company;
-    // card.role = position;
-    // card.link = applyLink
-    // card.applyDate = applyDate
-    // card.responseDate = responseDate
-    // card.dueDate = dueDate
-    // card.notes = notes
-   
-    axios.patch("/api/cards/UP", {
-    companyName: card.name,
-    positionTitle: card.role,
-    applicationLink: card.link,
-    dateApplied: card.applyDate,
-    responseDate: card.responseDate,
-    dueDate: card.dueDate,
-    Notes: card.notes,
-    cardID: card.id
-    }, {
-          headers: {
-            Authorization : `Bearer ${token}`
-          }
-    })
+    card.companyName = company;
+    card.positionTitle = position;
+    card.applicationLink = applyLink;
+    card.dateApplied = applyDate;
+    card.dueDate = dueDate;
+    card.responseDate = responseDate;
+    card.notes = notes;
 
-    e.preventDefault();
+    // Update the card in the database
+    axios.put(
+        `/api/cards/${card._id}`,
+        {
+          companyName: company,
+          positionTitle: position,
+          applicationLink: applyLink,
+          dateApplied: applyDate,
+          dueDate: dueDate,
+          responseDate: responseDate,
+          notes: notes,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${User.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log("Updated card successfully");
+        console.log(response.data);
+      });
 
     closeModal();
   };
@@ -292,9 +190,11 @@ card.Notes = notes
           <button className="modal-btn" id="save">
             Save
           </button>
-          <button className="modal-btn" id="delete" onClick={() =>
-                deleteCard()
-             }>
+          <button
+            className="modal-btn"
+            id="delete"
+            onClick={() => deleteCard()}
+          >
             Delete
           </button>
           <button

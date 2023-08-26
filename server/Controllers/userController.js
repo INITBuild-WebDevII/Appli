@@ -1,119 +1,105 @@
-const User = require('../Models/userModel');
-const bycrypt = require('bcrypt')
-const validator  = require('validator')
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
+const validator = require("validator");
+const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
+const User = require("../Models/userModel");
 
 // Generate JWT
-const createToken = (_id) => {
-    return jwt.sign({_id}, process.env.SECRET)
-}
+const createToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
 
-//Login User
-const loginUser  = async (req, res) => {
-    const {firstName, lastName, email, password} = req.body
-    try {
-        if (!email || !password) {
-            throw Error('All fields must be filled')
-        }
-    
-        const Loguser = await User.findOne({email})
-        
-        if (!Loguser) {
-            throw Error('Incorrect Email')
-        } 
-    
-        const match = await bycrypt.compare(password, Loguser.password)
-    
-        if (!match) {
-            throw Error('Incorrect Password')
-        }
-    
-        const token = createToken(Loguser._id)
-        const id = Loguser._id
-        res.status(200).json({id, email, token})
+/**
+ * @desc Authenticate a user
+ * @method POST
+ * @access public
+ * @endpoint /api/users/login
+ **/
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-    } catch(error) {
-        res.status(400).json({error: error.message})
-    }
-    // try {
-    //     const Loguser = await login(email, password)
+  if (!email || !password) {
+    return res.status(400).json({ error: "All fields must be filled" });
+  }
 
-    //     //Create Token
-    //     const token = createToken(Loguser._id)
+  // Check for user email
+  const user = await User.findOne({ email });
 
-    //     res.status(200)
-    // } catch(error) {
-    //     res.status(400).json({error: error.message})
-    // }
-    // res.json({mssg: 'User Login'})
-}
+  if (!user) {
+    return res.status(400).json({ error: "Incorrect Email" });
+  }
 
-//Sign Up User
-const signUp = async (req, res) => {
-    const {username, email, password} = req.body
-    try {
-        if (!email || !password) {
-            throw Error('All fields must be filled')
-        }
-        console.log(email)
-        if (!validator.isEmail(email)) {
-            throw Error('Email is not valid')
-        }
-        if (!validator.isStrongPassword(password)) {
-            throw Error('Password is not strong enough')
-        }
-        
-        const exists = await User.findOne({email})
-        
-    
-        if (exists) {
-            throw Error('Email already in use')
-        } 
-    
-        const salt = await bycrypt.genSalt(10)
-        const hash = await bycrypt.hash(password, salt)
-    
-        const Signuser = await User.create({username, email, password: hash})
-    
-        const token = createToken(Signuser._id)
-        const id = Signuser._id
-        res.status(200).json({id, email, token})
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-    // try {
-    //     const Signuser = await signup(email, password)
-    //     //console.log(Signuser)
-    //     //Create Token
-    //     const token = createToken(Signuser._id)
-        
-    //     res.status(200)
-    // } catch (error) {
-    //     res.status(400).json({error: error.message})
-    // }
-    // res.json({mssg: 'User Created'})
+  // Compare inputted password with hashed user password
+  const match = await bcrypt.compare(password, user.password);
 
-//   const addCards = async(req,res) => {
-//     const id = req.body.id
-//     const name = req.body.companyName
-//     Cards.updateOne(id, {$set: {name: companyName}}, (err, doc) => {
-//         if (err) {
-//             return console.log(err)
-//             res.json(doc)
-//         }
-//     })
-//   }  
-}
+  if (!match) {
+    return res.status(400).json({ error: "Incorrect Password" });
+  }
 
-const look = async(req,res) => {
-    const {Uid} = req.body
-    try {
-    const user = await User.findById(Uid)
-    
-    res.status(200).json(user)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}
+  res.status(200).json({
+    _id: user.id,
+    name: user.name,
+    email: user.email,
+    token: createToken(user._id),
+  });
+});
 
-module.exports = {loginUser, signUp, look}
+/**
+ * @desc Register new user
+ * @method POST
+ * @access public
+ * @endpoint /api/users/register
+ **/
+const registerUser = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "All fields must be filled" });
+  }
+
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ error: "Email is not valid" });
+  }
+  if (!validator.isStrongPassword(password)) {
+    return res.status(400).json({ error: "Password is not strong enough" });
+  }
+
+  // Check if user exists via email
+  const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    return res.status(400).json({ error: "Email already in use" });
+  }
+
+  // Hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Create user
+  const user = await User.create({ name, email, password: hashedPassword });
+
+  if (user) {
+    res.status(201).json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      token: createToken(user._id),
+    });
+  } else {
+    return res.status(400).json({ error: "Invalid User Data" });
+  }
+});
+
+/**
+ * @desc Get a user
+ * @method GET
+ * @access private
+ * @endpoint /api/users/me
+ **/
+const getUserData = asyncHandler(async (req, res) => {
+  const { _id, name, email } = await User.findById(req.user.id);
+
+  res.status(200).json({ id: _id, name, email });
+});
+
+module.exports = { loginUser, registerUser, getUserData };

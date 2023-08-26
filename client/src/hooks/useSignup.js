@@ -7,19 +7,20 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (username, email, password) => {
+  const signup = async (name, email, password) => {
     setIsLoading(true);
     setError(null);
 
     axios
-      .post("/api/users/signup", {
-        username: username,
+      .post("/api/users/register", {
+        name: name,
         email: email,
         password: password,
       })
       .then((response) => {
         //save user to local storage
-        localStorage.setItem("user", JSON.stringify(response.data));
+        //localStorage.setItem("user", JSON.stringify(response.data));
+        sessionStorage.setItem("user", JSON.stringify(response.data));
 
         //update auth context
         dispatch({ type: "LOGIN", Payload: response.data });

@@ -19,11 +19,15 @@ export const useLogin = () => {
       .then(function (response) {
         //save user to local storage
         console.log(response.data);
+        
+        /*
         if (isRemember) {
           localStorage.setItem("user", JSON.stringify(response.data));
         } else {
           sessionStorage.setItem("user", JSON.stringify(response.data));
         }
+        */
+        sessionStorage.setItem("user", JSON.stringify(response.data));
 
         //update auth context
         dispatch({ type: "LOGIN", Payload: response.data });
