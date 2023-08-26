@@ -11,8 +11,7 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    axios
-      .post("/api/users/register", {
+    axios.post("https://appli-server.onrender.com/api/users/register", {
         name: name,
         email: email,
         password: password,

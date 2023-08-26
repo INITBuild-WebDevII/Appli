@@ -36,7 +36,7 @@ function getCards() {
   console.log(JSON.stringify(User));
 
   // GET Request for all of the User's cards
-  axios.get("/api/cards/", {
+  axios.get("https://appli-server.onrender.com/api/cards/", {
       headers: {
         Authorization: `Bearer ${User.token}`,
       },
@@ -130,7 +130,7 @@ const onDragEnd = (result, columns, setColumns, item) => {
     }
 
     axios.patch(
-      "/api/cards/Test",
+      "https://appli-server.onrender.com/api/cards/Test",
       {
         columnLocation: local_Card_Name,
         index: destination.index,
@@ -161,7 +161,7 @@ const onDragEnd = (result, columns, setColumns, item) => {
     }
 
     axios.patch(
-      "/api/cards/Test",
+      "https://appli-server.onrender.com/api/cards/Test",
       {
         index: destination.index,
         id: result.draggableId,
@@ -258,7 +258,7 @@ function Dashboard() {
     email = User.email;
   }
 
-  axios.get("/api/users/me", {
+  axios.get("https://appli-server.onrender.com/api/users/me", {
       headers: {
         Authorization: `Bearer ${User.token}`,
       },

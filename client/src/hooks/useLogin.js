@@ -11,8 +11,7 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    axios
-      .post("/api/users/login", {
+    axios.post("https://appli-server.onrender.com/api/users/login", {
         email: email,
         password: password,
       })

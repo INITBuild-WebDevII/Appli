@@ -32,7 +32,7 @@ const AddCardModal = ({ closeModal, column, columns, setColumns }) => {
 
     // Create new card to database
     axios.post(
-        "/api/cards",
+        "https://appli-server.onrender.com/api/cards",
         {
           companyName: company,
           positionTitle: position,
