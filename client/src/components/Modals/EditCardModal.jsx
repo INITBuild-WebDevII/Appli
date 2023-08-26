@@ -7,13 +7,9 @@ const EditCardModal = ({ closeModal, column, card }) => {
   const [company, setCompany] = useState(card.companyName);
   const [position, setPosition] = useState(card.positionTitle);
   const [applyLink, setApplyLink] = useState(card.applicationLink);
-  const [applyDate, setApplyDate] = useState(
-    moment.parseZone(card.dateApplied).format("YYYY-MM-DD")
-  );
-  const [responseDate, setResponseDate] = useState(
-    moment.parseZone(card.responseDate).format("YYYY-MM-DD")
-  );
-  const [dueDate, setDueDate] = useState(card.dueDate);
+  const [applyDate, setApplyDate] = useState(card.dateApplied === undefined ? undefined : moment.parseZone(card.dateApplied).format("YYYY-MM-DD"));
+  const [dueDate, setDueDate] = useState(card.dueDate === undefined ? undefined : moment.parseZone(card.dueDate).format("YYYY-MM-DD"));
+  const [responseDate, setResponseDate] = useState(card.responseDate === undefined ? undefined : moment.parseZone(card.responseDate).format("YYYY-MM-DD"));
   const [notes, setNotes] = useState(card.notes);
 
   var User = JSON.parse(sessionStorage.getItem("user"));
