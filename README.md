@@ -7,18 +7,16 @@
 Appli is the best platform for people to find tech jobs, manage your applications, and ace those interviews!
 </p>
 
-## Purpose
-...
+## About
+Appli is a productivity web application that was developed over a span of 9 weeks as part of the INIT Build program for the Spring 2023 semester. It's designed to help computer science students organize and monitor their internship and job applications using a kanban board. It also provides resources in preparing for behavioral/technical interviews and a job board for finding opportunities.
 
 ## Team
-[Miguel Sablan](https://www.linkedin.com/in/miguel-sablan/), [Julian Arias](https://www.linkedin.com/in/julianarias2023/), Danny Lawrence, [Nicole Gentil](https://www.linkedin.com/in/nicole-gentil-0a594b185/), [Maria Camila Copo Amador](https://www.linkedin.com/in/camicopoa), [Alex Chirinos](https://www.linkedin.com/in/chirinos-alexander)
-
-## Features
-- Register and Login
-- Create multiple cards
-- Drag and drop cards
-- Add company, position, application link, date applied, due date, response date, and notes
-- Delete cards
+- [Miguel Sablan](https://www.linkedin.com/in/miguel-sablan/)
+- [Julian Arias](https://www.linkedin.com/in/julianarias2023/)
+- Danny Lawrence
+- [Nicole Gentil](https://www.linkedin.com/in/nicole-gentil-0a594b185/)
+- [Maria Camila Copo Amador](https://www.linkedin.com/in/camicopoa)
+- [Alex Chirinos](https://www.linkedin.com/in/chirinos-alexander)
 
 ## Preview
 
@@ -30,7 +28,6 @@ Appli is the best platform for people to find tech jobs, manage your application
 - [React](https://reactjs.org/)
 - [Node.js (v.18.13.0)](https://nodejs.org/en)
 - [Netlify](https://www.netlify.com/)
-
 
 ## Used Dependencies
 
@@ -78,6 +75,11 @@ npm install
 ```
     
 #### 6. Create .env file in server directory and enter required variables
+```
+PORT=4000
+MONGO_URI=
+JWT_SECRET=
+```
 
 #### 7. Start the server:
 ```
