@@ -309,7 +309,7 @@ function Dashboard() {
               <div className="heading-right-container">
                 <div className="right" href="/Profile">
                   <div className="initial-container">
-                    <p className="profile-initial"> {name.charAt(0)} </p>
+                    <p className="profile-initial"> {} </p>
                   </div>
                   <div className="userInfo">
                     <p className="userN-headingright"> {name} </p>
